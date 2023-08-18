@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">FlyDream Prototype</string>
+    <string name="departureTextViewText">From</string>
+    <string name="arrivalTextViewText">To</string>
+    <string name="dateTextViewText">Date:</string>
+    <string name="bookingButtonText">Book Ticket</string>
+    <string name="monthTextViewText">Month:</string>
+    <string name="yearTextViewText">Year:</string>
+    <string name="blank" />
+    <string name="confirmText">Confirm</string>
+    <string name="noteHint">Enter</string>
+    <string name="congratulationTextViewText">Congratulation!</string>
+    <string name="ticketRegisteredText">Your Ticket Has Been Registered.</string>
+    <string name="returnHomeButtonText">Home Page</string>
+</resources>
