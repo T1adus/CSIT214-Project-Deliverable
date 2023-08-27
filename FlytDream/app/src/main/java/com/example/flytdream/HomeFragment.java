@@ -2,11 +2,17 @@ package com.example.flytdream;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +65,29 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_home, container, false);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.top_nav_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+
+        ActionBar actionBar = ((AppCompatActivity) requireActivity()).getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(false);
+        }
+    }
+
+    //Method to initiate actions according to the user's input
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item){
+        if (item.getItemId() == R.id.action_profile) {
+            Toast.makeText(this.getActivity(), "Hello!", Toast.LENGTH_SHORT).show();
+        } else if (item.getItemId() == android.R.id.home) {
+            Toast.makeText(this.getActivity(), "Goodbye!", Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
