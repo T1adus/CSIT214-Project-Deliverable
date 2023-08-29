@@ -4,4 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"/>
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/launchBackground"
+        android:layout_width="656dp"
+        android:layout_height="899dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/launch_screen" />
+
+    <ImageButton
+        android:id="@+id/getStartButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@id/launchBackground"
+        app:layout_constraintEnd_toEndOf="@id/launchBackground"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@id/launchBackground"
+        app:layout_constraintTop_toTopOf="@id/launchBackground"
+        app:layout_constraintVertical_bias="0.866"
+        app:srcCompat="@drawable/launch_button" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
