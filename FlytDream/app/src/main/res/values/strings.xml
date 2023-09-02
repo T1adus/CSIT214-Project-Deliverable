@@ -2,4 +2,15 @@
     <string name="app_name">FlytDream</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="createAccountText">Create New Account</string>
+    <string name="blank" />
+    <string name="emailRegisterHint">Email</string>
+    <string name="passwordEditHint">Password</string>
+    <string name="repasswordEditHint">Confirm Password</string>
+    <string name="phoneRegisterHint">Phone number</string>
+    <string name="tocText">By creating account you agree to our terms of conditions</string>
+    <string name="policyTextViewText">Read about our <b>Privacy Policy</b></string>
+    <string name="signInViewText">Sign In</string>
+    <string name="rememberAccountText">Remember account</string>
+    <string name="forgotPassword"><u>Forgot Password</u></string>
 </resources>
