@@ -37,6 +37,9 @@ public class CoreActivity extends AppCompatActivity {
                         .commit();
                 return true;
             } else if (item.getItemId() == R.id.menu_trip) {
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, new TripFragment())
+                        .commit();
                 return true;
             } else if (item.getItemId() == R.id.menu_explore) {
                 return true;

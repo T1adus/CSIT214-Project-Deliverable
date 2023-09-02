@@ -13,4 +13,13 @@
     <string name="signInViewText">Sign In</string>
     <string name="rememberAccountText">Remember account</string>
     <string name="forgotPassword"><u>Forgot Password</u></string>
+    <string name="greetUserText">Hey User!</string>
+    <string name="sloganText">Sky is the limit. Explore the world with FlyDreamAir.</string>
+    <string name="yourTripText">Your Trips</string>
+    <string name="seeAll"><![CDATA[See all >]]></string>
+    <string name="location1Text">Eifiel Tower</string>
+    <string name="location2Text">China</string>
+    <string name="popularDestination">Popular Destinations</string>
+    <string name="location1Des">Paris Eyfel Kulesi</string>
+    <string name="location2Des">Shanghai, China</string>
 </resources>
