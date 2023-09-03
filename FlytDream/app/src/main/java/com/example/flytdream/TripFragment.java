@@ -13,7 +13,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -24,7 +27,11 @@ import android.widget.Toast;
 public class TripFragment extends Fragment {
     Spinner departureCitySelect;
     Spinner arrivalCitySelect;
+    ImageView citySwitch;
     Spinner classSelect;
+    ImageButton searchFlightButton;
+    TextView dateSelection;
+    TextView passengerInput;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -75,11 +82,119 @@ public class TripFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_trip, container, false);
         departureCitySelect = view.findViewById(R.id.departureCitySelect);
         arrivalCitySelect = view.findViewById(R.id.arrivalCitySelect);
+        citySwitch = view.findViewById(R.id.citySwitch);
+        citySwitch.setOnClickListener(clickListener);
         classSelect = view.findViewById(R.id.classSelect);
+        dateSelection = view.findViewById(R.id.dateSelection);
+        passengerInput = view.findViewById(R.id.passengerInput);
+        searchFlightButton = view.findViewById(R.id.searchFlightButton);
+        searchFlightButton.setOnClickListener(clickListener);
 
         inflateSpinner();
+        getData();
 
         return view;
+    }
+
+    View.OnClickListener clickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (v.getId() == R.id.searchFlightButton) {
+                boolean status = setData();
+                if (status == true) {
+
+                }
+            } else if (v.getId() == R.id.citySwitch) {
+                switchCity();
+            }
+        }
+    };
+
+    public void getData() {
+        CoreActivity activity = (CoreActivity) getActivity();
+
+        long departureCityId = activity.getDepartureCityId();
+        departureCitySelect.setSelection((int)departureCityId);
+
+        long arrivalCityId = activity.getArrivalCityId();
+        arrivalCitySelect.setSelection((int)arrivalCityId);
+
+        String date = activity.getDate();
+        if (!date.equals("")) {
+            dateSelection.setText(date);
+        }
+
+        long classId = activity.getClassId();
+        classSelect.setSelection((int)classId);
+
+        int[] passenger = activity.getPassenger();
+        int adult = passenger[0];
+        int child = passenger[1];
+        int infant = passenger[2];
+
+        if (adult != 0 || child != 0 || infant != 0) {
+            String passengerDisplay = String.format("%d Adults, %d Kids, %d Infants", adult, child, infant);
+            passengerInput.setText(passengerDisplay);
+        }
+    }
+
+    public boolean setData() {
+        CoreActivity activity = (CoreActivity) getActivity();
+
+        long departureCityId = departureCitySelect.getSelectedItemId();
+        long arrivalCityId = arrivalCitySelect.getSelectedItemId();
+        if (departureCityId != 0) {
+            if (arrivalCityId != 0) {
+                if (departureCityId != arrivalCityId) {
+                    activity.setDepartureCity(departureCityId);
+                    activity.setArrivalCityId(arrivalCityId);
+                } else {
+                    Toast.makeText(getActivity(), "Departure and arrival city can not be the same!", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+            } else {
+                Toast.makeText(getActivity(), "Please select a city to arrive!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        } else {
+            Toast.makeText(getActivity(), "Please select a city to depart!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        String date = dateSelection.getText().toString();
+        if (date.equals("Select a date")) {
+            Toast.makeText(getActivity(), "Please select a date!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        long classId = classSelect.getSelectedItemId();
+        if (classId != 0) {
+            activity.setClassId(classId);
+            String classSelected = classSelect.getSelectedItem().toString();
+            activity.setClass(classSelected);
+        } else {
+            Toast.makeText(getActivity(), "Please select a class!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        String passenger = passengerInput.getText().toString();
+        if (passenger.equals("Input number of passenger")) {
+            Toast.makeText(getActivity(), "Please input the number of passenger!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
+    }
+
+    public void switchCity() {
+        long departureCityId = departureCitySelect.getSelectedItemId();
+        long arrivalCityId = arrivalCitySelect.getSelectedItemId();
+        long temp = departureCityId;
+        departureCityId = arrivalCityId;
+        arrivalCityId = temp;
+
+        departureCitySelect.setSelection((int) departureCityId);
+        arrivalCitySelect.setSelection((int) arrivalCityId);
     }
 
     @Override
@@ -106,7 +221,7 @@ public class TripFragment extends Fragment {
         departureCitySelect.setAdapter(cities);
         arrivalCitySelect.setAdapter(cities);
 
-        String[] classList = new String[] {"Economy", "Premium Economy", "Business"};
+        String[] classList = new String[] {"Class", "Economy", "Premium Economy", "Business"};
 
         ArrayAdapter<String> classes = new ArrayAdapter<>(
                 requireContext(),

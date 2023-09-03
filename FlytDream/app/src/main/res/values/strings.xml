@@ -30,4 +30,6 @@
     <string name="departureDate">Departure Date:</string>
     <string name="classS">Class:</string>
     <string name="passenger">Passenger:</string>
+    <string name="date">Select a date</string>
+    <string name="passengerInputText">Input number of passenger</string>
 </resources>
