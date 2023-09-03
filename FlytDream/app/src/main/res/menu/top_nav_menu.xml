@@ -7,11 +7,7 @@
         android:orderInCategory="1"
         app:showAsAction="always" />
     <item android:id="@+id/action_extra1"
-        android:title="Extra Action 1"
+        android:title="Setting"
         android:orderInCategory="2"
-        app:showAsAction="collapseActionView" />
-    <item android:id="@+id/action_extra2"
-        android:title="Extra Action 1"
-        android:orderInCategory="3"
         app:showAsAction="collapseActionView" />
 </menu>
