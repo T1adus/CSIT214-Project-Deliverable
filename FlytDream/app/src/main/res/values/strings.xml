@@ -22,4 +22,12 @@
     <string name="popularDestination">Popular Destinations</string>
     <string name="location1Des">Paris Eyfel Kulesi</string>
     <string name="location2Des">Shanghai, China</string>
+    <string name="flightSectionText">Flight</string>
+    <string name="serviceSectionText">Services</string>
+    <string name="bookSectionText">Book</string>
+    <string name="depart">Depart From:</string>
+    <string name="arrive">Going To:</string>
+    <string name="departureDate">Departure Date:</string>
+    <string name="classS">Class:</string>
+    <string name="passenger">Passenger:</string>
 </resources>
