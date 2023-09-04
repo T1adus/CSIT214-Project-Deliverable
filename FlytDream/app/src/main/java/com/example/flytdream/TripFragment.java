@@ -115,7 +115,7 @@ public class TripFragment extends Fragment {
             } else if (v.getId() == R.id.dateSelection) {
                 activity.loadFragment(new CalendarFragment());
             } else if (v.getId() == R.id.passengerInput) {
-                activity.loadFragment(new CustomerInfoFragment());
+                activity.loadFragment(new PassengerCountFragment());
             }
         }
     };
@@ -141,7 +141,31 @@ public class TripFragment extends Fragment {
         int infant = passenger[2];
 
         if (adult != 0 || child != 0 || infant != 0) {
-            String passengerDisplay = String.format("%d Adults, %d Kids, %d Infants", adult, child, infant);
+            String adultCount = "";
+            String childCount = "";
+            String infantCount = "";
+
+            if (adult > 0) {
+                if (child > 0 || infant > 0) {
+                    adultCount = String.format("%d Adults,", adult);
+                } else {
+                    adultCount = String.format("%d Adults", adult);
+                }
+            }
+
+            if (child > 0) {
+                if (infant > 0) {
+                    childCount = String.format("%d Kids,", child);
+                } else {
+                    childCount = String.format("%d Kids", child);
+                }
+            }
+
+            if (infant > 0) {
+                infantCount = String.format("%d Infants", infant);
+            }
+
+            String passengerDisplay = String.format("%s %s %s", adultCount, childCount, infantCount);
             passengerInput.setText(passengerDisplay);
         }
     }

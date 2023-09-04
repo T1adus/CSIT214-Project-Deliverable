@@ -154,7 +154,8 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:text="@string/date" />
+                    android:text="@string/date"
+                    android:textStyle="bold" />
 
                 <Spinner
                     android:id="@+id/classSelect"
@@ -182,7 +183,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:gravity="center_vertical"
-                android:text="@string/passengerInputText" />
+                android:text="@string/passengerInputText"
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/imageView10"

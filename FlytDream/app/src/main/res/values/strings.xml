@@ -37,4 +37,9 @@
     <string name="genderInputText">Gender:</string>
     <string name="passportInput">Passport:</string>
     <string name="departureCalendarText">Depart On</string>
+    <string name="passengerCount">Passenger</string>
+    <string name="initialValue">0</string>
+    <string name="adultCountViewText">Adult:</string>
+    <string name="childCountViewText">Child:</string>
+    <string name="infantCountViewText">Infant:</string>
 </resources>
