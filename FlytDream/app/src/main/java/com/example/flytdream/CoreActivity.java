@@ -48,7 +48,7 @@ public class CoreActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(navigationMenuListener);
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, new HomeFragment())
+                .replace(R.id.fragment_container, new CustomerInfoFragment())
                 .commit();
     }
 
@@ -112,7 +112,7 @@ public class CoreActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             if (item.getItemId() == R.id.menu_home) {
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, new HomeFragment())
+                        .replace(R.id.fragment_container, new CustomerInfoFragment())
                         .commit();
                 return true;
             } else if (item.getItemId() == R.id.menu_trip) {
