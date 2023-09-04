@@ -113,7 +113,7 @@ public class TripFragment extends Fragment {
             } else if (v.getId() == R.id.citySwitch) {
                 switchCity();
             } else if (v.getId() == R.id.dateSelection) {
-                activity.loadFragment(new CustomerInfoFragment());
+                activity.loadFragment(new CalendarFragment());
             } else if (v.getId() == R.id.passengerInput) {
                 activity.loadFragment(new CustomerInfoFragment());
             }

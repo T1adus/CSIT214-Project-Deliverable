@@ -36,4 +36,5 @@
     <string name="ageInputText">Age:</string>
     <string name="genderInputText">Gender:</string>
     <string name="passportInput">Passport:</string>
+    <string name="departureCalendarText">Depart On</string>
 </resources>
