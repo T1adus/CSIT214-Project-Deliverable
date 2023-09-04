@@ -25,14 +25,15 @@ import android.widget.Toast;
  * create an instance of this fragment.
  */
 public class TripFragment extends Fragment {
+    CoreActivity activity;
     private BookingSession aBookingSession;
-    Spinner departureCitySelect;
-    Spinner arrivalCitySelect;
-    ImageView citySwitch;
-    Spinner classSelect;
-    ImageButton searchFlightButton;
-    TextView dateSelection;
-    TextView passengerInput;
+    private Spinner departureCitySelect;
+    private Spinner arrivalCitySelect;
+    private ImageView citySwitch;
+    private Spinner classSelect;
+    private ImageButton searchFlightButton;
+    private TextView dateSelection;
+    private TextView passengerInput;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -81,7 +82,7 @@ public class TripFragment extends Fragment {
         setHasOptionsMenu(true);
 
         View view = inflater.inflate(R.layout.fragment_trip, container, false);
-        CoreActivity activity = (CoreActivity) getActivity();
+        activity = (CoreActivity) getActivity();
         aBookingSession = activity.getBookingSession();
         departureCitySelect = view.findViewById(R.id.departureCitySelect);
         arrivalCitySelect = view.findViewById(R.id.arrivalCitySelect);
@@ -89,7 +90,9 @@ public class TripFragment extends Fragment {
         citySwitch.setOnClickListener(clickListener);
         classSelect = view.findViewById(R.id.classSelect);
         dateSelection = view.findViewById(R.id.dateSelection);
+        dateSelection.setOnClickListener(clickListener);
         passengerInput = view.findViewById(R.id.passengerInput);
+        passengerInput.setOnClickListener(clickListener);
         searchFlightButton = view.findViewById(R.id.searchFlightButton);
         searchFlightButton.setOnClickListener(clickListener);
 
@@ -109,6 +112,10 @@ public class TripFragment extends Fragment {
                 }
             } else if (v.getId() == R.id.citySwitch) {
                 switchCity();
+            } else if (v.getId() == R.id.dateSelection) {
+                activity.loadFragment(new CustomerInfoFragment());
+            } else if (v.getId() == R.id.passengerInput) {
+                activity.loadFragment(new CustomerInfoFragment());
             }
         }
     };
