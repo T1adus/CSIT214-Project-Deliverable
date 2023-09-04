@@ -12,17 +12,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class CoreActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
-
-    long departureCityId;
-    String departureCityAlias;
-    long arrivalCityId;
-    String arrivalCityAlias;
-    String date;
-    long classId;
-    String classSelected;
-    int adult;
-    int child;
-    int infant;
+    private BookingSession bookingSession;
 
 
     @Override
@@ -33,78 +23,18 @@ public class CoreActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        departureCityId = 0;
-        departureCityAlias = "";
-        arrivalCityId = 0;
-        arrivalCityAlias = "";
-        date = "";
-        classId = 0;
-        classSelected = "";
-        adult = 0;
-        child = 0;
-        infant = 0;
-
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(navigationMenuListener);
 
+        bookingSession = new BookingSession();
+
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, new CustomerInfoFragment())
+                .replace(R.id.fragment_container, new HomeFragment())
                 .commit();
     }
 
-    public long getDepartureCityId() {
-        return departureCityId;
-    }
-
-    public void setDepartureCity(long newDepartureCityId) {
-        departureCityId = newDepartureCityId;
-    }
-
-    public long getArrivalCityId() {
-        return arrivalCityId;
-    }
-
-    public void setArrivalCityId(long newArrivalCityId) {
-        arrivalCityId = newArrivalCityId;
-    }
-
-    public void setDepartureCityAlias(String newDepartureCityAlias) {
-        departureCityAlias = newDepartureCityAlias;
-    }
-
-    public void setArrivalCityAlias(String newArrivalCityAlias) {
-        arrivalCityAlias = newArrivalCityAlias;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String newDate) {
-        date = newDate;
-    }
-
-    public void setClassId(long newClassId) {
-        classId = newClassId;
-    }
-
-    public long getClassId() {
-        return classId;
-    }
-
-    public void setClass(String newClass) {
-        classSelected = newClass;
-    }
-
-    public int[] getPassenger() {
-        int[] passenger = {adult, child, infant};
-        return passenger;
-    }
-
-    public void setPassenger(int newAdult, int newChild, int newInfant) {
-        adult = newAdult;
-        child = newChild;
-        infant = newInfant;
+    public BookingSession getBookingSession() {
+        return bookingSession;
     }
 
     NavigationBarView.OnItemSelectedListener navigationMenuListener = new NavigationBarView.OnItemSelectedListener() {
@@ -112,7 +42,7 @@ public class CoreActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             if (item.getItemId() == R.id.menu_home) {
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, new CustomerInfoFragment())
+                        .replace(R.id.fragment_container, new HomeFragment())
                         .commit();
                 return true;
             } else if (item.getItemId() == R.id.menu_trip) {
