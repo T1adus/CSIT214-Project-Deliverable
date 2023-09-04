@@ -32,4 +32,9 @@
     <string name="passenger">Passenger:</string>
     <string name="date">Select a date</string>
     <string name="passengerInputText">Input number of passenger</string>
+    <string name="nameInputText">Name:</string>
+    <string name="ageInputText">Age:</string>
+    <string name="genderInputText">Gender:</string>
+    <string name="passportInput">Passport:</string>
+    <string name="departureCalendarText">Depart On</string>
 </resources>

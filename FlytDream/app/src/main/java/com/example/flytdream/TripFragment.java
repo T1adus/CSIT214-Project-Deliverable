@@ -25,13 +25,15 @@ import android.widget.Toast;
  * create an instance of this fragment.
  */
 public class TripFragment extends Fragment {
-    Spinner departureCitySelect;
-    Spinner arrivalCitySelect;
-    ImageView citySwitch;
-    Spinner classSelect;
-    ImageButton searchFlightButton;
-    TextView dateSelection;
-    TextView passengerInput;
+    CoreActivity activity;
+    private BookingSession aBookingSession;
+    private Spinner departureCitySelect;
+    private Spinner arrivalCitySelect;
+    private ImageView citySwitch;
+    private Spinner classSelect;
+    private ImageButton searchFlightButton;
+    private TextView dateSelection;
+    private TextView passengerInput;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -80,13 +82,17 @@ public class TripFragment extends Fragment {
         setHasOptionsMenu(true);
 
         View view = inflater.inflate(R.layout.fragment_trip, container, false);
+        activity = (CoreActivity) getActivity();
+        aBookingSession = activity.getBookingSession();
         departureCitySelect = view.findViewById(R.id.departureCitySelect);
         arrivalCitySelect = view.findViewById(R.id.arrivalCitySelect);
         citySwitch = view.findViewById(R.id.citySwitch);
         citySwitch.setOnClickListener(clickListener);
         classSelect = view.findViewById(R.id.classSelect);
         dateSelection = view.findViewById(R.id.dateSelection);
+        dateSelection.setOnClickListener(clickListener);
         passengerInput = view.findViewById(R.id.passengerInput);
+        passengerInput.setOnClickListener(clickListener);
         searchFlightButton = view.findViewById(R.id.searchFlightButton);
         searchFlightButton.setOnClickListener(clickListener);
 
@@ -106,28 +112,30 @@ public class TripFragment extends Fragment {
                 }
             } else if (v.getId() == R.id.citySwitch) {
                 switchCity();
+            } else if (v.getId() == R.id.dateSelection) {
+                activity.loadFragment(new CalendarFragment());
+            } else if (v.getId() == R.id.passengerInput) {
+                activity.loadFragment(new CustomerInfoFragment());
             }
         }
     };
 
     public void getData() {
-        CoreActivity activity = (CoreActivity) getActivity();
-
-        long departureCityId = activity.getDepartureCityId();
+        long departureCityId = aBookingSession.getDepartureCityId();
         departureCitySelect.setSelection((int)departureCityId);
 
-        long arrivalCityId = activity.getArrivalCityId();
+        long arrivalCityId = aBookingSession.getArrivalCityId();
         arrivalCitySelect.setSelection((int)arrivalCityId);
 
-        String date = activity.getDate();
+        String date = aBookingSession.getDate();
         if (!date.equals("")) {
             dateSelection.setText(date);
         }
 
-        long classId = activity.getClassId();
+        long classId = aBookingSession.getClassId();
         classSelect.setSelection((int)classId);
 
-        int[] passenger = activity.getPassenger();
+        int[] passenger = aBookingSession.getPassenger();
         int adult = passenger[0];
         int child = passenger[1];
         int infant = passenger[2];
@@ -139,15 +147,13 @@ public class TripFragment extends Fragment {
     }
 
     public boolean setData() {
-        CoreActivity activity = (CoreActivity) getActivity();
-
         long departureCityId = departureCitySelect.getSelectedItemId();
         long arrivalCityId = arrivalCitySelect.getSelectedItemId();
         if (departureCityId != 0) {
             if (arrivalCityId != 0) {
                 if (departureCityId != arrivalCityId) {
-                    activity.setDepartureCity(departureCityId);
-                    activity.setArrivalCityId(arrivalCityId);
+                    aBookingSession.setDepartureCity(departureCityId);
+                    aBookingSession.setArrivalCityId(arrivalCityId);
                 } else {
                     Toast.makeText(getActivity(), "Departure and arrival city can not be the same!", Toast.LENGTH_SHORT).show();
                     return false;
@@ -169,9 +175,9 @@ public class TripFragment extends Fragment {
 
         long classId = classSelect.getSelectedItemId();
         if (classId != 0) {
-            activity.setClassId(classId);
+            aBookingSession.setClassId(classId);
             String classSelected = classSelect.getSelectedItem().toString();
-            activity.setClass(classSelected);
+            aBookingSession.setClass(classSelected);
         } else {
             Toast.makeText(getActivity(), "Please select a class!", Toast.LENGTH_SHORT).show();
             return false;
