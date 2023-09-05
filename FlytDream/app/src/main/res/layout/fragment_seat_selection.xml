@@ -55,11 +55,149 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="365dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center">
+
+                <View
+                    android:id="@+id/blankPanel"
+                    android:layout_width="300dp"
+                    android:layout_height="165dp"
+                    android:background="@color/darkblue"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.492"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageView18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="120dp"
+                    android:src="@drawable/plane"
+                    app:layout_constraintBottom_toBottomOf="@+id/blankPanel"
+                    app:layout_constraintEnd_toEndOf="@+id/blankPanel"
+                    app:layout_constraintStart_toStartOf="@+id/blankPanel"
+                    app:layout_constraintTop_toTopOf="@+id/blankPanel" />
+
+                <ImageView
+                    android:id="@+id/imageView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="120dp"
+                    android:src="@drawable/path"
+                    app:layout_constraintBottom_toBottomOf="@+id/blankPanel"
+                    app:layout_constraintEnd_toEndOf="@+id/blankPanel"
+                    app:layout_constraintStart_toStartOf="@+id/blankPanel"
+                    app:layout_constraintTop_toTopOf="@+id/blankPanel" />
+
+                <ImageView
+                    android:id="@+id/imageView20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="270dp"
+                    android:layout_marginBottom="120dp"
+                    android:src="@drawable/from"
+                    app:layout_constraintBottom_toBottomOf="@+id/blankPanel"
+                    app:layout_constraintEnd_toEndOf="@+id/blankPanel"
+                    app:layout_constraintStart_toStartOf="@+id/blankPanel"
+                    app:layout_constraintTop_toTopOf="@+id/blankPanel" />
+
+                <ImageView
+                    android:id="@+id/imageView21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="270dp"
+                    android:layout_marginBottom="120dp"
+                    android:src="@drawable/to"
+                    app:layout_constraintBottom_toBottomOf="@+id/blankPanel"
+                    app:layout_constraintEnd_toEndOf="@+id/blankPanel"
+                    app:layout_constraintStart_toStartOf="@+id/blankPanel"
+                    app:layout_constraintTop_toTopOf="@+id/blankPanel" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="200dp"
+                    android:layout_marginBottom="70dp"
+                    android:text="TextView"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/blankPanel"
+                    app:layout_constraintEnd_toEndOf="@+id/blankPanel"
+                    app:layout_constraintStart_toStartOf="@+id/blankPanel"
+                    app:layout_constraintTop_toTopOf="@+id/blankPanel" />
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginBottom="70dp"
+                    android:text="TextView"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/blankPanel"
+                    app:layout_constraintEnd_toEndOf="@+id/blankPanel"
+                    app:layout_constraintStart_toStartOf="@+id/blankPanel"
+                    app:layout_constraintTop_toTopOf="@+id/blankPanel" />
+
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="200dp"
+                    android:text="TextView"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/blankPanel"
+                    app:layout_constraintEnd_toEndOf="@+id/blankPanel"
+                    app:layout_constraintStart_toStartOf="@+id/blankPanel"
+                    app:layout_constraintTop_toTopOf="@+id/blankPanel" />
+
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="200dp"
+                    android:text="TextView"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/blankPanel"
+                    app:layout_constraintEnd_toEndOf="@+id/blankPanel"
+                    app:layout_constraintStart_toStartOf="@+id/blankPanel"
+                    app:layout_constraintTop_toTopOf="@+id/blankPanel" />
+
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="70dp"
+                    android:text="Economy Class"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/blankPanel"
+                    app:layout_constraintEnd_toEndOf="@+id/blankPanel"
+                    app:layout_constraintStart_toStartOf="@+id/blankPanel"
+                    app:layout_constraintTop_toTopOf="@+id/blankPanel" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="365dp"
             android:layout_gravity="center"
-            android:padding="50dp">
+            android:padding="20dp">
 
 
             <TableLayout
@@ -68,12 +206,13 @@
                 android:stretchColumns="*">
 
                 <TableRow
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <Button
                         android:layout_width="20dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:text="1">
 
                     </Button>
 
@@ -84,7 +223,8 @@
 
                     <Button
                         android:layout_width="20dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:text="2">
 
                     </Button>
 
@@ -95,7 +235,8 @@
 
                     <Button
                         android:layout_width="20dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:text="3">
 
                     </Button>
 
@@ -106,7 +247,8 @@
 
                     <Button
                         android:layout_width="20dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:text="4">
 
                     </Button>
 
@@ -119,7 +261,8 @@
 
                     <Button
                         android:layout_width="20dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:text="1">
 
                     </Button>
 
@@ -130,7 +273,8 @@
 
                     <Button
                         android:layout_width="20dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:text="2">
 
                     </Button>
 
@@ -141,7 +285,8 @@
 
                     <Button
                         android:layout_width="20dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:text="3">
 
                     </Button>
 
@@ -152,7 +297,8 @@
 
                     <Button
                         android:layout_width="20dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:text="4">
 
                     </Button>
                 </TableRow>
@@ -164,7 +310,8 @@
 
                     <Button
                         android:layout_width="20dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:text="1">
 
                     </Button>
 
@@ -175,7 +322,8 @@
 
                     <Button
                         android:layout_width="20dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:text="2">
 
                     </Button>
 
@@ -186,7 +334,8 @@
 
                     <Button
                         android:layout_width="20dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:text="3">
 
                     </Button>
 
@@ -197,53 +346,8 @@
 
                     <Button
                         android:layout_width="20dp"
-                        android:layout_weight="1">
-
-                    </Button>
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:stretchColumns="*">
-
-                    <Button
-                        android:layout_width="20dp"
-                        android:layout_weight="1">
-
-                    </Button>
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-
-                    <Button
-                        android:layout_width="20dp"
-                        android:layout_weight="1">
-
-                    </Button>
-
-                    <Space
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-
-                    <Button
-                        android:layout_width="20dp"
-                        android:layout_weight="1">
-
-                    </Button>
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-
-                    <Button
-                        android:layout_width="20dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:text="4">
 
                     </Button>
 
@@ -256,7 +360,8 @@
 
                     <Button
                         android:layout_width="20dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:text="1">
 
                     </Button>
 
@@ -267,7 +372,8 @@
 
                     <Button
                         android:layout_width="20dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:text="2">
 
                     </Button>
 
@@ -278,7 +384,8 @@
 
                     <Button
                         android:layout_width="20dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:text="3">
 
                     </Button>
 
@@ -289,7 +396,8 @@
 
                     <Button
                         android:layout_width="20dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:text="4">
 
                     </Button>
 
@@ -302,7 +410,8 @@
 
                     <Button
                         android:layout_width="20dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:text="1">
 
                     </Button>
 
@@ -313,7 +422,8 @@
 
                     <Button
                         android:layout_width="20dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:text="2">
 
                     </Button>
 
@@ -324,7 +434,8 @@
 
                     <Button
                         android:layout_width="20dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:text="3">
 
                     </Button>
 
@@ -335,7 +446,58 @@
 
                     <Button
                         android:layout_width="20dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:text="4">
+
+                    </Button>
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:stretchColumns="*">
+
+                    <Button
+                        android:layout_width="20dp"
+                        android:layout_weight="1"
+                        android:text="1">
+
+                    </Button>
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <Button
+                        android:layout_width="20dp"
+                        android:layout_weight="1"
+                        android:text="2">
+
+                    </Button>
+
+                    <Space
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <Button
+                        android:layout_width="20dp"
+                        android:layout_weight="1"
+                        android:text="3">
+
+                    </Button>
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <Button
+                        android:layout_width="20dp"
+                        android:layout_weight="1"
+                        android:text="4">
 
                     </Button>
 
@@ -343,8 +505,13 @@
             </TableLayout>
         </ScrollView>
 
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:src="@drawable/seat_confirm" />
+
     </LinearLayout>
-
-
 
 </FrameLayout>
