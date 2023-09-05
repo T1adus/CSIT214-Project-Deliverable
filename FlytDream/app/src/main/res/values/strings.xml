@@ -43,4 +43,6 @@
     <string name="childCountViewText">Child:</string>
     <string name="infantCountViewText">Infant:</string>
     <string name="flightSe">Flight Selection</string>
+    <string name="returnDate">Return Date:</string>
+    <string name="notS">Not Selectable</string>
 </resources>

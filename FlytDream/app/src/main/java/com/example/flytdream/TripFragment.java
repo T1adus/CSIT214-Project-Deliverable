@@ -84,8 +84,6 @@ public class TripFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_trip, container, false);
         activity = (CoreActivity) getActivity();
         aBookingSession = activity.getBookingSession();
-        departureCitySelect = view.findViewById(R.id.departureCitySelect);
-        arrivalCitySelect = view.findViewById(R.id.arrivalCitySelect);
         citySwitch = view.findViewById(R.id.citySwitch);
         citySwitch.setOnClickListener(clickListener);
         classSelect = view.findViewById(R.id.classSelect);
@@ -121,12 +119,6 @@ public class TripFragment extends Fragment {
     };
 
     public void getData() {
-        long departureCityId = aBookingSession.getDepartureCityId();
-        departureCitySelect.setSelection((int)departureCityId);
-
-        long arrivalCityId = aBookingSession.getArrivalCityId();
-        arrivalCitySelect.setSelection((int)arrivalCityId);
-
         String date = aBookingSession.getDate();
         if (!date.equals("")) {
             dateSelection.setText(date);
@@ -239,18 +231,6 @@ public class TripFragment extends Fragment {
     }
 
     public void inflateSpinner() {
-        String[] cityList = new String[] {"Select a city","Sydney", "Melbourne", "Hanoi", "HCM"};
-
-        ArrayAdapter<String> cities = new ArrayAdapter<>(
-                requireContext(),
-                android.R.layout.simple_spinner_item,
-                cityList
-        );
-
-        cities.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        departureCitySelect.setAdapter(cities);
-        arrivalCitySelect.setAdapter(cities);
-
         String[] classList = new String[] {"Class", "Economy", "Premium Economy", "Business"};
 
         ArrayAdapter<String> classes = new ArrayAdapter<>(
