@@ -11,10 +11,14 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CoreActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private BookingSession bookingSession;
-
+    private FlightAdapter flightAdapter;
+    private List<Flight> flights;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,21 @@ public class CoreActivity extends AppCompatActivity {
                 .replace(R.id.fragment_container, fragment)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    public FlightAdapter createFlight() {
+        flights = new ArrayList<>();
+        flights.add(new Flight("SYD", "11:30", "08h:40m", "HAN", "20:10", 3000));
+        flights.add(new Flight("SYD", "10:30", "11h:50m", "HAN", "22:20", 1000));
+        flights.add(new Flight("SYD", "15:30", "12h:20m", "HAN", "03:50", 2000));
+        flights.add(new Flight("SYD", "18:30", "09h:10m", "HAN", "03:40", 4000));
+
+        flightAdapter = new FlightAdapter(flights);
+        return flightAdapter;
+    }
+
+    public void selectFlight(int position) {
+        bookingSession.setFlight(flights.get(position));
     }
 
     NavigationBarView.OnItemSelectedListener navigationMenuListener = new NavigationBarView.OnItemSelectedListener() {

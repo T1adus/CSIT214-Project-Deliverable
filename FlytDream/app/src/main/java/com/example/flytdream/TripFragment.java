@@ -106,10 +106,10 @@ public class TripFragment extends Fragment {
         @Override
         public void onClick(View v) {
             if (v.getId() == R.id.searchFlightButton) {
-                boolean status = setData();
-                if (status == true) {
-
-                }
+                //boolean status = setData();
+                //if (status == true) {
+                    activity.loadFragment(new FlightSelectFragment());
+                //}
             } else if (v.getId() == R.id.citySwitch) {
                 switchCity();
             } else if (v.getId() == R.id.dateSelection) {

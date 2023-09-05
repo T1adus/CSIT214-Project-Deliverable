@@ -18,7 +18,9 @@ public class BookingSession {
     private int adult;
     private int child;
     private int infant;
+    private Flight flight;
     private ArrayList<String> seats;
+    private int totalCost;
 
     public BookingSession() {
         departureCityId = 0;
@@ -31,6 +33,9 @@ public class BookingSession {
         adult = 0;
         child = 0;
         infant = 0;
+        flight = new Flight();
+        seats = new ArrayList<>();
+        totalCost = 0;
     }
 
     public String getCustomerName() {return customerName;}
@@ -49,6 +54,7 @@ public class BookingSession {
         int[] passenger = {adult, child, infant};
         return passenger;
     }
+    public Flight getFlight() {return flight;}
 
     public void setCustomerName(String newCustomerName) {customerName = newCustomerName;}
     public void setCustomerAge(int newCustomerAge) {customerAge = newCustomerAge;}
@@ -81,4 +87,5 @@ public class BookingSession {
         child = newChild;
         infant = newInfant;
     }
+    public void setFlight(Flight newFlight) {flight = newFlight;}
 }

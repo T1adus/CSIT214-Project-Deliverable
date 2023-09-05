@@ -42,4 +42,5 @@
     <string name="adultCountViewText">Adult:</string>
     <string name="childCountViewText">Child:</string>
     <string name="infantCountViewText">Infant:</string>
+    <string name="flightSe">Flight Selection</string>
 </resources>
