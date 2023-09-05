@@ -102,4 +102,10 @@ public class databaseHelper extends SQLiteOpenHelper {
         contentValues.put(CITY_INFO_TABLE_COL_3, cityCountry);
         db.insert(CITY_INFO_TABLE, null, contentValues);
     }
+
+    public Cursor onSearchCity(String input) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM " + CITY_INFO_TABLE + " WHERE " + CITY_INFO_TABLE_COL_2 + " LIKE '%" + input + "%'", null);
+        return res;
+    }
 }

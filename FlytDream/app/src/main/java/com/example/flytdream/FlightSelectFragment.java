@@ -3,11 +3,16 @@ package com.example.flytdream;
 import android.media.Image;
 import android.os.Bundle;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -77,6 +82,7 @@ public class FlightSelectFragment extends Fragment {
         populateFlightDisplay();
         confirmButton = view.findViewById(R.id.confirmButton);
         confirmButton.setOnClickListener(clickListener);
+        setHasOptionsMenu(true);
         return view;
     }
 
@@ -104,5 +110,27 @@ public class FlightSelectFragment extends Fragment {
             }
         });
         flightDisplay.setAdapter(adapter);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.top_nav_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+
+        ActionBar actionBar = ((AppCompatActivity) requireActivity()).getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item){
+        if (item.getItemId() == R.id.action_profile) {
+            Toast.makeText(this.getActivity(), "Yo!", Toast.LENGTH_SHORT).show();
+        } else if (item.getItemId() == android.R.id.home) {
+            activity.loadFragment(new TripFragment());
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

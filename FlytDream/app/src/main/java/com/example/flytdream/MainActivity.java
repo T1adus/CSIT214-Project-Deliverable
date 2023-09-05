@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         myDB = new databaseHelper(MainActivity.this, "FlytDream.db", null, 1);
+        loadCities();
 
         getStartButton = findViewById(R.id.getStartButton);
         getStartButton.setOnClickListener(buttonClickListener);
@@ -23,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadCities() {
         if (!myDB.tableHasContent(databaseHelper.CITY_INFO_TABLE)) {
-            myDB.insertCity("AMS","Amsterdam","Netherland");
-            myDB.insertCity("HAN","Hanoi","Viet Nam");
-            myDB.insertCity("HCM","Ho Chi Minh City","Viet Nam");
+            myDB.insertCity("AMS","Amsterdam","Netherlands");
+            myDB.insertCity("HAN","Hanoi","Vietnam");
+            myDB.insertCity("HCM","Ho Chi Minh City","Vietnam");
             myDB.insertCity("LDN","London","United Kingdom");
             myDB.insertCity("MEL","Melbourne","Australia");
             myDB.insertCity("PAR","Paris","France");

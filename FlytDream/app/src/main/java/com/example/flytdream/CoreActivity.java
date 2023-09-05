@@ -19,6 +19,8 @@ public class CoreActivity extends AppCompatActivity {
     private BookingSession bookingSession;
     private FlightAdapter flightAdapter;
     private List<Flight> flights;
+    public databaseHelper myDB;
+    public int citySelectScreenController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,10 @@ public class CoreActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(navigationMenuListener);
 
+        citySelectScreenController = -1;
+
         bookingSession = new BookingSession();
+        myDB = new databaseHelper(CoreActivity.this, "FlytDream.db", null, 1);
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, new HomeFragment())
@@ -51,10 +56,19 @@ public class CoreActivity extends AppCompatActivity {
 
     public FlightAdapter createFlight() {
         flights = new ArrayList<>();
-        flights.add(new Flight("SYD", "11:30", "08h:40m", "HAN", "20:10", 3000));
-        flights.add(new Flight("SYD", "10:30", "11h:50m", "HAN", "22:20", 1000));
-        flights.add(new Flight("SYD", "15:30", "12h:20m", "HAN", "03:50", 2000));
-        flights.add(new Flight("SYD", "18:30", "09h:10m", "HAN", "03:40", 4000));
+        String departAlias = bookingSession.getDepartCity().getCityAlias();
+        String arriveAlias = bookingSession.getArriveCity().getCityAlias();
+        if (departAlias.equals("SYD") || departAlias.equals("HAN")) {
+            flights.add(new Flight(departAlias, "11:30", "08h:40m", arriveAlias, "20:10", 3000));
+            flights.add(new Flight(departAlias, "10:30", "11h:50m", arriveAlias, "22:20", 1000));
+            flights.add(new Flight(departAlias, "15:30", "12h:20m", arriveAlias, "03:50", 2000));
+            flights.add(new Flight(departAlias, "18:30", "09h:10m", arriveAlias, "03:40", 4000));
+        } else {
+            flights.add(new Flight(departAlias, "TBA", "TBA", arriveAlias, "TBA", 0));
+            flights.add(new Flight(departAlias, "TBA", "TBA", arriveAlias, "TBA", 0));
+            flights.add(new Flight(departAlias, "TBA", "TBA", arriveAlias, "TBA", 0));
+            flights.add(new Flight(departAlias, "TBA", "TBA", arriveAlias, "TBA", 0));
+        }
 
         flightAdapter = new FlightAdapter(flights);
         return flightAdapter;

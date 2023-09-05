@@ -61,7 +61,7 @@
             android:text="@string/blank" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/cityType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/fromto"
@@ -70,7 +70,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/editTextText"
+            android:id="@+id/searchCity"
             android:layout_width="383dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -79,6 +79,7 @@
             android:text="@string/blank" />
 
         <ListView
+            android:id="@+id/cityDisplay"
             android:layout_width="match_parent"
             android:layout_height="391dp" />
 

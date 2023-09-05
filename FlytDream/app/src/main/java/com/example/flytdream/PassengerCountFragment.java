@@ -127,6 +127,8 @@ public class PassengerCountFragment extends Fragment {
         confirmButton = view.findViewById(R.id.confirmButton);
         confirmButton.setOnClickListener(clickListener);
 
+        setHasOptionsMenu(true);
+
         return view;
     }
 
@@ -185,4 +187,6 @@ public class PassengerCountFragment extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }

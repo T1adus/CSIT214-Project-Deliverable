@@ -21,7 +21,8 @@
             android:parentActivityName=".SignInActivity" />
         <activity
             android:name=".CoreActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustNothing"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

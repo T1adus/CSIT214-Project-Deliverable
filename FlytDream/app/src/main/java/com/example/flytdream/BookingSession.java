@@ -3,17 +3,10 @@ package com.example.flytdream;
 import java.util.ArrayList;
 
 public class BookingSession {
-    private String customerName;
-    private int customerAge;
-    private long customerGenderId;
-    private String customerGender;
-    private String customerPassport;
-    private long departureCityId;
-     private String departureCityAlias;
-    private long arrivalCityId;
-    private String arrivalCityAlias;
+    private City departCity;
+    private City arriveCity;
     private String date;
-    private long classId;
+    private int classId;
     private String classSelected;
     private int adult;
     private int child;
@@ -23,10 +16,8 @@ public class BookingSession {
     private int totalCost;
 
     public BookingSession() {
-        departureCityId = 0;
-        departureCityAlias = "";
-        arrivalCityId = 0;
-        arrivalCityAlias = "";
+        departCity = new City("0", "0", "0");
+        arriveCity = new City("0", "0", "0");
         date = "";
         classId = 0;
         classSelected = "";
@@ -38,17 +29,10 @@ public class BookingSession {
         totalCost = 0;
     }
 
-    public String getCustomerName() {return customerName;}
-    public int getCustomerAge() {return customerAge;}
-    public long getCustomerGenderId() {return customerGenderId;}
-    public String getCustomerGender() {return customerGender;}
-    public String getCustomerPassport() {return customerPassport;}
-    public long getDepartureCityId() {return departureCityId;}
-    public long getArrivalCityId() {return arrivalCityId;}
-    public String getDepartureCityAlias() {return departureCityAlias;}
-    public String getArrivalCityAlias() {return arrivalCityAlias;}
+    public City getDepartCity() {return departCity;}
+    public City getArriveCity() {return arriveCity;}
     public String getDate() {return date;}
-    public long getClassId() {return classId;}
+    public int getClassId() {return classId;}
     public String getClassSelected() {return classSelected;}
     public int[] getPassenger() {
         int[] passenger = {adult, child, infant};
@@ -56,27 +40,12 @@ public class BookingSession {
     }
     public Flight getFlight() {return flight;}
 
-    public void setCustomerName(String newCustomerName) {customerName = newCustomerName;}
-    public void setCustomerAge(int newCustomerAge) {customerAge = newCustomerAge;}
-    public void setCustomerGenderId(long newCustomerGenderId) {customerGenderId = newCustomerGenderId;}
-    public void setCustomerGender(String newCustomerGender) {customerGender = newCustomerGender;}
-    public void setCustomerPassport(String newCustomerPassport) {customerPassport = newCustomerPassport;}
-    public void setDepartureCity(long newDepartureCityId) {
-        departureCityId = newDepartureCityId;
-    }
-    public void setArrivalCityId(long newArrivalCityId) {
-        arrivalCityId = newArrivalCityId;
-    }
-    public void setDepartureCityAlias(String newDepartureCityAlias) {
-        departureCityAlias = newDepartureCityAlias;
-    }
-    public void setArrivalCityAlias(String newArrivalCityAlias) {
-        arrivalCityAlias = newArrivalCityAlias;
-    }
+    public void setDepartCity(City newDepartCity) {departCity = newDepartCity;}
+    public void setArriveCity(City newArriveCity) {arriveCity = newArriveCity;}
     public void setDate(String newDate) {
         date = newDate;
     }
-    public void setClassId(long newClassId) {
+    public void setClassId(int newClassId) {
         classId = newClassId;
     }
     public void setClass(String newClass) {

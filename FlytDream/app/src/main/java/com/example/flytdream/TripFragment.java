@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -27,20 +28,18 @@ import android.widget.Toast;
 public class TripFragment extends Fragment {
     CoreActivity activity;
     private BookingSession aBookingSession;
-    private Spinner departureCitySelect;
-    private Spinner arrivalCitySelect;
+    private TextView userDepartCity;
+    private TextView userArriveCity;
     private ImageView citySwitch;
     private Spinner classSelect;
     private ImageButton searchFlightButton;
     private TextView dateSelection;
     private TextView passengerInput;
 
-    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -48,15 +47,6 @@ public class TripFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TripFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static TripFragment newInstance(String param1, String param2) {
         TripFragment fragment = new TripFragment();
         Bundle args = new Bundle();
@@ -84,9 +74,18 @@ public class TripFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_trip, container, false);
         activity = (CoreActivity) getActivity();
         aBookingSession = activity.getBookingSession();
+
+        userDepartCity = view.findViewById(R.id.userDepartCity);
+        userDepartCity.setOnClickListener(clickListener);
+        userArriveCity = view.findViewById(R.id.userArriveCity);
+        userArriveCity.setOnClickListener(clickListener);
+
         citySwitch = view.findViewById(R.id.citySwitch);
         citySwitch.setOnClickListener(clickListener);
+
         classSelect = view.findViewById(R.id.classSelect);
+        classSelect.setOnItemSelectedListener(itemClickListener);
+
         dateSelection = view.findViewById(R.id.dateSelection);
         dateSelection.setOnClickListener(clickListener);
         passengerInput = view.findViewById(R.id.passengerInput);
@@ -104,28 +103,60 @@ public class TripFragment extends Fragment {
         @Override
         public void onClick(View v) {
             if (v.getId() == R.id.searchFlightButton) {
-                //boolean status = setData();
-                //if (status == true) {
+                if (validateData() == true) {
                     activity.loadFragment(new FlightSelectFragment());
-                //}
+                }
             } else if (v.getId() == R.id.citySwitch) {
-                switchCity();
+                if (!userDepartCity.getText().equals("") && !userArriveCity.getText().equals("")){
+                    switchCity();
+                }
             } else if (v.getId() == R.id.dateSelection) {
                 activity.loadFragment(new CalendarFragment());
             } else if (v.getId() == R.id.passengerInput) {
                 activity.loadFragment(new PassengerCountFragment());
+            } else if (v.getId() == R.id.userDepartCity) {
+                activity.citySelectScreenController = 0;
+                activity.loadFragment(new CitySelectFragment());
+            } else if (v.getId() == R.id.userArriveCity) {
+                activity.citySelectScreenController = 1;
+                activity.loadFragment(new CitySelectFragment());
             }
         }
     };
 
+    AdapterView.OnItemSelectedListener itemClickListener = new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            aBookingSession.setClassId(position);
+            String classSelected = classSelect.getSelectedItem().toString();
+            aBookingSession.setClass(classSelected);
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    };
+
     public void getData() {
+        String departCity = aBookingSession.getDepartCity().getCityAlias();
+        String arriveCity = aBookingSession.getArriveCity().getCityAlias();
+
+        if (!departCity.equals("0")) {
+            userDepartCity.setText(departCity);
+        }
+
+        if (!arriveCity.equals("0")) {
+            userArriveCity.setText(arriveCity);
+        }
+
         String date = aBookingSession.getDate();
         if (!date.equals("")) {
             dateSelection.setText(date);
         }
 
-        long classId = aBookingSession.getClassId();
-        classSelect.setSelection((int)classId);
+        int classId = aBookingSession.getClassId();
+        classSelect.setSelection(classId);
 
         int[] passenger = aBookingSession.getPassenger();
         int adult = passenger[0];
@@ -162,46 +193,37 @@ public class TripFragment extends Fragment {
         }
     }
 
-    public boolean setData() {
-        long departureCityId = departureCitySelect.getSelectedItemId();
-        long arrivalCityId = arrivalCitySelect.getSelectedItemId();
-        if (departureCityId != 0) {
-            if (arrivalCityId != 0) {
-                if (departureCityId != arrivalCityId) {
-                    aBookingSession.setDepartureCity(departureCityId);
-                    aBookingSession.setArrivalCityId(arrivalCityId);
-                } else {
-                    Toast.makeText(getActivity(), "Departure and arrival city can not be the same!", Toast.LENGTH_SHORT).show();
-                    return false;
-                }
-            } else {
-                Toast.makeText(getActivity(), "Please select a city to arrive!", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        } else {
+    public boolean validateData() {
+        if (aBookingSession.getDepartCity().getCityAlias().equals("0")) {
             Toast.makeText(getActivity(), "Please select a city to depart!", Toast.LENGTH_SHORT).show();
             return false;
         }
 
-        String date = dateSelection.getText().toString();
-        if (date.equals("Select a date")) {
-            Toast.makeText(getActivity(), "Please select a date!", Toast.LENGTH_SHORT).show();
+        if (aBookingSession.getArriveCity().getCityAlias().equals("0")) {
+            Toast.makeText(getActivity(), "Please select a city to arrive!", Toast.LENGTH_SHORT).show();
             return false;
         }
 
-        long classId = classSelect.getSelectedItemId();
-        if (classId != 0) {
-            aBookingSession.setClassId(classId);
-            String classSelected = classSelect.getSelectedItem().toString();
-            aBookingSession.setClass(classSelected);
-        } else {
+        if (!aBookingSession.getDepartCity().getCityAlias().equals("0")) {
+            if (aBookingSession.getDepartCity().getCityAlias().equals(aBookingSession.getArriveCity().getCityAlias())) {
+                Toast.makeText(getActivity(), "Destination can not be similar to departure!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        if (aBookingSession.getDate().equals("")) {
+            Toast.makeText(getActivity(), "Please select a depart date!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        int[] passengers = aBookingSession.getPassenger();
+        if (passengers[0] == 0 && passengers[1] == 0 && passengers[2] == 0) {
+            Toast.makeText(getActivity(), "Please input number of passengers!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (aBookingSession.getClassId() == 0) {
             Toast.makeText(getActivity(), "Please select a class!", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-
-        String passenger = passengerInput.getText().toString();
-        if (passenger.equals("Input number of passenger")) {
-            Toast.makeText(getActivity(), "Please input the number of passenger!", Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -209,14 +231,27 @@ public class TripFragment extends Fragment {
     }
 
     public void switchCity() {
-        long departureCityId = departureCitySelect.getSelectedItemId();
-        long arrivalCityId = arrivalCitySelect.getSelectedItemId();
-        long temp = departureCityId;
-        departureCityId = arrivalCityId;
-        arrivalCityId = temp;
+        City depart = aBookingSession.getDepartCity();
+        City arrive = aBookingSession.getArriveCity();
+        City temp = depart;
+        aBookingSession.setDepartCity(arrive);
+        aBookingSession.setArriveCity(temp);
 
-        departureCitySelect.setSelection((int) departureCityId);
-        arrivalCitySelect.setSelection((int) arrivalCityId);
+        String departCity = aBookingSession.getDepartCity().getCityAlias();
+        String arriveCity = aBookingSession.getArriveCity().getCityAlias();
+
+        if (!departCity.equals("0")) {
+            userDepartCity.setText(departCity);
+        }
+
+        if (!arriveCity.equals("0")) {
+            userArriveCity.setText(arriveCity);
+        }
+
+        String date = aBookingSession.getDate();
+        if (!date.equals("")) {
+            dateSelection.setText(date);
+        }
     }
 
     @Override
