@@ -34,7 +34,7 @@ public class SeatSelectionFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment SeatSelectionFragment.
+     * @return A new instance of fragment SeatSelectionFragment2.
      */
     // TODO: Rename and change types and number of parameters
     public static SeatSelectionFragment newInstance(String param1, String param2) {
