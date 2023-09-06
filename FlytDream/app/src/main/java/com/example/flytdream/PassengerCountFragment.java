@@ -187,6 +187,4 @@ public class PassengerCountFragment extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 }

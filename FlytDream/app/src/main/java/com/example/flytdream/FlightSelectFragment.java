@@ -92,7 +92,8 @@ public class FlightSelectFragment extends Fragment {
             if (v.getId() == R.id.confirmButton) {
                 if (currentFlightPosition != -1) {
                     activity.selectFlight(currentFlightPosition);
-                    Toast.makeText(getActivity(), aBookingSession.getFlight().getCost(), Toast.LENGTH_SHORT).show();
+                    aBookingSession.setFlight(activity.flights.get(currentFlightPosition));
+                    activity.loadFragment(new CustomerInfoFragment());
                 } else {
                    Toast.makeText(getActivity(), "Please choose a flight to proceed!", Toast.LENGTH_SHORT).show();
                 }
