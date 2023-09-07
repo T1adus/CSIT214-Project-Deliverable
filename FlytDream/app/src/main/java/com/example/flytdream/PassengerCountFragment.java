@@ -160,7 +160,7 @@ public class PassengerCountFragment extends Fragment {
                     infantCount.setText(Integer.toString(infant));
                 }
             } else if (v.getId() == R.id.confirmButton) {
-                aBookingSession.setPassenger(adult, child, infant);
+                aBookingSession.setPassengerCount(adult, child, infant);
                 activity.loadFragment(new TripFragment());
             }
         }

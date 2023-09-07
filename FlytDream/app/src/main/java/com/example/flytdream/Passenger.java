@@ -15,7 +15,7 @@ public class Passenger {
     public String getPassengerPassport() {return passengerPassport;}
     public boolean getExtraBaggageStatus() {return extraBaggage;}
     public void setPassengerName(String newPassengerName) {passengerName = newPassengerName;}
-    public void setPassengerPassport(String newPassengerPassport) {passengerPassport = passengerPassport;}
+    public void setPassengerPassport(String newPassengerPassport) {passengerPassport = newPassengerPassport;}
     public void setExtraBaggage(boolean extraBaggageStatus) {
         extraBaggage = extraBaggageStatus;
     }

@@ -93,6 +93,8 @@ public class FlightSelectFragment extends Fragment {
                 if (currentFlightPosition != -1) {
                     activity.selectFlight(currentFlightPosition);
                     aBookingSession.setFlight(activity.flights.get(currentFlightPosition));
+                    activity.currentPassenger = 0;
+                    activity.createPassengerList();
                     activity.loadFragment(new CustomerInfoFragment());
                 } else {
                    Toast.makeText(getActivity(), "Please choose a flight to proceed!", Toast.LENGTH_SHORT).show();
