@@ -47,4 +47,7 @@
     <string name="notS">Not Selectable</string>
     <string name="fromto">Depart</string>
     <string name="cityHint">Enter city name</string>
+    <string name="passengerInfoText">Passenger Information</string>
+    <string name="passengerNumber">Passenger 1</string>
+    <string name="extraBaggageView">Extra Baggage:</string>
 </resources>

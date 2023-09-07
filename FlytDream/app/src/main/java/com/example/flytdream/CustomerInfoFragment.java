@@ -75,13 +75,10 @@ public class CustomerInfoFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_customer_info, container, false);
         nameEdit = view.findViewById(R.id.nameEdit);
-        ageEdit = view.findViewById(R.id.ageEdit);
-        genderSelect = view.findViewById(R.id.genderSelect);
         passportEdit = view.findViewById(R.id.passportEdit);
         activity = (CoreActivity) getActivity();
         setHasOptionsMenu(true);
 
-        inflateSpinner();
         return view;
     }
 
@@ -101,22 +98,9 @@ public class CustomerInfoFragment extends Fragment {
         if (item.getItemId() == R.id.action_profile) {
             Toast.makeText(this.getActivity(), "Yo!", Toast.LENGTH_SHORT).show();
         } else if (item.getItemId() == android.R.id.home) {
-            activity.loadFragment(new TripFragment());
+            activity.loadFragment(new FlightSelectFragment());
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public void inflateSpinner() {
-        String[] genderList = new String[] {"Gender Select", "Male", "Female", "Other"};
-
-        ArrayAdapter<String> genders = new ArrayAdapter<>(
-                requireContext(),
-                android.R.layout.simple_spinner_item,
-                genderList
-        );
-
-        genders.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        genderSelect.setAdapter(genders);
     }
 }
