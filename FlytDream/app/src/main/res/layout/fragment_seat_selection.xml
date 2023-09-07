@@ -65,14 +65,14 @@
                 android:layout_height="165dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:background="@color/darkblue">
+                android:background="@drawable/upper_round_corner">
 
                 <TextView
-                    android:id="@+id/classLounge2"
+                    android:id="@+id/classLounge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="80dp"
-                    android:text="Economy Class"
+                    android:text="TextView"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -80,7 +80,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/destination2"
+                    android:id="@+id/destination"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="200dp"
@@ -90,10 +90,10 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/destinationCode2" />
+                    app:layout_constraintTop_toBottomOf="@+id/destinationCode" />
 
                 <TextView
-                    android:id="@+id/departure2"
+                    android:id="@+id/departure"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="200dp"
@@ -106,7 +106,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/departureCode" />
 
                 <TextView
-                    android:id="@+id/destinationCode2"
+                    android:id="@+id/destinationCode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="180dp"
@@ -186,7 +186,7 @@
                 android:layout_width="300dp"
                 android:layout_height="320dp"
                 android:layout_gravity="center"
-                android:background="@color/darkblue">
+                android:background="@drawable/lower_round_corner">
 
                 <TableLayout
                     android:layout_width="match_parent"
@@ -226,20 +226,24 @@
                             android:textColor="@color/white"
                             android:textStyle="bold" />
 
-                        <Space
+                        <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1.1" />
+                            android:layout_weight="1.1"
+                            android:gravity="center"
+                            android:text="A"
+                            android:textColor="@color/white"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/seat3A"
                             android:layout_width="0dp"
                             android:layout_height="35dp"
                             android:layout_weight="0.6"
-                            android:background="@drawable/seat_selection_button_background"
+                            android:background="@drawable/seat_selection_unavailable_state"
                             android:gravity="center"
                             android:text="3"
-                            android:textColor="@color/white"
+                            android:textColor="@color/grey"
                             android:textStyle="bold" />
 
                         <Space
@@ -252,10 +256,10 @@
                             android:layout_width="0dp"
                             android:layout_height="35dp"
                             android:layout_weight="0.6"
-                            android:background="@drawable/seat_selection_button_background"
+                            android:background="@drawable/seat_selection_unavailable_state"
                             android:gravity="center"
                             android:text="4"
-                            android:textColor="@color/white"
+                            android:textColor="@color/grey"
                             android:textStyle="bold" />
                     </TableRow>
 
@@ -271,10 +275,10 @@
                             android:layout_width="0dp"
                             android:layout_height="35dp"
                             android:layout_weight="0.6"
-                            android:background="@drawable/seat_selection_button_background"
+                            android:background="@drawable/seat_selection_unavailable_state"
                             android:gravity="center"
                             android:text="1"
-                            android:textColor="@color/white"
+                            android:textColor="@color/grey"
                             android:textStyle="bold" />
 
                         <Space
@@ -287,26 +291,30 @@
                             android:layout_width="0dp"
                             android:layout_height="35dp"
                             android:layout_weight="0.6"
-                            android:background="@drawable/seat_selection_button_background"
+                            android:background="@drawable/seat_selection_unavailable_state"
                             android:gravity="center"
                             android:text="2"
-                            android:textColor="@color/white"
+                            android:textColor="@color/grey"
                             android:textStyle="bold" />
 
-                        <Space
+                        <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1.1" />
+                            android:layout_weight="1.1"
+                            android:gravity="center"
+                            android:text="B"
+                            android:textColor="@color/white"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/seat3B"
                             android:layout_width="0dp"
                             android:layout_height="35dp"
                             android:layout_weight="0.6"
-                            android:background="@drawable/seat_selection_button_background"
+                            android:background="@drawable/seat_selection_unavailable_state"
                             android:gravity="center"
                             android:text="3"
-                            android:textColor="@color/white"
+                            android:textColor="@color/grey"
                             android:textStyle="bold" />
 
                         <Space
@@ -319,10 +327,10 @@
                             android:layout_width="0dp"
                             android:layout_height="35dp"
                             android:layout_weight="0.6"
-                            android:background="@drawable/seat_selection_button_background"
+                            android:background="@drawable/seat_selection_unavailable_state"
                             android:gravity="center"
                             android:text="4"
-                            android:textColor="@color/white"
+                            android:textColor="@color/grey"
                             android:textStyle="bold" />
                     </TableRow>
 
@@ -338,10 +346,10 @@
                             android:layout_width="0dp"
                             android:layout_height="35dp"
                             android:layout_weight="0.6"
-                            android:background="@drawable/seat_selection_button_background"
+                            android:background="@drawable/seat_selection_unavailable_state"
                             android:gravity="center"
                             android:text="1"
-                            android:textColor="@color/white"
+                            android:textColor="@color/grey"
                             android:textStyle="bold" />
 
                         <Space
@@ -354,16 +362,20 @@
                             android:layout_width="0dp"
                             android:layout_height="35dp"
                             android:layout_weight="0.6"
-                            android:background="@drawable/seat_selection_button_background"
+                            android:background="@drawable/seat_selection_unavailable_state"
                             android:gravity="center"
                             android:text="2"
-                            android:textColor="@color/white"
+                            android:textColor="@color/grey"
                             android:textStyle="bold" />
 
-                        <Space
+                        <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1.1" />
+                            android:layout_weight="1.1"
+                            android:gravity="center"
+                            android:text="C"
+                            android:textColor="@color/white"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/seat3C"
@@ -386,10 +398,10 @@
                             android:layout_width="0dp"
                             android:layout_height="35dp"
                             android:layout_weight="0.6"
-                            android:background="@drawable/seat_selection_button_background"
+                            android:background="@drawable/seat_selection_unavailable_state"
                             android:gravity="center"
                             android:text="4"
-                            android:textColor="@color/white"
+                            android:textColor="@color/grey"
                             android:textStyle="bold" />
                     </TableRow>
 
@@ -405,10 +417,10 @@
                             android:layout_width="0dp"
                             android:layout_height="35dp"
                             android:layout_weight="0.6"
-                            android:background="@drawable/seat_selection_button_background"
+                            android:background="@drawable/seat_selection_unavailable_state"
                             android:gravity="center"
                             android:text="1"
-                            android:textColor="@color/white"
+                            android:textColor="@color/grey"
                             android:textStyle="bold" />
 
                         <Space
@@ -421,26 +433,30 @@
                             android:layout_width="0dp"
                             android:layout_height="35dp"
                             android:layout_weight="0.6"
-                            android:background="@drawable/seat_selection_button_background"
+                            android:background="@drawable/seat_selection_unavailable_state"
                             android:gravity="center"
                             android:text="2"
-                            android:textColor="@color/white"
+                            android:textColor="@color/grey"
                             android:textStyle="bold" />
 
-                        <Space
+                        <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1.1" />
+                            android:layout_weight="1.1"
+                            android:gravity="center"
+                            android:text="D"
+                            android:textColor="@color/white"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/seat3D"
                             android:layout_width="0dp"
                             android:layout_height="35dp"
                             android:layout_weight="0.6"
-                            android:background="@drawable/seat_selection_button_background"
+                            android:background="@drawable/seat_selection_unavailable_state"
                             android:gravity="center"
                             android:text="3"
-                            android:textColor="@color/white"
+                            android:textColor="@color/grey"
                             android:textStyle="bold" />
 
                         <Space
@@ -472,10 +488,10 @@
                             android:layout_width="0dp"
                             android:layout_height="35dp"
                             android:layout_weight="0.6"
-                            android:background="@drawable/seat_selection_button_background"
+                            android:background="@drawable/seat_selection_unavailable_state"
                             android:gravity="center"
                             android:text="1"
-                            android:textColor="@color/white"
+                            android:textColor="@color/grey"
                             android:textStyle="bold" />
 
                         <Space
@@ -494,20 +510,24 @@
                             android:textColor="@color/white"
                             android:textStyle="bold" />
 
-                        <Space
+                        <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1.1" />
+                            android:layout_weight="1.1"
+                            android:gravity="center"
+                            android:text="E"
+                            android:textColor="@color/white"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/seat3E"
                             android:layout_width="0dp"
                             android:layout_height="35dp"
                             android:layout_weight="0.6"
-                            android:background="@drawable/seat_selection_button_background"
+                            android:background="@drawable/seat_selection_unavailable_state"
                             android:gravity="center"
                             android:text="3"
-                            android:textColor="@color/white"
+                            android:textColor="@color/grey"
                             android:textStyle="bold" />
 
                         <Space
@@ -520,10 +540,10 @@
                             android:layout_width="0dp"
                             android:layout_height="35dp"
                             android:layout_weight="0.6"
-                            android:background="@drawable/seat_selection_button_background"
+                            android:background="@drawable/seat_selection_unavailable_state"
                             android:gravity="center"
                             android:text="4"
-                            android:textColor="@color/white"
+                            android:textColor="@color/grey"
                             android:textStyle="bold" />
                     </TableRow>
 
@@ -539,10 +559,10 @@
                             android:layout_width="0dp"
                             android:layout_height="35dp"
                             android:layout_weight="0.6"
-                            android:background="@drawable/seat_selection_button_background"
+                            android:background="@drawable/seat_selection_unavailable_state"
                             android:gravity="center"
                             android:text="1"
-                            android:textColor="@color/white"
+                            android:textColor="@color/grey"
                             android:textStyle="bold" />
 
                         <Space
@@ -555,16 +575,20 @@
                             android:layout_width="0dp"
                             android:layout_height="35dp"
                             android:layout_weight="0.6"
-                            android:background="@drawable/seat_selection_button_background"
+                            android:background="@drawable/seat_selection_unavailable_state"
                             android:gravity="center"
                             android:text="2"
-                            android:textColor="@color/white"
+                            android:textColor="@color/grey"
                             android:textStyle="bold" />
 
-                        <Space
+                        <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1.1" />
+                            android:layout_weight="1.1"
+                            android:gravity="center"
+                            android:text="F"
+                            android:textColor="@color/white"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/seat3F"
@@ -587,10 +611,10 @@
                             android:layout_width="0dp"
                             android:layout_height="35dp"
                             android:layout_weight="0.6"
-                            android:background="@drawable/seat_selection_button_background"
+                            android:background="@drawable/seat_selection_unavailable_state"
                             android:gravity="center"
                             android:text="4"
-                            android:textColor="@color/white"
+                            android:textColor="@color/grey"
                             android:textStyle="bold" />
                     </TableRow>
 
@@ -622,26 +646,30 @@
                             android:layout_width="0dp"
                             android:layout_height="35dp"
                             android:layout_weight="0.6"
-                            android:background="@drawable/seat_selection_button_background"
+                            android:background="@drawable/seat_selection_unavailable_state"
                             android:gravity="center"
                             android:text="2"
-                            android:textColor="@color/white"
+                            android:textColor="@color/grey"
                             android:textStyle="bold" />
 
-                        <Space
+                        <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1.1" />
+                            android:layout_weight="1.1"
+                            android:gravity="center"
+                            android:text="G"
+                            android:textColor="@color/white"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/seat3G"
                             android:layout_width="0dp"
                             android:layout_height="35dp"
                             android:layout_weight="0.6"
-                            android:background="@drawable/seat_selection_button_background"
+                            android:background="@drawable/seat_selection_unavailable_state"
                             android:gravity="center"
                             android:text="3"
-                            android:textColor="@color/white"
+                            android:textColor="@color/grey"
                             android:textStyle="bold" />
 
                         <Space
@@ -654,10 +682,10 @@
                             android:layout_width="0dp"
                             android:layout_height="35dp"
                             android:layout_weight="0.6"
-                            android:background="@drawable/seat_selection_button_background"
+                            android:background="@drawable/seat_selection_unavailable_state"
                             android:gravity="center"
                             android:text="4"
-                            android:textColor="@color/white"
+                            android:textColor="@color/grey"
                             android:textStyle="bold" />
                     </TableRow>
 
@@ -668,6 +696,14 @@
 
         </LinearLayout>
 
+        <ImageButton
+            android:id="@+id/seat_select_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="90dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/seat_confirm" />
 
     </LinearLayout>
 

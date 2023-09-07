@@ -2,11 +2,19 @@ package com.example.flytdream;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,6 +23,11 @@ import android.view.ViewGroup;
  */
 public class SeatSelectionFragment extends Fragment {
 
+    CoreActivity coreActivity;
+    ImageButton seatConfirm;
+    TextView seat1A,seat2A,seat3C,seat4D,seat2E,seat3F,seat1G,
+            departureCode,destinationCode,departure,destination,classLounge;
+    private int seat1ACounter,seat2ACounter,seat3CCounter,seat4DCounter,seat2ECounter,seat3FCounter,seat1GCounter;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -59,6 +72,139 @@ public class SeatSelectionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_seat_selection, container, false);
+        View view = inflater.inflate(R.layout.fragment_seat_selection, container, false);
+        coreActivity = (CoreActivity) getActivity();
+        String from = coreActivity.getBookingSession().getDepartCity().getCityName();
+        String to = coreActivity.getBookingSession().getArriveCity().getCityName();
+        String fromAlias = coreActivity.getBookingSession().getDepartCity().getCityAlias();
+        String toAlias = coreActivity.getBookingSession().getArriveCity().getCityAlias();
+        String flightClass = coreActivity.getBookingSession().getClassSelected();
+
+        seat1A = view.findViewById(R.id.seat1A);
+        seat2A = view.findViewById(R.id.seat2A);
+        seat3C = view.findViewById(R.id.seat3C);
+        seat4D = view.findViewById(R.id.seat4D);
+        seat2E = view.findViewById(R.id.seat2E);
+        seat3F = view.findViewById(R.id.seat3F);
+        seat1G = view.findViewById(R.id.seat1G);
+        seatConfirm = view.findViewById(R.id.seat_select_confirm);
+        departureCode = view.findViewById(R.id.departureCode);
+        departure = view.findViewById(R.id.departure);
+        destinationCode = view.findViewById(R.id.destinationCode);
+        destination = view.findViewById(R.id.destination);
+        classLounge = view.findViewById(R.id.classLounge);
+
+        seat1A.setOnClickListener(clickListener);
+        seat2A.setOnClickListener(clickListener);
+        seat3C.setOnClickListener(clickListener);
+        seat4D.setOnClickListener(clickListener);
+        seat2E.setOnClickListener(clickListener);
+        seat3F.setOnClickListener(clickListener);
+        seat1G.setOnClickListener(clickListener);
+        seatConfirm.setOnClickListener(clickListener);
+
+        departureCode.setText(fromAlias);
+        departure.setText(from);
+        destinationCode.setText(toAlias);
+        destination.setText(to);
+        classLounge.setText(flightClass);
+
+        setHasOptionsMenu(true);
+
+        return view;
     }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.top_nav_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+
+        ActionBar actionBar = ((AppCompatActivity) requireActivity()).getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item){
+        if (item.getItemId() == R.id.action_profile) {
+            Toast.makeText(this.getActivity(), "Yo!", Toast.LENGTH_SHORT).show();
+        } else if (item.getItemId() == android.R.id.home) {
+            coreActivity.loadFragment(new FlightSelectFragment());
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    View.OnClickListener clickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            if(view.getId() == R.id.seat1A){
+                seat1ACounter++;
+                if(seat1ACounter % 2 != 0){
+                    seat1A.setBackgroundResource(R.drawable.seat_selection_selected_state);
+                }
+                else{
+                    seat1A.setBackgroundResource(R.drawable.seat_selection_button_background);
+                }
+            }
+            else if(view.getId() == R.id.seat2A){
+                seat2ACounter++;
+                if(seat2ACounter % 2 != 0){
+                    seat2A.setBackgroundResource(R.drawable.seat_selection_selected_state);
+                }
+                else{
+                    seat2A.setBackgroundResource(R.drawable.seat_selection_button_background);
+                }
+            }
+            else if(view.getId() == R.id.seat3C){
+                seat3CCounter++;
+                if(seat3CCounter % 2 != 0){
+                    seat3C.setBackgroundResource(R.drawable.seat_selection_selected_state);
+                }
+                else{
+                    seat3C.setBackgroundResource(R.drawable.seat_selection_button_background);
+                }
+            }
+            else if(view.getId() == R.id.seat4D){
+                seat4DCounter++;
+                if(seat4DCounter % 2 != 0){
+                    seat4D.setBackgroundResource(R.drawable.seat_selection_selected_state);
+                }
+                else{
+                    seat4D.setBackgroundResource(R.drawable.seat_selection_button_background);
+                }
+            }
+            else if(view.getId() == R.id.seat2E){
+                seat2ECounter++;
+                if(seat2ECounter % 2 != 0){
+                    seat2E.setBackgroundResource(R.drawable.seat_selection_selected_state);
+                }
+                else{
+                    seat2E.setBackgroundResource(R.drawable.seat_selection_button_background);
+                }
+            }
+            else if(view.getId() == R.id.seat3F){
+                seat3FCounter++;
+                if(seat3FCounter % 2 != 0){
+                    seat3F.setBackgroundResource(R.drawable.seat_selection_selected_state);
+                }
+                else{
+                    seat3F.setBackgroundResource(R.drawable.seat_selection_button_background);
+                }
+            }
+            else if(view.getId() == R.id.seat1G){
+                seat1GCounter++;
+                if(seat1GCounter % 2 != 0){
+                    seat1G.setBackgroundResource(R.drawable.seat_selection_selected_state);
+                }
+                else{
+                    seat1G.setBackgroundResource(R.drawable.seat_selection_button_background);
+                }
+            }
+            else if(view.getId() == R.id.seat_select_confirm){
+
+            }
+        }
+    };
 }
