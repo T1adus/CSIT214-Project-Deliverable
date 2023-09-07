@@ -21,6 +21,7 @@ public class CoreActivity extends AppCompatActivity {
     public List<Flight> flights;
     public databaseHelper myDB;
     public int citySelectScreenController;
+    public int currentPassenger;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +39,21 @@ public class CoreActivity extends AppCompatActivity {
         bookingSession = new BookingSession();
         myDB = new databaseHelper(CoreActivity.this, "FlytDream.db", null, 1);
 
+        currentPassenger = 0;
+
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, new HomeFragment())
                 .commit();
+    }
+
+    public void createPassengerList() {
+        int totalPassenger = bookingSession.getTotalPassenger();
+        ArrayList<Passenger> passengers = new ArrayList<>();
+        for (int i = 0; i < totalPassenger; i++) {
+            Passenger aPassenger = new Passenger();
+            passengers.add(aPassenger);
+        }
+        bookingSession.setPassengers(passengers);
     }
 
     public BookingSession getBookingSession() {

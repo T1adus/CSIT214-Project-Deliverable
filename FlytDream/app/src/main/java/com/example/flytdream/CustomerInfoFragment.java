@@ -13,8 +13,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -24,10 +27,12 @@ import android.widget.Toast;
  */
 public class CustomerInfoFragment extends Fragment {
     CoreActivity activity;
+    BookingSession aBookingSession;
+    TextView passengerId;
     EditText nameEdit;
-    EditText ageEdit;
-    Spinner genderSelect;
     EditText passportEdit;
+    ImageButton nextButton;
+    CheckBox extraBaggageStatus;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -74,12 +79,65 @@ public class CustomerInfoFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_customer_info, container, false);
+        activity = (CoreActivity) getActivity();
+        aBookingSession = activity.getBookingSession();
+        passengerId = view.findViewById(R.id.passengerId);
         nameEdit = view.findViewById(R.id.nameEdit);
         passportEdit = view.findViewById(R.id.passportEdit);
-        activity = (CoreActivity) getActivity();
+        extraBaggageStatus = view.findViewById(R.id.extraBaggageStatus);
+        nextButton = view.findViewById(R.id.nextButton);
+        nextButton.setOnClickListener(clickListener);
         setHasOptionsMenu(true);
 
+        setPassengerData();
         return view;
+    }
+
+    View.OnClickListener clickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (v.getId() == R.id.nextButton) {
+                if (validateData() == true) {
+                    if (activity.currentPassenger < aBookingSession.getTotalPassenger() - 1) {
+                        activity.currentPassenger += 1;
+                        activity.loadFragment(new CustomerInfoFragment());
+                    } else if (activity.currentPassenger == aBookingSession.getTotalPassenger() - 1) {
+                        activity.loadFragment(new SeatSelectionFragment());
+                    }
+                }
+            }
+        }
+    };
+
+    public void setPassengerData() {
+        Passenger aPassenger = aBookingSession.getPassengers().get(activity.currentPassenger);
+        String currentPassenger = String.format("Passenger %d", activity.currentPassenger + 1);
+        passengerId.setText(currentPassenger);
+        nameEdit.setText(aPassenger.getPassengerName());
+        passportEdit.setText(aPassenger.getPassengerPassport());
+        extraBaggageStatus.setChecked(aPassenger.getExtraBaggageStatus());
+    }
+    public boolean validateData() {
+        String passengerName = nameEdit.getText().toString();
+        String passengerPassport = passportEdit.getText().toString();
+
+        if (!passengerName.equals("")) {
+            aBookingSession.getPassengers().get(activity.currentPassenger).setPassengerName(passengerName);
+        } else {
+            Toast.makeText(getActivity(), "Please input name!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (!passengerName.equals("")) {
+            aBookingSession.getPassengers().get(activity.currentPassenger).setPassengerPassport(passengerPassport);
+        } else {
+            Toast.makeText(getActivity(), "Please input passport!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        aBookingSession.getPassengers().get(activity.currentPassenger).setExtraBaggage(extraBaggageStatus.isChecked());
+
+        return true;
     }
 
     @Override
@@ -96,9 +154,14 @@ public class CustomerInfoFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected (MenuItem item){
         if (item.getItemId() == R.id.action_profile) {
-            Toast.makeText(this.getActivity(), "Yo!", Toast.LENGTH_SHORT).show();
+
         } else if (item.getItemId() == android.R.id.home) {
-            activity.loadFragment(new FlightSelectFragment());
+            if (activity.currentPassenger == 0) {
+                activity.loadFragment(new FlightSelectFragment());
+            } else {
+                activity.currentPassenger -= 1;
+                activity.loadFragment(new CustomerInfoFragment());
+            }
             return true;
         }
         return super.onOptionsItemSelected(item);
