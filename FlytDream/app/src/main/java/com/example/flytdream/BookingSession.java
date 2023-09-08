@@ -42,6 +42,7 @@ public class BookingSession {
     public Flight getFlight() {return flight;}
     public int getTotalPassenger() {return adult+child+infant;}
     public ArrayList<Passenger> getPassengers() {return passengers;}
+    public ArrayList<String> getSeats() {return seats;}
 
     public void setDepartCity(City newDepartCity) {departCity = newDepartCity;}
     public void setArriveCity(City newArriveCity) {arriveCity = newArriveCity;}
@@ -61,4 +62,5 @@ public class BookingSession {
     }
     public void setFlight(Flight newFlight) {flight = newFlight;}
     public void setPassengers(ArrayList<Passenger> newPassengers) {passengers = newPassengers;}
+    public void setSeats(ArrayList<String> newSeats){seats = newSeats;}
 }

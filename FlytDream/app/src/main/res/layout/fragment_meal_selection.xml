@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MealSelectionFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/flightSection"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@color/darkblue"
+                    android:text="@string/flightSectionText"
+                    android:textAlignment="center"
+                    android:textColor="@color/grey"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/serviceSection"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@color/darkblue"
+                    android:text="@string/serviceSectionText"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/bookSection"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@color/darkblue"
+                    android:text="@string/bookSectionText"
+                    android:textAlignment="center"
+                    android:textColor="@color/grey"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@android:color/transparent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Categories"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lunch"
+                        android:layout_width="60dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/meal_shape"
+                        android:gravity="center"
+                        android:text="Lunch"
+                        android:textColor="@color/black"
+                        android:textSize="13sp" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                    </Space>
+
+                    <TextView
+                        android:id="@+id/breakfast"
+                        android:layout_width="60dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/meal_button_shape"
+                        android:gravity="center"
+                        android:text="Breakfast"
+                        android:textColor="@color/black"
+                        android:textSize="13sp" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                    </Space>
+
+                    <TextView
+                        android:id="@+id/snack"
+                        android:layout_width="60dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/meal_button_shape"
+                        android:gravity="center"
+                        android:text="Snack"
+                        android:textColor="@color/black"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ViewFlipper
+                android:id="@+id/viewFlipper"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:id="@+id/egg_salad"
+                                android:layout_width="150dp"
+                                android:layout_height="230dp"
+                                android:orientation="vertical"
+                                android:background="@drawable/meal_shape"
+                                android:layout_marginLeft="15dp">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="150dp"
+                                    android:src="@drawable/egg_salad" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="15dp"
+                                    android:fontFamily="@font/poppins_light"
+                                    android:text="Egg Salad"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:fontFamily="@font/bebas_neue"
+                                    android:text="$ 5.00"
+                                    android:textSize="18sp"/>
+
+                            </LinearLayout>
+
+                            <Space
+                                android:layout_width="20dp"
+                                android:layout_height="230dp"/>
+
+                            <LinearLayout
+                                android:id="@+id/grilled_salmon"
+                                android:layout_width="150dp"
+                                android:layout_height="230dp"
+                                android:orientation="vertical"
+                                android:background="@drawable/meal_shape">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="150dp"
+                                    android:src="@drawable/grilled_salmon"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="15dp"
+                                    android:fontFamily="@font/poppins_light"
+                                    android:text="Grilled Salmon"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:fontFamily="@font/bebas_neue"
+                                    android:text="$ 15.00"
+                                    android:textSize="18sp"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="15dp">
+
+                            <LinearLayout
+                                android:id="@+id/fried_rice"
+                                android:layout_width="150dp"
+                                android:layout_height="230dp"
+                                android:orientation="vertical"
+                                android:background="@drawable/meal_shape">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="150dp"
+                                    android:src="@drawable/egg_salad" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="15dp"
+                                    android:fontFamily="@font/poppins_light"
+                                    android:text="Fried Rice"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:fontFamily="@font/bebas_neue"
+                                    android:text="$ 10.00"
+                                    android:textSize="18sp"/>
+
+                            </LinearLayout>
+
+                            <Space
+                                android:layout_width="20dp"
+                                android:layout_height="230dp"/>
+
+                            <LinearLayout
+                                android:id="@+id/laksa"
+                                android:layout_width="150dp"
+                                android:layout_height="230dp"
+                                android:orientation="vertical"
+                                android:background="@drawable/meal_shape">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="150dp"
+                                    android:src="@drawable/grilled_salmon"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="15dp"
+                                    android:fontFamily="@font/poppins_light"
+                                    android:text="Laksa"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:fontFamily="@font/bebas_neue"
+                                    android:text="$ 10.00"
+                                    android:textSize="18sp"/>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="15dp">
+
+                            <LinearLayout
+                                android:id="@+id/sandwich"
+                                android:layout_width="150dp"
+                                android:layout_height="230dp"
+                                android:orientation="vertical"
+                                android:background="@drawable/meal_shape">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="150dp"
+                                    android:src="@drawable/egg_salad" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="15dp"
+                                    android:fontFamily="@font/poppins_light"
+                                    android:text="Sandwich"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:fontFamily="@font/bebas_neue"
+                                    android:text="$ 5.00"
+                                    android:textSize="18sp"/>
+
+                            </LinearLayout>
+
+                            <Space
+                                android:layout_width="20dp"
+                                android:layout_height="230dp"/>
+
+                            <LinearLayout
+                                android:id="@+id/cereal"
+                                android:layout_width="150dp"
+                                android:layout_height="230dp"
+                                android:orientation="vertical"
+                                android:background="@drawable/meal_shape">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="150dp"
+                                    android:src="@drawable/grilled_salmon"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="15dp"
+                                    android:fontFamily="@font/poppins_light"
+                                    android:text="Cereal"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:fontFamily="@font/bebas_neue"
+                                    android:text="$ 10.00"
+                                    android:textSize="18sp"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </ScrollView>
+            </ViewFlipper>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:src="@drawable/checkout_button"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
