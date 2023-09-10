@@ -264,8 +264,12 @@ public class SeatSelectionFragment extends Fragment {
                 }
             }
             else if(view.getId() == R.id.seat_select_confirm){
-                coreActivity.getBookingSession().setSeats(seats);
-                coreActivity.loadFragment(new MealSelectionFragment());
+                if(seats.size() < coreActivity.getBookingSession().getTotalPassenger()){
+                    Toast.makeText(getActivity(),"Please select enough seat for all passengers!",Toast.LENGTH_SHORT).show();
+                } else{
+                    coreActivity.getBookingSession().setSeats(seats);
+                    coreActivity.loadFragment(new MealSelectionFragment());
+                }
             }
         }
     };

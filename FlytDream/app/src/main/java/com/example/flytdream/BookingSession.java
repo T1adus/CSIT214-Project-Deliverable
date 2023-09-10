@@ -15,6 +15,7 @@ public class BookingSession {
     private ArrayList<String> seats;
     private int totalCost;
     private ArrayList<Passenger> passengers;
+    private ArrayList<Meal> meals;
 
     public BookingSession() {
         departCity = new City("0", "0", "0");
@@ -44,6 +45,10 @@ public class BookingSession {
     public ArrayList<Passenger> getPassengers() {return passengers;}
     public ArrayList<String> getSeats() {return seats;}
 
+    public ArrayList<Meal> getMeals() {
+        return meals;
+    }
+
     public void setDepartCity(City newDepartCity) {departCity = newDepartCity;}
     public void setArriveCity(City newArriveCity) {arriveCity = newArriveCity;}
     public void setDate(String newDate) {
@@ -63,4 +68,24 @@ public class BookingSession {
     public void setFlight(Flight newFlight) {flight = newFlight;}
     public void setPassengers(ArrayList<Passenger> newPassengers) {passengers = newPassengers;}
     public void setSeats(ArrayList<String> newSeats){seats = newSeats;}
+
+    public void setMeals(ArrayList<Meal> meals) {
+        this.meals = meals;
+    }
+
+    public String checkOutPassengerName(ArrayList<Passenger> passengers){
+        String nameString = "";
+        for(Passenger passenger: passengers){
+            nameString += passenger.getPassengerName() + "\n";
+        }
+        return nameString;
+    }
+
+    public String checkOutPassengerSeats(ArrayList<String> seats){
+        String seatString = "";
+        for(String seat: seats){
+            seatString += seat + " ";
+        }
+        return seatString;
+    }
 }

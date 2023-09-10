@@ -14,9 +14,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,7 +32,18 @@ public class MealSelectionFragment extends Fragment {
     CoreActivity coreActivity;
     TextView lunch,breakfast,snack;
     private int lunchButtonCounter,breakfastButtonCounter,snackButtonCounter;
+    ImageButton checkout;
     ViewFlipper viewFlipper;
+    LinearLayout eggSalad,grilledSalmon,laksa,friedRice,cereal,sandwich,
+                grilledSalmonLunch,friedRiceLunch,sandwichLunch,
+                laksaBreakfast,sandwichBreakfast,cerealBreakfast,
+                cerealSnack;
+    private int eggSaladCounter,grilledSalmonCounter,laksaCounter,friedRiceCounter,cerealCounter,sandwichCounter,
+            grilledSalmonLunchCounter,friedRiceLunchCounter,sandwichLunchCounter,
+            laksaBreakfastCounter,sandwichBreakfastCounter,cerealBreakfastCounter,
+            cerealSnackCounter;
+    private ArrayList<Meal> meals;
+    private Meal meal;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -80,14 +95,156 @@ public class MealSelectionFragment extends Fragment {
         breakfast = view.findViewById(R.id.breakfast);
         snack = view.findViewById(R.id.snack);
         viewFlipper = view.findViewById(R.id.viewFlipper);
+        checkout = view.findViewById(R.id.checkout_button);
+        eggSalad = view.findViewById(R.id.egg_salad);
+        grilledSalmon = view.findViewById(R.id.grilled_salmon);
+        laksa = view.findViewById(R.id.laksa);
+        friedRice = view.findViewById(R.id.fried_rice);
+        cereal = view.findViewById(R.id.cereal);
+        sandwich = view.findViewById(R.id.sandwich);
+        grilledSalmonLunch = view.findViewById(R.id.grilled_salmon_lunch);
+        friedRiceLunch = view.findViewById(R.id.fried_rice_lunch);
+        sandwichLunch = view.findViewById(R.id.sandwich_lunch);
+        laksaBreakfast = view.findViewById(R.id.laksa_breakfast);
+        sandwichBreakfast = view.findViewById(R.id.sandwich_breakfast);
+        cerealBreakfast = view.findViewById(R.id.cereal_breakfast);
+        cerealSnack = view.findViewById(R.id.cereal_snack);
+        meals = new ArrayList<Meal>();
 
         lunch.setOnClickListener(clickListener);
         breakfast.setOnClickListener(clickListener);
         snack.setOnClickListener(clickListener);
+        eggSalad.setOnClickListener(clickListener1);
+        grilledSalmon.setOnClickListener(clickListener1);
+        laksa.setOnClickListener(clickListener1);
+        friedRice.setOnClickListener(clickListener1);
+        cereal.setOnClickListener(clickListener1);
+        sandwich.setOnClickListener(clickListener1);
+        grilledSalmonLunch.setOnClickListener(clickListener1);
+        friedRiceLunch.setOnClickListener(clickListener1);
+        sandwichLunch.setOnClickListener(clickListener1);
+        laksaBreakfast.setOnClickListener(clickListener1);
+        sandwichBreakfast.setOnClickListener(clickListener1);
+        cerealBreakfast.setOnClickListener(clickListener1);
+        cerealSnack.setOnClickListener(clickListener1);
+
+        checkout.setOnClickListener(clickListener);
 
         setHasOptionsMenu(true);
         return view;
     }
+
+    View.OnClickListener clickListener1 = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            if (view.getId() == R.id.egg_salad) {
+                eggSaladCounter++;
+                if (eggSaladCounter % 2 != 0) {
+                    eggSalad.setBackgroundResource(R.drawable.meal_shape_selected);
+                    meal = new Meal("Egg Salad", 5.0, 1);
+                    meals.add(meal);
+                } else {
+                    for (Meal meal : meals) {
+                        if (meal.getName() == "Egg Salad") {
+                            meals.remove(meal);
+                        }
+                    }
+                    eggSalad.setBackgroundResource(R.drawable.meal_shape);
+                }
+            } else if ((view.getId() == R.id.grilled_salmon) || (view.getId() == R.id.grilled_salmon_lunch)) {
+                grilledSalmonCounter++;
+                grilledSalmonLunchCounter++;
+                if ((grilledSalmonCounter % 2 != 0) || (grilledSalmonLunchCounter % 2 != 0)) {
+                    grilledSalmon.setBackgroundResource(R.drawable.meal_shape_selected);
+                    grilledSalmonLunch.setBackgroundResource(R.drawable.meal_shape_selected);
+                    meal = new Meal("Grilled Salmon", 15.0, 1);
+                    meals.add(meal);
+                } else {
+                    for (Meal meal : meals) {
+                        if (meal.getName() == "Grilled Salmon") {
+                            meals.remove(meal);
+                        }
+                    }
+                    grilledSalmon.setBackgroundResource(R.drawable.meal_shape);
+                    grilledSalmonLunch.setBackgroundResource(R.drawable.meal_shape);
+                }
+            } else if ((view.getId() == R.id.laksa) || (view.getId() == R.id.laksa_breakfast)) {
+                laksaCounter++;
+                laksaBreakfastCounter++;
+                if ((laksaCounter % 2 != 0) || (laksaBreakfastCounter % 2 != 0)) {
+                    laksa.setBackgroundResource(R.drawable.meal_shape_selected);
+                    laksaBreakfast.setBackgroundResource(R.drawable.meal_shape_selected);
+                    meal = new Meal("Laksa", 10.0, 1);
+                    meals.add(meal);
+                } else {
+                    for (Meal meal : meals) {
+                        if (meal.getName() == "Laksa") {
+                            meals.remove(meal);
+                        }
+                    }
+                    laksa.setBackgroundResource(R.drawable.meal_shape);
+                    laksaBreakfast.setBackgroundResource(R.drawable.meal_shape);
+                }
+            } else if ((view.getId() == R.id.fried_rice) || (view.getId() == R.id.fried_rice_lunch)) {
+                friedRiceCounter++;
+                friedRiceLunchCounter++;
+                if ((friedRiceCounter % 2 != 0) || (friedRiceLunchCounter % 2 != 0)) {
+                    friedRice.setBackgroundResource(R.drawable.meal_shape_selected);
+                    friedRiceLunch.setBackgroundResource(R.drawable.meal_shape_selected);
+                    meal = new Meal("Fried Rice", 10.0, 1);
+                    meals.add(meal);
+                } else {
+                    for (Meal meal : meals) {
+                        if (meal.getName() == "Fried Rice") {
+                            meals.remove(meal);
+                        }
+                    }
+                    friedRice.setBackgroundResource(R.drawable.meal_shape);
+                    friedRiceLunch.setBackgroundResource(R.drawable.meal_shape);
+                }
+            } else if ((view.getId() == R.id.sandwich) || (view.getId() == R.id.sandwich_breakfast) || (view.getId()==R.id.sandwich_lunch)) {
+                sandwichCounter++;
+                sandwichBreakfastCounter++;
+                sandwichLunchCounter++;
+                if ((sandwichCounter % 2 != 0) || (sandwichLunchCounter % 2 != 0) || (sandwichBreakfastCounter % 2 != 0)) {
+                    sandwich.setBackgroundResource(R.drawable.meal_shape_selected);
+                    sandwichLunch.setBackgroundResource(R.drawable.meal_shape_selected);
+                    sandwichBreakfast.setBackgroundResource(R.drawable.meal_shape_selected);
+                    meal = new Meal("Sandwich", 5.0, 1);
+                    meals.add(meal);
+                } else {
+                    for (Meal meal : meals) {
+                        if (meal.getName() == "Sandwich") {
+                            meals.remove(meal);
+                        }
+                    }
+                    sandwich.setBackgroundResource(R.drawable.meal_shape);
+                    sandwichLunch.setBackgroundResource(R.drawable.meal_shape);
+                    sandwichBreakfast.setBackgroundResource(R.drawable.meal_shape);
+                }
+            } else if ((view.getId() == R.id.cereal) || (view.getId() == R.id.cereal_breakfast) || (view.getId()==R.id.cereal_snack)) {
+                cerealCounter++;
+                cerealBreakfastCounter++;
+                cerealSnackCounter++;
+                if ((cerealCounter % 2 != 0) || (cerealBreakfastCounter % 2 != 0) || (cerealSnackCounter % 2 != 0)) {
+                    cereal.setBackgroundResource(R.drawable.meal_shape_selected);
+                    cerealBreakfast.setBackgroundResource(R.drawable.meal_shape_selected);
+                    cerealSnack.setBackgroundResource(R.drawable.meal_shape_selected);
+                    meal = new Meal("Cereal", 10.0, 1);
+                    meals.add(meal);
+                } else {
+                    for (Meal meal : meals) {
+                        if (meal.getName() == "Cereal") {
+                            meals.remove(meal);
+                        }
+                    }
+                    cereal.setBackgroundResource(R.drawable.meal_shape);
+                    cerealBreakfast.setBackgroundResource(R.drawable.meal_shape);
+                    cerealSnack.setBackgroundResource(R.drawable.meal_shape);
+                }
+            }
+        }
+    };
 
     View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
@@ -167,6 +324,11 @@ public class MealSelectionFragment extends Fragment {
 
                     viewFlipper.setDisplayedChild(0);
                 }
+            } else if (view.getId() == R.id.checkout_button) {
+                if(meals.size() > 0){
+                    coreActivity.getBookingSession().setMeals(meals);
+                }
+                coreActivity.loadFragment(new OrderReviewFragment());
             }
         }
     };

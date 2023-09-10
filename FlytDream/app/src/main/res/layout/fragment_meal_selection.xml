@@ -162,7 +162,9 @@
                                 android:layout_height="230dp"
                                 android:layout_marginLeft="15dp"
                                 android:background="@drawable/meal_shape"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:clickable="true"
+                                android:focusable="true">
 
                                 <ImageView
                                     android:layout_width="match_parent"
@@ -198,7 +200,9 @@
                                 android:layout_width="150dp"
                                 android:layout_height="230dp"
                                 android:background="@drawable/meal_shape"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:clickable="true"
+                                android:focusable="true">
 
                                 <ImageView
                                     android:layout_width="match_parent"
@@ -239,12 +243,14 @@
                                 android:layout_width="150dp"
                                 android:layout_height="230dp"
                                 android:background="@drawable/meal_shape"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:clickable="true"
+                                android:focusable="true">
 
                                 <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="150dp"
-                                    android:src="@drawable/egg_salad" />
+                                    android:src="@drawable/fried_rice" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -275,12 +281,14 @@
                                 android:layout_width="150dp"
                                 android:layout_height="230dp"
                                 android:background="@drawable/meal_shape"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:clickable="true"
+                                android:focusable="true">
 
                                 <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="150dp"
-                                    android:src="@drawable/grilled_salmon" />
+                                    android:src="@drawable/laksa" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -315,12 +323,14 @@
                                 android:layout_width="150dp"
                                 android:layout_height="230dp"
                                 android:background="@drawable/meal_shape"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:clickable="true"
+                                android:focusable="true">
 
                                 <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="150dp"
-                                    android:src="@drawable/egg_salad" />
+                                    android:src="@drawable/sandwich" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -351,12 +361,14 @@
                                 android:layout_width="150dp"
                                 android:layout_height="230dp"
                                 android:background="@drawable/meal_shape"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:clickable="true"
+                                android:focusable="true">
 
                                 <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="150dp"
-                                    android:src="@drawable/grilled_salmon" />
+                                    android:src="@drawable/cereal"/>
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -400,12 +412,14 @@
                                 android:layout_height="230dp"
                                 android:layout_marginLeft="15dp"
                                 android:background="@drawable/meal_shape"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:clickable="true"
+                                android:focusable="true">
 
                                 <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="150dp"
-                                    android:src="@drawable/egg_salad" />
+                                    android:src="@drawable/fried_rice" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -422,7 +436,7 @@
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="10dp"
                                     android:fontFamily="@font/bebas_neue"
-                                    android:text="$ 5.00"
+                                    android:text="$ 10.00"
                                     android:textSize="18sp" />
 
                             </LinearLayout>
@@ -436,7 +450,9 @@
                                 android:layout_width="150dp"
                                 android:layout_height="230dp"
                                 android:background="@drawable/meal_shape"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:clickable="true"
+                                android:focusable="true">
 
                                 <ImageView
                                     android:layout_width="match_parent"
@@ -458,7 +474,7 @@
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="10dp"
                                     android:fontFamily="@font/bebas_neue"
-                                    android:text="$ 10.00"
+                                    android:text="$ 15.00"
                                     android:textSize="18sp" />
                             </LinearLayout>
 
@@ -476,12 +492,14 @@
                                 android:layout_width="150dp"
                                 android:layout_height="230dp"
                                 android:background="@drawable/meal_shape"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:clickable="true"
+                                android:focusable="true">
 
                                 <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="150dp"
-                                    android:src="@drawable/egg_salad" />
+                                    android:src="@drawable/sandwich" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -520,17 +538,19 @@
                             android:orientation="horizontal">
 
                             <LinearLayout
-                                android:id="@+id/egg_salad_breakfast"
+                                android:id="@+id/laksa_breakfast"
                                 android:layout_width="150dp"
                                 android:layout_height="230dp"
                                 android:layout_marginLeft="15dp"
                                 android:background="@drawable/meal_shape"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:clickable="true"
+                                android:focusable="true">
 
                                 <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="150dp"
-                                    android:src="@drawable/egg_salad" />
+                                    android:src="@drawable/laksa" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -538,7 +558,7 @@
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="15dp"
                                     android:fontFamily="@font/poppins_light"
-                                    android:text="Egg Salad"
+                                    android:text="Laksa"
                                     android:textSize="14sp" />
 
                                 <TextView
@@ -547,7 +567,7 @@
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="10dp"
                                     android:fontFamily="@font/bebas_neue"
-                                    android:text="$ 5.00"
+                                    android:text="$ 10.00"
                                     android:textSize="18sp" />
 
                             </LinearLayout>
@@ -561,12 +581,14 @@
                                 android:layout_width="150dp"
                                 android:layout_height="230dp"
                                 android:background="@drawable/meal_shape"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:clickable="true"
+                                android:focusable="true">
 
                                 <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="150dp"
-                                    android:src="@drawable/grilled_salmon" />
+                                    android:src="@drawable/cereal" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -601,12 +623,14 @@
                                 android:layout_width="150dp"
                                 android:layout_height="230dp"
                                 android:background="@drawable/meal_shape"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:clickable="true"
+                                android:focusable="true">
 
                                 <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="150dp"
-                                    android:src="@drawable/egg_salad" />
+                                    android:src="@drawable/sandwich" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -650,12 +674,14 @@
                                 android:layout_height="230dp"
                                 android:layout_marginLeft="15dp"
                                 android:background="@drawable/meal_shape"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:clickable="true"
+                                android:focusable="true">
 
                                 <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="150dp"
-                                    android:src="@drawable/egg_salad" />
+                                    android:src="@drawable/cereal" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -672,14 +698,13 @@
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="10dp"
                                     android:fontFamily="@font/bebas_neue"
-                                    android:text="$ 5.00"
+                                    android:text="$ 10.00"
                                     android:textSize="18sp" />
 
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
                 </ScrollView>
-
             </ViewFlipper>
         </LinearLayout>
 
@@ -690,6 +715,7 @@
             android:layout_marginTop="5dp">
 
             <ImageButton
+                android:id="@+id/checkout_button"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
