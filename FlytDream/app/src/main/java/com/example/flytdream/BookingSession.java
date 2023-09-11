@@ -16,7 +16,8 @@ public class BookingSession {
     private int totalCost;
     private ArrayList<Passenger> passengers;
     private ArrayList<Meal> meals;
-
+    String nameString = "";
+    String seatString = "";
     public BookingSession() {
         departCity = new City("0", "0", "0");
         arriveCity = new City("0", "0", "0");
@@ -74,7 +75,6 @@ public class BookingSession {
     }
 
     public String checkOutPassengerName(ArrayList<Passenger> passengers){
-        String nameString = "";
         for(Passenger passenger: passengers){
             nameString += passenger.getPassengerName() + "\n";
         }
@@ -82,7 +82,6 @@ public class BookingSession {
     }
 
     public String checkOutPassengerSeats(ArrayList<String> seats){
-        String seatString = "";
         for(String seat: seats){
             seatString += seat + " ";
         }

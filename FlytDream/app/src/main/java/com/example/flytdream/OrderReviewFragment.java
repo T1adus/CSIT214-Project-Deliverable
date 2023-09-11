@@ -1,5 +1,6 @@
 package com.example.flytdream;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
@@ -89,7 +90,22 @@ public class OrderReviewFragment extends Fragment {
     View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-
+            Intent intent = new Intent(getActivity(),OrderConfirmActivity.class);
+            intent.putExtra("passenger name",coreActivity.getBookingSession().checkOutPassengerName(coreActivity.getBookingSession().getPassengers()));
+            intent.putExtra("flight type",coreActivity.getBookingSession().getClassSelected());
+            intent.putExtra("flight code","IG-2105");
+            intent.putExtra("boarding time",coreActivity.getBookingSession().getFlight().getDepartTime());
+            intent.putExtra("gate","A5");
+            intent.putExtra("terminal","T2");
+            intent.putExtra("seat number",coreActivity.getBookingSession().checkOutPassengerSeats(coreActivity.getBookingSession().getSeats()));
+            intent.putExtra("depart city alias",coreActivity.getBookingSession().getDepartCity().getCityAlias());
+            intent.putExtra("depart city name",coreActivity.getBookingSession().getDepartCity().getCityName());
+            intent.putExtra("depart time",coreActivity.getBookingSession().getFlight().getDepartTime());
+            intent.putExtra("flight time",coreActivity.getBookingSession().getFlight().getFlightTime());
+            intent.putExtra("arrival city alias",coreActivity.getBookingSession().getArriveCity().getCityAlias());
+            intent.putExtra("arrival city name",coreActivity.getBookingSession().getArriveCity().getCityName());
+            intent.putExtra("arrive time",coreActivity.getBookingSession().getFlight().getArriveTime());
+            startActivity(intent);
         }
     };
 

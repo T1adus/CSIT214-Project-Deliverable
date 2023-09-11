@@ -118,10 +118,11 @@
                         android:text="Flight Code"
                         android:textSize="10sp"
                         android:textColor="#848484" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="IG-2105"/>
+                        android:text="IG-2105" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
