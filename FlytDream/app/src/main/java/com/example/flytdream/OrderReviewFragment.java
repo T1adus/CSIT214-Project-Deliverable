@@ -26,6 +26,7 @@ public class OrderReviewFragment extends Fragment {
     CoreActivity coreActivity;
     TextView passengerName,flightType,boardingTime,seatNumber;
     ImageButton confirmButton;
+    String names,seat;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -78,10 +79,13 @@ public class OrderReviewFragment extends Fragment {
         seatNumber = view.findViewById(R.id.seat_number);
         confirmButton = view.findViewById(R.id.confirm_order);
 
-        passengerName.setText(coreActivity.getBookingSession().checkOutPassengerName(coreActivity.getBookingSession().getPassengers()));
+        names = coreActivity.getBookingSession().checkOutPassengerName(coreActivity.getBookingSession().getPassengers());
+        seat = coreActivity.getBookingSession().checkOutPassengerSeats(coreActivity.getBookingSession().getSeats());
+
+        passengerName.setText(names);
         flightType.setText(coreActivity.getBookingSession().getClassSelected());
         boardingTime.setText(coreActivity.getBookingSession().getFlight().getDepartTime());
-        seatNumber.setText(coreActivity.getBookingSession().checkOutPassengerSeats(coreActivity.getBookingSession().getSeats()));
+        seatNumber.setText(seat);
         confirmButton.setOnClickListener(clickListener);
 
         return view;
@@ -91,13 +95,13 @@ public class OrderReviewFragment extends Fragment {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(getActivity(),OrderConfirmActivity.class);
-            intent.putExtra("passenger name",coreActivity.getBookingSession().checkOutPassengerName(coreActivity.getBookingSession().getPassengers()));
+            intent.putExtra("passenger name",names);
             intent.putExtra("flight type",coreActivity.getBookingSession().getClassSelected());
             intent.putExtra("flight code","IG-2105");
             intent.putExtra("boarding time",coreActivity.getBookingSession().getFlight().getDepartTime());
             intent.putExtra("gate","A5");
             intent.putExtra("terminal","T2");
-            intent.putExtra("seat number",coreActivity.getBookingSession().checkOutPassengerSeats(coreActivity.getBookingSession().getSeats()));
+            intent.putExtra("seat number",seat);
             intent.putExtra("depart city alias",coreActivity.getBookingSession().getDepartCity().getCityAlias());
             intent.putExtra("depart city name",coreActivity.getBookingSession().getDepartCity().getCityName());
             intent.putExtra("depart time",coreActivity.getBookingSession().getFlight().getDepartTime());

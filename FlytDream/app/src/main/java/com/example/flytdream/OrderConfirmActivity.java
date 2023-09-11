@@ -41,9 +41,22 @@ public class OrderConfirmActivity extends AppCompatActivity {
     View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, new DownloadInvoiceFragment())
-                    .commit();
+            Intent intent = new Intent(OrderConfirmActivity.this,DownloadInvoiceActivity.class);
+            intent.putExtra("passenger name",passengers);
+            intent.putExtra("flight type",flightType);
+            intent.putExtra("flight code",flightCode);
+            intent.putExtra("boarding time",boardingTime);
+            intent.putExtra("gate",gate);
+            intent.putExtra("terminal",terminal);
+            intent.putExtra("seat number",seats);
+            intent.putExtra("depart city alias",departCityAlias);
+            intent.putExtra("depart city name",departCityName);
+            intent.putExtra("depart time",departTime);
+            intent.putExtra("flight time",flightTime);
+            intent.putExtra("arrival city alias",arriveCityAlias);
+            intent.putExtra("arrival city name",arriveCityName);
+            intent.putExtra("arrive time",arriveTime);
+            startActivity(intent);
         }
     };
 }
