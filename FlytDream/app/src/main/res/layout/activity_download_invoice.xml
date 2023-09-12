@@ -15,264 +15,305 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:theme="@style/Base.Theme.FlytDream" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="600dp"
+        android:layout_marginTop="45dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <TextView
             android:id="@+id/booking_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="TextView"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
+
         <LinearLayout
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:layout_gravity="center">
+            android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="330dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:orientation="horizontal">
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/depart_alias"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
                             android:text="TextView"
-                            android:textStyle="bold"
-                            android:gravity="center"/>
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/depart_time"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
                             android:text="TextView"
-                            android:textStyle="bold"
-                            android:gravity="center"/>
+                            android:textStyle="bold" />
                     </LinearLayout>
+
                     <TextView
                         android:id="@+id/flight_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
                         android:text="TextView"
                         android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_weight="1"
-                        android:gravity="center"/>
+                        android:textStyle="bold" />
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/arrive_alias"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
                             android:text="TextView"
-                            android:textStyle="bold"
-                            android:gravity="center"/>
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/arrive_time"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
                             android:text="TextView"
-                            android:textStyle="bold"
-                            android:gravity="center"/>
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/flight_image"
-                android:layout_marginTop="15dp"/>
+                android:layout_marginTop="15dp"
+                android:src="@drawable/flight_image" />
+
             <LinearLayout
                 android:layout_width="330dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:text="Passenger Name"
-                        android:textSize="10sp"
                         android:textColor="#848484"
-                        android:gravity="center"/>
+                        android:textSize="10sp" />
+
                     <TextView
                         android:id="@+id/names"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="TextView"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:text="TextView" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:text="Flight Type"
-                        android:textSize="10sp"
                         android:textColor="#848484"
-                        android:gravity="center"/>
+                        android:textSize="10sp" />
+
                     <TextView
                         android:id="@+id/type"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="TextView"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:text="TextView" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:text="Flight Code"
-                        android:textSize="10sp"
                         android:textColor="#848484"
-                        android:gravity="center"/>
+                        android:textSize="10sp" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="IG-2105"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:text="IG-2105" />
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="330dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:text="Boarding Time"
-                        android:textSize="10sp"
                         android:textColor="#848484"
-                        android:gravity="center"/>
+                        android:textSize="10sp" />
+
                     <TextView
                         android:id="@+id/board_time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="TextView"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:text="TextView" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="0.5">
+                    android:layout_weight="0.5"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:text="Gate"
-                        android:textSize="10sp"
                         android:textColor="#848484"
-                        android:gravity="center"/>
+                        android:textSize="10sp" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="A5"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:text="A5" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="0.5">
+                    android:layout_weight="0.5"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:text="Terminal"
-                        android:textSize="10sp"
                         android:textColor="#848484"
-                        android:gravity="center"/>
+                        android:textSize="10sp" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="T2"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:text="T2" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:text="Seat Number"
-                        android:textSize="10sp"
                         android:textColor="#848484"
-                        android:gravity="center"/>
+                        android:textSize="10sp" />
+
                     <TextView
                         android:id="@+id/seat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="TextView"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:text="TextView" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_gravity="center"
-            android:layout_marginTop="50dp">
+            android:layout_marginTop="50dp"
+            android:orientation="vertical">
+
             <ImageView
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/line"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:src="@drawable/line" />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/bar_code"
-                android:layout_marginTop="40dp"/>
+                android:layout_marginTop="40dp"
+                android:src="@drawable/bar_code" />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:src="@drawable/code_bar"
-                android:layout_gravity="center"/>
+                android:src="@drawable/code_bar" />
 
             <ImageButton
                 android:id="@+id/download_button"
