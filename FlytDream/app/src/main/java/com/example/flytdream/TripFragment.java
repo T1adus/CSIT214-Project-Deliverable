@@ -28,12 +28,16 @@ import android.widget.Toast;
 public class TripFragment extends Fragment {
     CoreActivity activity;
     private BookingSession aBookingSession;
+    private TextView onewayTextView;
+    private TextView roundtripTextView;
+    private TextView multicityTextView;
     private TextView userDepartCity;
     private TextView userArriveCity;
     private ImageView citySwitch;
     private Spinner classSelect;
     private ImageButton searchFlightButton;
     private TextView dateSelection;
+    private TextView returnselection;
     private TextView passengerInput;
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -75,6 +79,13 @@ public class TripFragment extends Fragment {
         activity = (CoreActivity) getActivity();
         aBookingSession = activity.getBookingSession();
 
+        onewayTextView = view.findViewById(R.id.onewayTextView);
+        onewayTextView.setOnClickListener(clickListener);
+        roundtripTextView = view.findViewById(R.id.roundtripTextView);
+        roundtripTextView.setOnClickListener(clickListener);
+        multicityTextView = view.findViewById(R.id.multicityTextView);
+        multicityTextView.setOnClickListener(clickListener);
+
         userDepartCity = view.findViewById(R.id.userDepartCity);
         userDepartCity.setOnClickListener(clickListener);
         userArriveCity = view.findViewById(R.id.userArriveCity);
@@ -88,6 +99,11 @@ public class TripFragment extends Fragment {
 
         dateSelection = view.findViewById(R.id.dateSelection);
         dateSelection.setOnClickListener(clickListener);
+        returnselection = view.findViewById(R.id.returnSelection);
+        returnselection.setOnClickListener(clickListener);
+        multicityTextView = view.findViewById(R.id.multicityTextView);
+        multicityTextView.setOnClickListener(clickListener);
+
         passengerInput = view.findViewById(R.id.passengerInput);
         passengerInput.setOnClickListener(clickListener);
         searchFlightButton = view.findViewById(R.id.searchFlightButton);
@@ -120,6 +136,20 @@ public class TripFragment extends Fragment {
             } else if (v.getId() == R.id.userArriveCity) {
                 activity.citySelectScreenController = 1;
                 activity.loadFragment(new CitySelectFragment());
+            } else if (v.getId() == R.id.onewayTextView) {
+                onewayTextView.setBackgroundResource(R.drawable.selected_button_background);
+                onewayTextView.setTextColor(getResources().getColor(R.color.white));
+                roundtripTextView.setBackgroundResource(R.drawable.unselected_button_background);
+                roundtripTextView.setTextColor(getResources().getColor(R.color.black));
+                returnselection.setText("Not Selectable");
+            } else if (v.getId() == R.id.roundtripTextView) {
+                roundtripTextView.setBackgroundResource(R.drawable.selected_button_background);
+                roundtripTextView.setTextColor(getResources().getColor(R.color.white));
+                onewayTextView.setBackgroundResource(R.drawable.unselected_button_background);
+                onewayTextView.setTextColor(getResources().getColor(R.color.black));
+                returnselection.setText("Select a date");
+            } else if (v.getId() == R.id.multicityTextView) {
+                Toast.makeText(getActivity(), "Not Applicable", Toast.LENGTH_SHORT).show();
             }
         }
     };

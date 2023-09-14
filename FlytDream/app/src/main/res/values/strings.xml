@@ -50,4 +50,7 @@
     <string name="passengerInfoText">Passenger Information</string>
     <string name="passengerNumber">Passenger 1</string>
     <string name="extraBaggageView">Extra Baggage ($200):</string>
+    <string name="oneWayString">One Way</string>
+    <string name="roundTripString">Round Trip</string>
+    <string name="multiCityString">Multi-City</string>
 </resources>

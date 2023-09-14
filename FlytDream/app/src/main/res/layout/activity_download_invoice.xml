@@ -5,26 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DownloadInvoiceActivity">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:theme="@style/Base.Theme.FlytDream" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="600dp"
-        android:layout_marginTop="45dp"
+        android:layout_height="fill_parent"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:theme="@style/Base.Theme.FlytDream" />
 
         <TextView
             android:id="@+id/booking_date"
@@ -290,7 +290,7 @@
 
         <LinearLayout
             android:layout_width="350dp"
-            android:layout_height="wrap_content"
+            android:layout_height="313dp"
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
             android:orientation="vertical">
