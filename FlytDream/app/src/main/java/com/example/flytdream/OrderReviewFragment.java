@@ -1,9 +1,11 @@
 package com.example.flytdream;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -29,6 +31,7 @@ public class OrderReviewFragment extends Fragment {
     TextView passengerName,flightType,boardingTime,seatNumber,flightClass,price;
     ImageButton confirmButton;
     String names,seat;
+    TextView noticeView;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -89,6 +92,10 @@ public class OrderReviewFragment extends Fragment {
         flightType = view.findViewById(R.id.flight_type);
         price = view.findViewById(R.id.total_price);
 
+        if (aBookingSession.flightType.equals("Round Trip")) {
+            showAlertDialog();
+        }
+
         names = coreActivity.getBookingSession().checkOutPassengerName(coreActivity.getBookingSession().getPassengers());
         seat = coreActivity.getBookingSession().checkOutPassengerSeats(coreActivity.getBookingSession().getSeats());
 
@@ -128,6 +135,22 @@ public class OrderReviewFragment extends Fragment {
             startActivity(intent);
         }
     };
+
+    private void showAlertDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("Notification");
+        builder.setMessage("We Will Notify You Later For The Seat & Food Selection Of Return Flight! Extra Fee Can Be Applied Based On Your Action");
+        builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Do something when the "Okay" button is clicked (optional)
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
 
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.top_nav_menu, menu);

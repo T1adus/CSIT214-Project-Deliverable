@@ -193,7 +193,11 @@ public class TripFragment extends Fragment {
             roundtripTextView.setTextColor(getResources().getColor(R.color.white));
             onewayTextView.setBackgroundResource(R.drawable.unselected_button_background);
             onewayTextView.setTextColor(getResources().getColor(R.color.black));
-            returnselection.setText(aBookingSession.getReturnDate());
+            if (!aBookingSession.getReturnDate().equals("")) {
+                returnselection.setText(aBookingSession.getReturnDate());
+            } else {
+                returnselection.setText("Select a date");
+            }
         }
 
         if (!departCity.equals("0")) {
