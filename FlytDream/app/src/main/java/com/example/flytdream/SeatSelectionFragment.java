@@ -136,7 +136,7 @@ public class SeatSelectionFragment extends Fragment {
         if (item.getItemId() == R.id.action_profile) {
             Toast.makeText(this.getActivity(), "Yo!", Toast.LENGTH_SHORT).show();
         } else if (item.getItemId() == android.R.id.home) {
-            coreActivity.loadFragment(new FlightSelectFragment());
+            coreActivity.loadFragment(new CustomerInfoFragment());
             return true;
         }
         return super.onOptionsItemSelected(item);

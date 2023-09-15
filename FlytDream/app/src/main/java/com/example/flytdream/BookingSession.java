@@ -12,13 +12,13 @@ public class BookingSession {
     private int adult;
     private int child;
     private int infant;
-    private Flight flight;
+    private ArrayList<Flight> flight;
     private ArrayList<String> seats;
     private int totalCost;
     private ArrayList<Passenger> passengers;
     private ArrayList<Meal> meals;
-    String nameString = "";
-    String seatString = "";
+    public String nameString = "";
+    public String seatString = "";
     public String flightType;
     public BookingSession() {
         departCity = new City("0", "0", "0");
@@ -30,8 +30,9 @@ public class BookingSession {
         adult = 0;
         child = 0;
         infant = 0;
-        flight = new Flight();
+        flight = new ArrayList<>();
         seats = new ArrayList<>();
+        meals = new ArrayList<>();
         totalCost = 0;
         flightType = "One Way";
     }
@@ -46,7 +47,7 @@ public class BookingSession {
         int[] passenger = {adult, child, infant};
         return passenger;
     }
-    public Flight getFlight() {return flight;}
+    public ArrayList<Flight> getFlight() {return flight;}
     public int getTotalPassenger() {return adult+child+infant;}
     public ArrayList<Passenger> getPassengers() {return passengers;}
     public ArrayList<String> getSeats() {return seats;}
@@ -74,13 +75,13 @@ public class BookingSession {
         child = newChild;
         infant = newInfant;
     }
-    public void setFlight(Flight newFlight) {flight = newFlight;}
     public void setPassengers(ArrayList<Passenger> newPassengers) {passengers = newPassengers;}
     public void setSeats(ArrayList<String> newSeats){seats = newSeats;}
 
     public void setMeals(ArrayList<Meal> meals) {
         this.meals = meals;
     }
+    public void setTotalCost(int newCost) {this.totalCost = newCost;}
 
     public String checkOutPassengerName(ArrayList<Passenger> passengers){
         for(Passenger passenger: passengers){
@@ -94,5 +95,33 @@ public class BookingSession {
             seatString += seat + " ";
         }
         return seatString;
+    }
+
+    public void calculatePrice() {
+        for (Flight flight: flight) {
+            totalCost += flight.getCost();
+        }
+
+        int totalPassenger = adult + child + infant;
+        totalCost *= totalPassenger;
+
+
+        for(Passenger passenger: passengers){
+            if (passenger.getExtraBaggageStatus() == true) {
+                totalCost += 200;
+            }
+        }
+
+        if (flightType.equals("Round Trip")) {
+            for(Passenger passenger: passengers){
+                if (passenger.getExtraBaggageStatus() == true) {
+                    totalCost += 200;
+                }
+            }
+        }
+
+        for(Meal meal: meals){
+            totalCost += meal.getPrice();
+        }
     }
 }

@@ -17,6 +17,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link OrderReviewFragment#newInstance} factory method to
@@ -74,6 +76,11 @@ public class OrderReviewFragment extends Fragment {
         //retrieve and get data from this booking session, display it
         View view = inflater.inflate(R.layout.fragment_order_review, container, false);
         coreActivity = (CoreActivity) getActivity();
+
+        BookingSession aBookingSession = coreActivity.getBookingSession();
+        aBookingSession.nameString = "";
+        aBookingSession.seatString = "";
+
         passengerName = view.findViewById(R.id.passenger_name);
         flightClass = view.findViewById(R.id.flight_class);
         boardingTime = view.findViewById(R.id.boarding_time);
@@ -88,10 +95,12 @@ public class OrderReviewFragment extends Fragment {
         flightType.setText(coreActivity.getBookingSession().getFlightType());
         passengerName.setText(names);
         flightClass.setText(coreActivity.getBookingSession().getClassSelected());
-        boardingTime.setText(coreActivity.getBookingSession().getFlight().getDepartTime());
+        boardingTime.setText(coreActivity.getBookingSession().getFlight().get(0).getDepartTime());
         seatNumber.setText(seat);
         price.setText("$"+coreActivity.getBookingSession().getTotalCost());
         confirmButton.setOnClickListener(clickListener);
+
+        setHasOptionsMenu(true);
 
         return view;
     }
@@ -103,16 +112,19 @@ public class OrderReviewFragment extends Fragment {
             intent.putExtra("passenger name",names);
             intent.putExtra("flight class",coreActivity.getBookingSession().getClassSelected());
             intent.putExtra("flight type",coreActivity.getBookingSession().getFlightType());
-            intent.putExtra("boarding time",coreActivity.getBookingSession().getFlight().getDepartTime());
+            intent.putExtra("boarding time",coreActivity.getBookingSession().getFlight().get(0).getDepartTime());
             intent.putExtra("price","$"+coreActivity.getBookingSession().getTotalCost());
+            intent.putExtra("boarding time",coreActivity.getBookingSession().getFlight().get(0).getDepartTime());
+            intent.putExtra("gate","A5");
+            intent.putExtra("terminal","T2");
             intent.putExtra("seat number",seat);
             intent.putExtra("depart city alias",coreActivity.getBookingSession().getDepartCity().getCityAlias());
             intent.putExtra("depart city name",coreActivity.getBookingSession().getDepartCity().getCityName());
-            intent.putExtra("depart time",coreActivity.getBookingSession().getFlight().getDepartTime());
-            intent.putExtra("flight time",coreActivity.getBookingSession().getFlight().getFlightTime());
+            intent.putExtra("depart time",coreActivity.getBookingSession().getFlight().get(0).getDepartTime());
+            intent.putExtra("flight time",coreActivity.getBookingSession().getFlight().get(0).getFlightTime());
             intent.putExtra("arrival city alias",coreActivity.getBookingSession().getArriveCity().getCityAlias());
             intent.putExtra("arrival city name",coreActivity.getBookingSession().getArriveCity().getCityName());
-            intent.putExtra("arrive time",coreActivity.getBookingSession().getFlight().getArriveTime());
+            intent.putExtra("arrive time",coreActivity.getBookingSession().getFlight().get(0).getArriveTime());
             startActivity(intent);
         }
     };
@@ -132,7 +144,10 @@ public class OrderReviewFragment extends Fragment {
         if (item.getItemId() == R.id.action_profile) {
             Toast.makeText(this.getActivity(), "Yo!", Toast.LENGTH_SHORT).show();
         } else if (item.getItemId() == android.R.id.home) {
-            coreActivity.loadFragment(new FlightSelectFragment());
+            ArrayList<Meal> mea = new ArrayList<>();
+            coreActivity.getBookingSession().setMeals(mea);
+            coreActivity.getBookingSession().setTotalCost(0);
+            coreActivity.loadFragment(new MealSelectionFragment());
             return true;
         }
         return super.onOptionsItemSelected(item);

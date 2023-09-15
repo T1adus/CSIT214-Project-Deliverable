@@ -91,8 +91,7 @@ public class FlightSelectFragment extends Fragment {
         public void onClick(View v) {
             if (v.getId() == R.id.confirmButton) {
                 if (currentFlightPosition != -1) {
-                    activity.selectFlight(currentFlightPosition);
-                    aBookingSession.setFlight(activity.flights.get(currentFlightPosition));
+                    aBookingSession.getFlight().add(activity.flights.get(currentFlightPosition));
                     activity.currentPassenger = 0;
                     activity.createPassengerList();
                     if (aBookingSession.flightType.equals("Round Trip")) {
@@ -135,6 +134,9 @@ public class FlightSelectFragment extends Fragment {
         if (item.getItemId() == R.id.action_profile) {
             Toast.makeText(this.getActivity(), "Yo!", Toast.LENGTH_SHORT).show();
         } else if (item.getItemId() == android.R.id.home) {
+            if (aBookingSession.getFlight().isEmpty() == false) {
+                aBookingSession.getFlight().remove(0);
+            }
             activity.loadFragment(new TripFragment());
             return true;
         }

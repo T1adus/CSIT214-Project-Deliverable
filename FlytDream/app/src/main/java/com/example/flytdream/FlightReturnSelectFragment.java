@@ -91,6 +91,7 @@ public class FlightReturnSelectFragment extends Fragment {
         public void onClick(View v) {
             if (v.getId() == R.id.confirmButton) {
                 if (currentFlightPosition != -1) {
+                    aBookingSession.getFlight().add(activity.flights.get(currentFlightPosition));
                     activity.currentPassenger = 0;
                     activity.createPassengerList();
                     activity.loadFragment(new CustomerInfoFragment());
@@ -129,6 +130,9 @@ public class FlightReturnSelectFragment extends Fragment {
         if (item.getItemId() == R.id.action_profile) {
             Toast.makeText(this.getActivity(), "Yo!", Toast.LENGTH_SHORT).show();
         } else if (item.getItemId() == android.R.id.home) {
+            if (aBookingSession.getFlight().size() == 2) {
+                aBookingSession.getFlight().remove(1);
+            }
             activity.loadFragment(new FlightSelectFragment());
             return true;
         }

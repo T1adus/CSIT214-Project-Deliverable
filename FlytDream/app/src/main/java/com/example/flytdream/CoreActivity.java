@@ -81,10 +81,6 @@ public class CoreActivity extends AppCompatActivity {
         return flightAdapter;
     }
 
-    public void selectFlight(int position) {
-        bookingSession.setFlight(flights.get(position));
-    }
-
     NavigationBarView.OnItemSelectedListener navigationMenuListener = new NavigationBarView.OnItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {

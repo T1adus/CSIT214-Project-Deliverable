@@ -102,7 +102,6 @@ public class CustomerInfoFragment extends Fragment {
                         activity.currentPassenger += 1;
                         activity.loadFragment(new CustomerInfoFragment());
                     } else if (activity.currentPassenger == aBookingSession.getTotalPassenger() - 1) {
-
                         activity.loadFragment(new SeatSelectionFragment());
                     }
                 }
@@ -159,8 +158,10 @@ public class CustomerInfoFragment extends Fragment {
         } else if (item.getItemId() == android.R.id.home) {
             if (activity.currentPassenger == 0) {
                 if (aBookingSession.flightType.equals("One Way")) {
+                    aBookingSession.getFlight().remove(0);
                     activity.loadFragment(new FlightSelectFragment());
                 } else {
+                    aBookingSession.getFlight().remove(1);
                     activity.loadFragment(new FlightReturnSelectFragment());
                 }
             } else {

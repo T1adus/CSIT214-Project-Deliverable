@@ -65,7 +65,7 @@ public class SignInActivity extends AppCompatActivity {
         if (myDB.checkUserExistence(email) == true) {
             if (myDB.checkPasswordMatch(email, password) == true) {
                 return true;
-            } else {
+            } else if (myDB.checkPasswordMatch(email, password) == false) {
                 Toast.makeText(this, "Password Does Not Match!", Toast.LENGTH_SHORT).show();
                 return false;
             }
@@ -73,5 +73,6 @@ public class SignInActivity extends AppCompatActivity {
             Toast.makeText(this, "User Does Not Exist!", Toast.LENGTH_SHORT).show();
             return false;
         }
+        return false;
     }
 }

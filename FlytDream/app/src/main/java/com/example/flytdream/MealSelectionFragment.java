@@ -328,6 +328,7 @@ public class MealSelectionFragment extends Fragment {
                 if(meals.size() > 0){
                     coreActivity.getBookingSession().setMeals(meals);
                 }
+                coreActivity.getBookingSession().calculatePrice();
                 coreActivity.loadFragment(new OrderReviewFragment());
             }
         }
@@ -348,7 +349,10 @@ public class MealSelectionFragment extends Fragment {
         if (item.getItemId() == R.id.action_profile) {
             Toast.makeText(this.getActivity(), "Yo!", Toast.LENGTH_SHORT).show();
         } else if (item.getItemId() == android.R.id.home) {
-            coreActivity.loadFragment(new FlightSelectFragment());
+            ArrayList<Meal> mea = new ArrayList<>();
+            coreActivity.getBookingSession().setMeals(mea);
+            coreActivity.getBookingSession().setTotalCost(0);
+            coreActivity.loadFragment(new SeatSelectionFragment());
             return true;
         }
         return super.onOptionsItemSelected(item);

@@ -36,6 +36,7 @@ public class OrderConfirmActivity extends AppCompatActivity {
         arriveCityAlias = intent.getStringExtra("arrival city alias");
         arriveCityName = intent.getStringExtra("arrival city name");
         arriveTime = intent.getStringExtra("arrive time");
+
     }
     //button function to pass the data above for the next activity and start it
     View.OnClickListener clickListener = new View.OnClickListener() {
