@@ -76,6 +76,7 @@ public class SeatSelectionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        // get data from current booking session and display it
         View view = inflater.inflate(R.layout.fragment_seat_selection, container, false);
         coreActivity = (CoreActivity) getActivity();
         seats = new ArrayList<String>();
@@ -118,7 +119,7 @@ public class SeatSelectionFragment extends Fragment {
 
         return view;
     }
-
+    //create nav bar
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.top_nav_menu, menu);
@@ -129,7 +130,7 @@ public class SeatSelectionFragment extends Fragment {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
-
+    //set options for nav bar
     @Override
     public boolean onOptionsItemSelected (MenuItem item){
         if (item.getItemId() == R.id.action_profile) {
@@ -140,7 +141,7 @@ public class SeatSelectionFragment extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
-
+    //set functionalities when seats are selected
     View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {

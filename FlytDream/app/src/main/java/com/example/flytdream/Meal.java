@@ -1,5 +1,5 @@
 package com.example.flytdream;
-
+//class used to create meal objects
 public class Meal {
     private String name;
     private double price;

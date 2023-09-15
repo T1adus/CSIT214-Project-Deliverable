@@ -117,12 +117,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Flight Type"
+                            android:text="Flight Class"
                             android:textColor="#848484"
                             android:textSize="10sp" />
 
                         <TextView
-                            android:id="@+id/flight_type"
+                            android:id="@+id/flight_class"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="TextView" />
@@ -138,14 +138,15 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Flight Code"
+                            android:text="Flight Type"
                             android:textColor="#848484"
                             android:textSize="10sp" />
 
                         <TextView
+                            android:id="@+id/flight_type"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="IG-2105" />
+                            android:text="TextView" />
                     </LinearLayout>
                 </LinearLayout>
 
