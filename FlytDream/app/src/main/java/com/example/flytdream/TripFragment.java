@@ -30,6 +30,7 @@ import java.util.Date;
  * create an instance of this fragment.
  */
 public class TripFragment extends Fragment {
+    //Field
     CoreActivity activity;
     private BookingSession aBookingSession;
     private TextView onewayTextView;
@@ -113,7 +114,10 @@ public class TripFragment extends Fragment {
         searchFlightButton = view.findViewById(R.id.searchFlightButton);
         searchFlightButton.setOnClickListener(clickListener);
 
+        //Populate Spinner
         inflateSpinner();
+
+        //Get Data from the current Booking Session object to display if applicable
         getData();
 
         return view;
@@ -179,6 +183,7 @@ public class TripFragment extends Fragment {
         }
     };
 
+    //Get the data from the current booking session and display if applicable
     public void getData() {
         String departCity = aBookingSession.getDepartCity().getCityAlias();
         String arriveCity = aBookingSession.getArriveCity().getCityAlias();
@@ -249,6 +254,7 @@ public class TripFragment extends Fragment {
         }
     }
 
+    //Validate user input data
     public boolean validateData() {
         if (aBookingSession.getDepartCity().getCityAlias().equals("0")) {
             Toast.makeText(getActivity(), "Please select a city to depart!", Toast.LENGTH_SHORT).show();
@@ -301,6 +307,7 @@ public class TripFragment extends Fragment {
         return true;
     }
 
+    //Check if the arg1 date is before the arg2 date
     public boolean checkDate(String departDate, String returnDate) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
 
@@ -321,6 +328,7 @@ public class TripFragment extends Fragment {
         }
     }
 
+    //Switch the depart and arrive city
     public void switchCity() {
         City depart = aBookingSession.getDepartCity();
         City arrive = aBookingSession.getArriveCity();
@@ -356,6 +364,7 @@ public class TripFragment extends Fragment {
         }
     }
 
+    //Inflate the spinner with flight class
     public void inflateSpinner() {
         String[] classList = new String[] {"Class", "Economy", "Premium Economy", "Business"};
 

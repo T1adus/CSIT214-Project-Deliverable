@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CoreActivity extends AppCompatActivity {
+    //Field
     private BottomNavigationView bottomNavigationView;
     private BookingSession bookingSession;
     private FlightAdapter flightAdapter;
@@ -22,7 +23,7 @@ public class CoreActivity extends AppCompatActivity {
     public databaseHelper myDB;
     public int citySelectScreenController;
     public int currentPassenger;
-    public boolean currentTripFragment;
+    public boolean currentTripFragment; //Determine if the current fragment is the TripFragment
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +45,13 @@ public class CoreActivity extends AppCompatActivity {
 
         currentTripFragment = false;
 
+        //Default is Home Fragment
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, new HomeFragment())
                 .commit();
     }
 
+    //Create a list of passenger based on the number of passenger
     public void createPassengerList() {
         int totalPassenger = bookingSession.getTotalPassenger();
         ArrayList<Passenger> passengers = new ArrayList<>();
@@ -63,6 +66,7 @@ public class CoreActivity extends AppCompatActivity {
         return bookingSession;
     }
 
+    //Load fragment, called from a current fragment for the next fragment
     public void loadFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, fragment)
@@ -70,6 +74,7 @@ public class CoreActivity extends AppCompatActivity {
                 .commit();
     }
 
+    //Create a flightAdapter based on a list of flight object and return it. Used in FlightSelectFragment and FlightReturnSelectFragment
     public FlightAdapter createFlight(String departAlias, String arriveAlias) {
         flights = new ArrayList<>();
         flights.add(new Flight(departAlias, "11:30", "08h:40m", arriveAlias, "20:10", 3000));
@@ -81,6 +86,7 @@ public class CoreActivity extends AppCompatActivity {
         return flightAdapter;
     }
 
+    //Control the bottom navigation bar
     NavigationBarView.OnItemSelectedListener navigationMenuListener = new NavigationBarView.OnItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -101,9 +107,15 @@ public class CoreActivity extends AppCompatActivity {
                 return true;
             } else if (item.getItemId() == R.id.menu_explore) {
                 currentTripFragment = false;
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, new ExploreFragment())
+                        .commit();
                 return true;
             } else if (item.getItemId() == R.id.menu_profile) {
                 currentTripFragment = false;
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, new UserFragment())
+                        .commit();
                 return true;
             }
             return false;

@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class SignInActivity extends AppCompatActivity {
+    //Fields
     private databaseHelper myDB;
     private EditText emailInput;
     private EditText passwordInput;
@@ -47,6 +48,7 @@ public class SignInActivity extends AppCompatActivity {
         }
     };
 
+    //Function for data validation
     public boolean validateData() {
         String email = emailInput.getText().toString();
         String password = passwordInput.getText().toString();

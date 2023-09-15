@@ -3,6 +3,7 @@ package com.example.flytdream;
 import java.util.ArrayList;
 
 public class BookingSession {
+    //Field
     private City departCity;
     private City arriveCity;
     private String date;
@@ -19,7 +20,7 @@ public class BookingSession {
     private ArrayList<Meal> meals;
     public String nameString = "";
     public String seatString = "";
-    public String flightType;
+    public String flightType; //Used to determine if the current flight type and control the program accordingly
     public BookingSession() {
         departCity = new City("0", "0", "0");
         arriveCity = new City("0", "0", "0");
@@ -83,6 +84,7 @@ public class BookingSession {
     }
     public void setTotalCost(int newCost) {this.totalCost = newCost;}
 
+    //Get all the passenger name
     public String checkOutPassengerName(ArrayList<Passenger> passengers){
         for(Passenger passenger: passengers){
             nameString += passenger.getPassengerName() + "\n";
@@ -90,6 +92,7 @@ public class BookingSession {
         return nameString;
     }
 
+    //Get all the selected seat
     public String checkOutPassengerSeats(ArrayList<String> seats){
         for(String seat: seats){
             seatString += seat + " ";
@@ -97,6 +100,7 @@ public class BookingSession {
         return seatString;
     }
 
+    //Calculate the total price of the booking
     public void calculatePrice() {
         for (Flight flight: flight) {
             totalCost += flight.getCost();

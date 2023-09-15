@@ -24,6 +24,7 @@ import android.widget.Toast;
  * create an instance of this fragment.
  */
 public class FlightReturnSelectFragment extends Fragment {
+    //Field
     CoreActivity activity;
     BookingSession aBookingSession;
     RecyclerView flightDisplay;
@@ -102,6 +103,7 @@ public class FlightReturnSelectFragment extends Fragment {
         }
     };
 
+    //Get the adapter from Core, which is now populated with an array of flight to be select
     public void populateFlightDisplay() {
         flightDisplay.setLayoutManager(new LinearLayoutManager(getActivity()));
         FlightAdapter adapter = activity.createFlight(aBookingSession.getArriveCity().getCityAlias(), aBookingSession.getDepartCity().getCityAlias());

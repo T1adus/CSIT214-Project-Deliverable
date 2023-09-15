@@ -30,6 +30,7 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class CitySelectFragment extends Fragment {
+    //Field
     TextView cityType;
     CoreActivity activity;
     BookingSession aBookingSession;
@@ -105,6 +106,7 @@ public class CitySelectFragment extends Fragment {
         return view;
     }
 
+    //Listen to the change in the user input to determine the city
     TextWatcher changeListener = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -136,6 +138,7 @@ public class CitySelectFragment extends Fragment {
         }
     };
 
+    //Populate the list with the city in the database based on the user input, default is all city
     public void populateCity(String input) {
         cities.clear();
         cityInfo.clear();

@@ -94,6 +94,7 @@ public class databaseHelper extends SQLiteOpenHelper {
         return passwordMatch;
     }
 
+    //Method to insert a city into the database
     public void insertCity(String cityAlias, String cityName, String cityCountry) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -103,6 +104,7 @@ public class databaseHelper extends SQLiteOpenHelper {
         db.insert(CITY_INFO_TABLE, null, contentValues);
     }
 
+    //Method to search a city based on the input of user
     public Cursor onSearchCity(String input) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM " + CITY_INFO_TABLE + " WHERE " + CITY_INFO_TABLE_COL_2 + " LIKE '%" + input + "%'", null);

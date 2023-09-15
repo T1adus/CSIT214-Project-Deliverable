@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class RegisterActivity extends AppCompatActivity {
+    //Field
     private databaseHelper myDB;
     private EditText emailRegisterEdit;
     private EditText passWordRegisterEdit;
@@ -49,6 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
     };
 
+    //Function for data validation
     public boolean validateData() {
         String emailRegister = emailRegisterEdit.getText().toString();
         String passWordRegister = passWordRegisterEdit.getText().toString();
