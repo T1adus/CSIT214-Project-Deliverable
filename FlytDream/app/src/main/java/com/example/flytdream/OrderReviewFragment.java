@@ -24,7 +24,7 @@ import android.widget.Toast;
  */
 public class OrderReviewFragment extends Fragment {
     CoreActivity coreActivity;
-    TextView passengerName,flightType,boardingTime,seatNumber;
+    TextView passengerName,flightType,boardingTime,seatNumber,flightClass;
     ImageButton confirmButton;
     String names,seat;
     // TODO: Rename parameter arguments, choose names that match
@@ -74,16 +74,18 @@ public class OrderReviewFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_order_review, container, false);
         coreActivity = (CoreActivity) getActivity();
         passengerName = view.findViewById(R.id.passenger_name);
-        flightType = view.findViewById(R.id.flight_type);
+        flightClass = view.findViewById(R.id.flight_class);
         boardingTime = view.findViewById(R.id.boarding_time);
         seatNumber = view.findViewById(R.id.seat_number);
         confirmButton = view.findViewById(R.id.confirm_order);
+        flightType = view.findViewById(R.id.flight_type);
 
         names = coreActivity.getBookingSession().checkOutPassengerName(coreActivity.getBookingSession().getPassengers());
         seat = coreActivity.getBookingSession().checkOutPassengerSeats(coreActivity.getBookingSession().getSeats());
 
+        flightType.setText(coreActivity.getBookingSession().getFlightType());
         passengerName.setText(names);
-        flightType.setText(coreActivity.getBookingSession().getClassSelected());
+        flightClass.setText(coreActivity.getBookingSession().getClassSelected());
         boardingTime.setText(coreActivity.getBookingSession().getFlight().getDepartTime());
         seatNumber.setText(seat);
         confirmButton.setOnClickListener(clickListener);
@@ -96,8 +98,8 @@ public class OrderReviewFragment extends Fragment {
         public void onClick(View view) {
             Intent intent = new Intent(getActivity(),OrderConfirmActivity.class);
             intent.putExtra("passenger name",names);
-            intent.putExtra("flight type",coreActivity.getBookingSession().getClassSelected());
-            intent.putExtra("flight code","IG-2105");
+            intent.putExtra("flight class",coreActivity.getBookingSession().getClassSelected());
+            intent.putExtra("flight type",coreActivity.getBookingSession().getFlightType());
             intent.putExtra("boarding time",coreActivity.getBookingSession().getFlight().getDepartTime());
             intent.putExtra("gate","A5");
             intent.putExtra("terminal","T2");

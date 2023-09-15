@@ -55,6 +55,7 @@ public class BookingSession {
     public ArrayList<Meal> getMeals() {
         return meals;
     }
+    public String getFlightType(){return flightType;}
 
     public void setDepartCity(City newDepartCity) {departCity = newDepartCity;}
     public void setArriveCity(City newArriveCity) {arriveCity = newArriveCity;}

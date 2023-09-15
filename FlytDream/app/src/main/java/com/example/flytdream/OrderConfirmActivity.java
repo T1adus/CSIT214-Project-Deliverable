@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class OrderConfirmActivity extends AppCompatActivity {
     ImageButton viewTicket;
-    String flightType,flightCode,boardingTime,gate,terminal,departCityAlias,departCityName,departTime,flightTime,arriveCityAlias,arriveCityName,arriveTime,passengers,seats;
+    String flightType,flightClass,boardingTime,gate,terminal,departCityAlias,departCityName,departTime,flightTime,arriveCityAlias,arriveCityName,arriveTime,passengers,seats;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,8 +23,8 @@ public class OrderConfirmActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         passengers = intent.getStringExtra("passenger name");
+        flightClass = intent.getStringExtra("flight class");
         flightType = intent.getStringExtra("flight type");
-        flightCode = intent.getStringExtra("flight code");
         boardingTime = intent.getStringExtra("boarding time");
         gate = intent.getStringExtra("gate");
         terminal = intent.getStringExtra("terminal");
@@ -43,8 +43,8 @@ public class OrderConfirmActivity extends AppCompatActivity {
         public void onClick(View view) {
             Intent intent = new Intent(OrderConfirmActivity.this,DownloadInvoiceActivity.class);
             intent.putExtra("passenger name",passengers);
+            intent.putExtra("flight class",flightClass);
             intent.putExtra("flight type",flightType);
-            intent.putExtra("flight code",flightCode);
             intent.putExtra("boarding time",boardingTime);
             intent.putExtra("gate",gate);
             intent.putExtra("terminal",terminal);

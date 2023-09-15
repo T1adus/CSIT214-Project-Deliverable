@@ -14,9 +14,9 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class DownloadInvoiceActivity extends AppCompatActivity {
-    ImageButton download;
-    String flightType,flightCode,boardingTime,gate,terminal,departCityAlias,departCityName,departTime,flightTime,arriveCityAlias,arriveCityName,arriveTime,passengers,seats;
-    TextView flightType1,flightCode1,boardingTime1,gate1,terminal1,departCityAlias1,departCityName1,departTime1,flightTime1,arriveCityAlias1,arriveCityName1,arriveTime1,passengers1,seats1,bookingDate;
+    ImageButton download,back;
+    String flightType,flightClass,boardingTime,gate,terminal,departCityAlias,departCityName,departTime,flightTime,arriveCityAlias,arriveCityName,arriveTime,passengers,seats;
+    TextView flightType1,flightClass1,boardingTime1,gate1,terminal1,departCityAlias1,departCityName1,departTime1,flightTime1,arriveCityAlias1,arriveCityName1,arriveTime1,passengers1,seats1,bookingDate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,11 +24,13 @@ public class DownloadInvoiceActivity extends AppCompatActivity {
 
         download = findViewById(R.id.download_button);
         download.setOnClickListener(clickListener);
+        back = findViewById(R.id.back_to_home);
+        back.setOnClickListener(clickListener);
 
         Intent intent = getIntent();
         passengers = intent.getStringExtra("passenger name");
         flightType = intent.getStringExtra("flight type");
-        flightCode = intent.getStringExtra("flight code");
+        flightClass = intent.getStringExtra("flight class");
         boardingTime = intent.getStringExtra("boarding time");
         gate = intent.getStringExtra("gate");
         terminal = intent.getStringExtra("terminal");
@@ -47,6 +49,7 @@ public class DownloadInvoiceActivity extends AppCompatActivity {
         arriveCityAlias1 = findViewById(R.id.arrive_alias);
         arriveTime1 = findViewById(R.id.arrive_time);
         passengers1 = findViewById(R.id.names);
+        flightClass1 = findViewById(R.id.flightClass);
         flightType1 = findViewById(R.id.type);
         seats1 = findViewById(R.id.seat);
         boardingTime1 = findViewById(R.id.board_time);
@@ -58,6 +61,7 @@ public class DownloadInvoiceActivity extends AppCompatActivity {
         arriveTime1.setText(arriveTime);
         passengers1.setText(passengers);
         flightType1.setText(flightType);
+        flightClass1.setText(flightClass);
         seats1.setText(seats);
         boardingTime1.setText(boardingTime);
 
@@ -74,7 +78,12 @@ public class DownloadInvoiceActivity extends AppCompatActivity {
     View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Toast.makeText(DownloadInvoiceActivity.this,"Invoice downloaded",Toast.LENGTH_LONG).show();
+            if(view.getId() == R.id.download_button) {
+                Toast.makeText(DownloadInvoiceActivity.this, "Invoice downloaded", Toast.LENGTH_LONG).show();
+            } else if(view.getId() == R.id.back_to_home){
+                Intent intent = new Intent(DownloadInvoiceActivity.this,CoreActivity.class);
+                startActivity(intent);
+            }
         }
     };
 }
