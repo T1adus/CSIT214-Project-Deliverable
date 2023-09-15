@@ -29,7 +29,7 @@
         app:srcCompat="@drawable/background" />
 
     <EditText
-        android:id="@+id/passwordInput"
+        android:id="@+id/phoneRegisterEdit"
         android:layout_width="305dp"
         android:layout_height="54dp"
         android:layout_marginTop="8dp"
@@ -44,10 +44,10 @@
         android:paddingLeft="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailInput" />
+        app:layout_constraintTop_toBottomOf="@+id/confirmPasswordEdit" />
 
     <EditText
-        android:id="@+id/emailInput"
+        android:id="@+id/confirmPasswordEdit"
         android:layout_width="305dp"
         android:layout_height="54dp"
         android:layout_marginTop="8dp"
@@ -124,7 +124,7 @@
         app:layout_constraintEnd_toStartOf="@+id/rememberAccountText"
         app:layout_constraintHorizontal_bias="0.796"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
+        app:layout_constraintTop_toBottomOf="@+id/phoneRegisterEdit" />
 
     <TextView
         android:id="@+id/rememberAccountText"
@@ -135,7 +135,7 @@
         android:text="@string/tocText"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
+        app:layout_constraintTop_toBottomOf="@+id/phoneRegisterEdit" />
 
     <TextView
         android:id="@+id/policyTextView"
@@ -151,7 +151,7 @@
         app:layout_constraintTop_toBottomOf="@+id/rememberAccountText" />
 
     <ImageButton
-        android:id="@+id/signInButton"
+        android:id="@+id/createAccountButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="21dp"

@@ -1,6 +1,5 @@
 package com.example.flytdream;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 
@@ -89,7 +88,7 @@ public class CitySelectFragment extends Fragment {
         activity = (CoreActivity) getActivity();
         aBookingSession = activity.getBookingSession();
 
-        cityType = view.findViewById(R.id.cityType);
+        cityType = view.findViewById(R.id.cityReturnType);
         if (activity.citySelectScreenController == 0) {
             cityType.setText("Depart");
         } else {

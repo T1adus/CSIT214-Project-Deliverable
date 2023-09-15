@@ -31,7 +31,7 @@ public class databaseHelper extends SQLiteOpenHelper {
     //Method onCreate() create the databases if they don't exist
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS " + USER_INFO_TABLE + "(USER_NAME TEXT PRIMARY KEY, USER_EMAIL TEXT, USER_PASSWORD TEXT, USER_PHONE TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + USER_INFO_TABLE + "(USER_NAME TEXT, USER_EMAIL TEXT PRIMARY KEY, USER_PASSWORD TEXT, USER_PHONE TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS " + CITY_INFO_TABLE + "(CITY_ALIAS TEXT PRIMARY KEY, CITY_NAME TEXT, CITY_COUNTRY TEXT)");
     }
 
@@ -67,10 +67,10 @@ public class databaseHelper extends SQLiteOpenHelper {
     }
 
     //Method checkUserExistence() check if the user exist in the database
-    public boolean checkUserExistence(String name) {
+    public boolean checkUserExistence(String email) {
         boolean userExist = false;
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("SELECT * FROM " + USER_INFO_TABLE + " WHERE USER_NAME=?", new String[]{name});
+        Cursor res = db.rawQuery("SELECT * FROM " + USER_INFO_TABLE + " WHERE USER_EMAIL=?", new String[]{email});
         if (res.moveToFirst()) {
             userExist = true;
         }
@@ -79,11 +79,11 @@ public class databaseHelper extends SQLiteOpenHelper {
     }
 
     //Method checkPasswordMatch() checks if the password match
-    public boolean checkPasswordMatch(String name, String inputPassword) {
+    public boolean checkPasswordMatch(String email, String inputPassword) {
         boolean passwordMatch = false;
         String password = "";
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("SELECT * FROM " + USER_INFO_TABLE + " WHERE USER_NAME=?", new String[]{name});
+        Cursor res = db.rawQuery("SELECT * FROM " + USER_INFO_TABLE + " WHERE USER_EMAIL=?", new String[]{email});
         while (res.moveToNext()) {
             password = res.getString(2);
         }

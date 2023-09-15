@@ -158,7 +158,11 @@ public class CustomerInfoFragment extends Fragment {
 
         } else if (item.getItemId() == android.R.id.home) {
             if (activity.currentPassenger == 0) {
-                activity.loadFragment(new FlightSelectFragment());
+                if (aBookingSession.flightType.equals("One Way")) {
+                    activity.loadFragment(new FlightSelectFragment());
+                } else {
+                    activity.loadFragment(new FlightReturnSelectFragment());
+                }
             } else {
                 activity.currentPassenger -= 1;
                 activity.loadFragment(new CustomerInfoFragment());

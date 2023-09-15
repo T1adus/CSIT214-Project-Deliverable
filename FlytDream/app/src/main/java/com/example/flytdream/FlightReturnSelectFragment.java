@@ -1,11 +1,13 @@
 package com.example.flytdream;
 
+import android.media.Image;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -13,28 +15,20 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CalendarView;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link CalendarFragment#newInstance} factory method to
+ * Use the {@link FlightSelectFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CalendarFragment extends Fragment {
-    private CoreActivity activity;
-    private BookingSession aBookingSession;
-    private CalendarView departCalendar;
-    private ImageButton confirmButton;
-    private String departDate;
-    private TextView cityType;
+public class FlightReturnSelectFragment extends Fragment {
+    CoreActivity activity;
+    BookingSession aBookingSession;
+    RecyclerView flightDisplay;
+    ImageButton confirmButton;
+    int currentFlightPosition;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -45,7 +39,7 @@ public class CalendarFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public CalendarFragment() {
+    public FlightReturnSelectFragment() {
         // Required empty public constructor
     }
 
@@ -55,11 +49,11 @@ public class CalendarFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment CalendarFragment.
+     * @return A new instance of fragment FlightSelectFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CalendarFragment newInstance(String param1, String param2) {
-        CalendarFragment fragment = new CalendarFragment();
+    public static FlightSelectFragment newInstance(String param1, String param2) {
+        FlightSelectFragment fragment = new FlightSelectFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -80,64 +74,44 @@ public class CalendarFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        departDate = "";
-        setCurrentDate();
-        View view = inflater.inflate(R.layout.fragment_calendar, container, false);
+        View view = inflater.inflate(R.layout.fragment_flight_return_select, container, false);
         activity = (CoreActivity) getActivity();
         aBookingSession = activity.getBookingSession();
-
-        cityType = view.findViewById(R.id.cityReturnType);
-
-        departCalendar = view.findViewById(R.id.departCalendar);
-        Calendar calendar = Calendar.getInstance();
-        departCalendar.setMinDate(calendar.getTimeInMillis());
-        departCalendar.setOnDateChangeListener(calendarListener);
+        currentFlightPosition = -1;
+        flightDisplay = view.findViewById(R.id.flightDisplay);
+        populateFlightDisplay();
         confirmButton = view.findViewById(R.id.confirmButton);
         confirmButton.setOnClickListener(clickListener);
-
         setHasOptionsMenu(true);
-
         return view;
     }
-
-    CalendarView.OnDateChangeListener calendarListener = new CalendarView.OnDateChangeListener() {
-        @Override
-        public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-            String inputDay;
-            String inputMonth;
-            String inputYear;
-            if (dayOfMonth < 10) {
-                inputDay = "0" + Integer.toString(dayOfMonth);
-            } else {
-                inputDay = Integer.toString(dayOfMonth);
-            }
-
-            month += 1;
-            if (month < 10) {
-                inputMonth = "0" + Integer.toString(month);
-            } else {
-                inputMonth = Integer.toString(month);
-            }
-
-            inputYear = Integer.toString(year);
-
-            departDate = String.format("%s/%s/%s", inputDay, inputMonth, inputYear);
-        }
-    };
 
     View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if (v.getId() == R.id.confirmButton) {
-                if (!departDate.equals("")) {
-                    aBookingSession.setDate(departDate);
-                    activity.loadFragment(new TripFragment());
+                if (currentFlightPosition != -1) {
+                    activity.currentPassenger = 0;
+                    activity.createPassengerList();
+                    activity.loadFragment(new CustomerInfoFragment());
                 } else {
-                    Toast.makeText(getActivity(), "Please select a date!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Please choose a flight to proceed!", Toast.LENGTH_SHORT).show();
                 }
             }
         }
     };
+
+    public void populateFlightDisplay() {
+        flightDisplay.setLayoutManager(new LinearLayoutManager(getActivity()));
+        FlightAdapter adapter = activity.createFlight(aBookingSession.getArriveCity().getCityAlias(), aBookingSession.getDepartCity().getCityAlias());
+        adapter.setOnItemClickListener(new FlightAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                currentFlightPosition = position;
+            }
+        });
+        flightDisplay.setAdapter(adapter);
+    }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -155,18 +129,9 @@ public class CalendarFragment extends Fragment {
         if (item.getItemId() == R.id.action_profile) {
             Toast.makeText(this.getActivity(), "Yo!", Toast.LENGTH_SHORT).show();
         } else if (item.getItemId() == android.R.id.home) {
-            activity.loadFragment(new TripFragment());
+            activity.loadFragment(new FlightSelectFragment());
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public void setCurrentDate() {
-        Calendar calendar = Calendar.getInstance();
-        Date currentDate = calendar.getTime();
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy", Locale.getDefault());
-
-        departDate = dateFormat.format(currentDate);
     }
 }

@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FlightSelectFragment">
-
+    tools:context=".CalendarReturnFragment">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -60,33 +59,29 @@
             android:text="@string/blank" />
 
         <TextView
-            android:id="@+id/departFlightCaptionText"
+            android:id="@+id/cityReturnType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/flightSe"
+            android:text="@string/returnString"
             android:textAlignment="center"
             android:textSize="24sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textView5"
+        <CalendarView
+            android:id="@+id/returnCalendar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/blank" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/flightDisplay"
-            android:layout_width="390dp"
-            android:layout_height="314dp"
-            android:layout_gravity="center_horizontal"
-            android:divider="@android:color/transparent"
-            android:dividerHeight="1000dp" />
+            android:maxDate="12/31/2024"
+            android:minDate="09/01/2023" />
 
         <ImageButton
             android:id="@+id/confirmButton"
             android:layout_width="match_parent"
-            android:layout_height="109dp"
+            android:layout_height="93dp"
             android:background="@android:color/transparent"
             android:src="@drawable/seat_confirm" />
+
     </LinearLayout>
+
 </FrameLayout>
+

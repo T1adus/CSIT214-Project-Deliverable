@@ -61,7 +61,7 @@
             android:text="@string/blank" />
 
         <TextView
-            android:id="@+id/cityType"
+            android:id="@+id/cityReturnType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/fromto"

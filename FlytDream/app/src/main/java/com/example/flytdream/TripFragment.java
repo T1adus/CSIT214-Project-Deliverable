@@ -20,6 +20,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link TripFragment#newInstance} factory method to
@@ -143,6 +147,7 @@ public class TripFragment extends Fragment {
                 roundtripTextView.setTextColor(getResources().getColor(R.color.black));
                 returnselection.setText("Not Selectable");
                 aBookingSession.flightType = "One Way";
+                aBookingSession.setReturnDate("");
             } else if (v.getId() == R.id.roundtripTextView) {
                 roundtripTextView.setBackgroundResource(R.drawable.selected_button_background);
                 roundtripTextView.setTextColor(getResources().getColor(R.color.white));
@@ -152,6 +157,10 @@ public class TripFragment extends Fragment {
                 aBookingSession.flightType = "Round Trip";
             } else if (v.getId() == R.id.multicityTextView) {
                 Toast.makeText(getActivity(), "Not Applicable", Toast.LENGTH_SHORT).show();
+            } else if (v.getId() == R.id.returnSelection) {
+                if (aBookingSession.flightType.equals("Round Trip")) {
+                    activity.loadFragment(new CalendarReturnFragment());
+                }
             }
         }
     };
@@ -174,6 +183,13 @@ public class TripFragment extends Fragment {
         String departCity = aBookingSession.getDepartCity().getCityAlias();
         String arriveCity = aBookingSession.getArriveCity().getCityAlias();
 
+        if (aBookingSession.flightType.equals("Round Trip")) {
+            roundtripTextView.setBackgroundResource(R.drawable.selected_button_background);
+            roundtripTextView.setTextColor(getResources().getColor(R.color.white));
+            onewayTextView.setBackgroundResource(R.drawable.unselected_button_background);
+            onewayTextView.setTextColor(getResources().getColor(R.color.black));
+        }
+
         if (!departCity.equals("0")) {
             userDepartCity.setText(departCity);
         }
@@ -185,6 +201,13 @@ public class TripFragment extends Fragment {
         String date = aBookingSession.getDate();
         if (!date.equals("")) {
             dateSelection.setText(date);
+        }
+
+        String returnDate = aBookingSession.getReturnDate();
+        if (aBookingSession.flightType.equals("Round Trip")) {
+            if (!returnDate.equals("")) {
+                returnselection.setText(returnDate);
+            }
         }
 
         int classId = aBookingSession.getClassId();
@@ -243,10 +266,25 @@ public class TripFragment extends Fragment {
             }
         }
 
-        if (aBookingSession.getDate().equals("")) {
+        String departDate = aBookingSession.getDate();
+        String returnDate = aBookingSession.getReturnDate();
+
+        if (!departDate.equals("")) {
+            if (aBookingSession.flightType.equals("Round Trip")) {
+                if (!returnDate.equals("")) {
+                    if (checkDate(departDate, returnDate) != true) {
+                        return false;
+                    }
+                } else {
+                    Toast.makeText(getActivity(), "Please select a return date!", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+            }
+        } else {
             Toast.makeText(getActivity(), "Please select a depart date!", Toast.LENGTH_SHORT).show();
             return false;
         }
+
 
         int[] passengers = aBookingSession.getPassenger();
         if (passengers[0] == 0 && passengers[1] == 0 && passengers[2] == 0) {
@@ -260,6 +298,26 @@ public class TripFragment extends Fragment {
         }
 
         return true;
+    }
+
+    public boolean checkDate(String departDate, String returnDate) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+
+        try {
+            // Parse the date strings into Date objects
+            Date date1 = dateFormat.parse(departDate);
+            Date date2 = dateFormat.parse(returnDate);
+
+            if (date1.after(date2)) {
+                Toast.makeText(getActivity(), "Return Date Must Be Later Than Depart Date!", Toast.LENGTH_SHORT).show();
+                return false;
+            } else {
+                return true;
+            }
+        } catch (ParseException e) {
+            Toast.makeText(getActivity(), "Something Went Wrong. Please Try Again!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
     }
 
     public void switchCity() {

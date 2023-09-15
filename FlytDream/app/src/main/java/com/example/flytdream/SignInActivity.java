@@ -5,17 +5,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class SignInActivity extends AppCompatActivity {
-
-    ImageButton signInButton;
-    ImageButton createAccountButton;
+    private databaseHelper myDB;
+    private EditText emailInput;
+    private EditText passwordInput;
+    private ImageButton signInButton;
+    private ImageButton createAccountButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+
+        myDB = new databaseHelper(SignInActivity.this, "FlytDream.db", null, 1);
+
+        emailInput = findViewById(R.id.emailInput);
+        passwordInput = findViewById(R.id.passwordInput);
 
         signInButton = findViewById(R.id.signInButton);
         signInButton.setOnClickListener(buttonClickListener);
@@ -27,12 +36,42 @@ public class SignInActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (v.getId() == R.id.signInButton) {
-                Intent toHome = new Intent(SignInActivity.this, CoreActivity.class);
-                startActivity(toHome);
+                if (validateData() == true) {
+                    Intent toHome = new Intent(SignInActivity.this, CoreActivity.class);
+                    startActivity(toHome);
+                }
             } else if (v.getId() == R.id.createAccountButton) {
                 Intent toCreateAccount = new Intent(SignInActivity.this, RegisterActivity.class);
                 startActivity(toCreateAccount);
             }
         }
     };
+
+    public boolean validateData() {
+        String email = emailInput.getText().toString();
+        String password = passwordInput.getText().toString();
+        if (!email.equals("")) {
+            if (!password.equals("")) {
+
+            } else {
+                Toast.makeText(this, "Please Input Password!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        } else {
+            Toast.makeText(this, "Please Input Email!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (myDB.checkUserExistence(email) == true) {
+            if (myDB.checkPasswordMatch(email, password) == true) {
+                return true;
+            } else {
+                Toast.makeText(this, "Password Does Not Match!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        } else {
+            Toast.makeText(this, "User Does Not Exist!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+    }
 }

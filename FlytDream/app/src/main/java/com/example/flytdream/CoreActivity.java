@@ -22,6 +22,7 @@ public class CoreActivity extends AppCompatActivity {
     public databaseHelper myDB;
     public int citySelectScreenController;
     public int currentPassenger;
+    public boolean currentTripFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,8 @@ public class CoreActivity extends AppCompatActivity {
         myDB = new databaseHelper(CoreActivity.this, "FlytDream.db", null, 1);
 
         currentPassenger = 0;
+
+        currentTripFragment = false;
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, new HomeFragment())
@@ -67,21 +70,12 @@ public class CoreActivity extends AppCompatActivity {
                 .commit();
     }
 
-    public FlightAdapter createFlight() {
+    public FlightAdapter createFlight(String departAlias, String arriveAlias) {
         flights = new ArrayList<>();
-        String departAlias = bookingSession.getDepartCity().getCityAlias();
-        String arriveAlias = bookingSession.getArriveCity().getCityAlias();
-        //if (departAlias.equals("SYD") || departAlias.equals("HAN")) {
-            flights.add(new Flight(departAlias, "11:30", "08h:40m", arriveAlias, "20:10", 3000));
-            flights.add(new Flight(departAlias, "10:30", "11h:50m", arriveAlias, "22:20", 1000));
-            flights.add(new Flight(departAlias, "15:30", "12h:20m", arriveAlias, "03:50", 2000));
-            flights.add(new Flight(departAlias, "18:30", "09h:10m", arriveAlias, "03:40", 4000));
-        /*} else {
-            flights.add(new Flight(departAlias, "TBA", "TBA", arriveAlias, "TBA", 0));
-            flights.add(new Flight(departAlias, "TBA", "TBA", arriveAlias, "TBA", 0));
-            flights.add(new Flight(departAlias, "TBA", "TBA", arriveAlias, "TBA", 0));
-            flights.add(new Flight(departAlias, "TBA", "TBA", arriveAlias, "TBA", 0));
-        }*/
+        flights.add(new Flight(departAlias, "11:30", "08h:40m", arriveAlias, "20:10", 3000));
+        flights.add(new Flight(departAlias, "10:30", "11h:50m", arriveAlias, "22:20", 1000));
+        flights.add(new Flight(departAlias, "15:30", "12h:20m", arriveAlias, "03:50", 2000));
+        flights.add(new Flight(departAlias, "18:30", "09h:10m", arriveAlias, "03:40", 4000));
 
         flightAdapter = new FlightAdapter(flights);
         return flightAdapter;
@@ -98,15 +92,22 @@ public class CoreActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, new HomeFragment())
                         .commit();
+                currentTripFragment = false;
                 return true;
             } else if (item.getItemId() == R.id.menu_trip) {
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, new TripFragment())
-                        .commit();
+                if (currentTripFragment == false) {
+                    currentTripFragment = true;
+                    bookingSession = new BookingSession();
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container, new TripFragment())
+                            .commit();
+                }
                 return true;
             } else if (item.getItemId() == R.id.menu_explore) {
+                currentTripFragment = false;
                 return true;
             } else if (item.getItemId() == R.id.menu_profile) {
+                currentTripFragment = false;
                 return true;
             }
             return false;

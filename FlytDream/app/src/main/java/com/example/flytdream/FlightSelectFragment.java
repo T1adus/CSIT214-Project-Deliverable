@@ -95,7 +95,11 @@ public class FlightSelectFragment extends Fragment {
                     aBookingSession.setFlight(activity.flights.get(currentFlightPosition));
                     activity.currentPassenger = 0;
                     activity.createPassengerList();
-                    activity.loadFragment(new CustomerInfoFragment());
+                    if (aBookingSession.flightType.equals("Round Trip")) {
+                        activity.loadFragment(new FlightReturnSelectFragment());
+                    } else {
+                        activity.loadFragment(new CustomerInfoFragment());
+                    }
                 } else {
                    Toast.makeText(getActivity(), "Please choose a flight to proceed!", Toast.LENGTH_SHORT).show();
                 }
@@ -105,7 +109,7 @@ public class FlightSelectFragment extends Fragment {
 
     public void populateFlightDisplay() {
         flightDisplay.setLayoutManager(new LinearLayoutManager(getActivity()));
-        FlightAdapter adapter = activity.createFlight();
+        FlightAdapter adapter = activity.createFlight(aBookingSession.getDepartCity().getCityAlias(), aBookingSession.getArriveCity().getCityAlias());
         adapter.setOnItemClickListener(new FlightAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {

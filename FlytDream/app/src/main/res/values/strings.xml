@@ -42,7 +42,8 @@
     <string name="adultCountViewText">Adult:</string>
     <string name="childCountViewText">Child:</string>
     <string name="infantCountViewText">Infant:</string>
-    <string name="flightSe">Flight Selection</string>
+    <string name="flightSe">Depart Flight Selection</string>
+    <string name="flightRe">Return Flight Selection</string>
     <string name="returnDate">Return Date:</string>
     <string name="notS">Not Selectable</string>
     <string name="fromto">Depart</string>
@@ -53,4 +54,5 @@
     <string name="oneWayString">One Way</string>
     <string name="roundTripString">Round Trip</string>
     <string name="multiCityString">Multi-City</string>
+    <string name="returnString">Return On</string>
 </resources>

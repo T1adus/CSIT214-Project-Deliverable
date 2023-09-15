@@ -28,10 +28,10 @@ import java.util.Locale;
  * Use the {@link CalendarFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CalendarFragment extends Fragment {
+public class CalendarReturnFragment extends Fragment {
     private CoreActivity activity;
     private BookingSession aBookingSession;
-    private CalendarView departCalendar;
+    private CalendarView returnCalendar;
     private ImageButton confirmButton;
     private String departDate;
     private TextView cityType;
@@ -45,7 +45,7 @@ public class CalendarFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public CalendarFragment() {
+    public CalendarReturnFragment() {
         // Required empty public constructor
     }
 
@@ -82,16 +82,16 @@ public class CalendarFragment extends Fragment {
         // Inflate the layout for this fragment
         departDate = "";
         setCurrentDate();
-        View view = inflater.inflate(R.layout.fragment_calendar, container, false);
+        View view = inflater.inflate(R.layout.fragment_calendar_return, container, false);
         activity = (CoreActivity) getActivity();
         aBookingSession = activity.getBookingSession();
 
         cityType = view.findViewById(R.id.cityReturnType);
 
-        departCalendar = view.findViewById(R.id.departCalendar);
+        returnCalendar = view.findViewById(R.id.returnCalendar);
         Calendar calendar = Calendar.getInstance();
-        departCalendar.setMinDate(calendar.getTimeInMillis());
-        departCalendar.setOnDateChangeListener(calendarListener);
+        returnCalendar.setMinDate(calendar.getTimeInMillis());
+        returnCalendar.setOnDateChangeListener(calendarListener);
         confirmButton = view.findViewById(R.id.confirmButton);
         confirmButton.setOnClickListener(clickListener);
 
@@ -130,7 +130,7 @@ public class CalendarFragment extends Fragment {
         public void onClick(View v) {
             if (v.getId() == R.id.confirmButton) {
                 if (!departDate.equals("")) {
-                    aBookingSession.setDate(departDate);
+                    aBookingSession.setReturnDate(departDate);
                     activity.loadFragment(new TripFragment());
                 } else {
                     Toast.makeText(getActivity(), "Please select a date!", Toast.LENGTH_SHORT).show();
