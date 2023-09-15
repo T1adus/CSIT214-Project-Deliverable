@@ -142,12 +142,14 @@ public class TripFragment extends Fragment {
                 roundtripTextView.setBackgroundResource(R.drawable.unselected_button_background);
                 roundtripTextView.setTextColor(getResources().getColor(R.color.black));
                 returnselection.setText("Not Selectable");
+                aBookingSession.flightType = "One Way";
             } else if (v.getId() == R.id.roundtripTextView) {
                 roundtripTextView.setBackgroundResource(R.drawable.selected_button_background);
                 roundtripTextView.setTextColor(getResources().getColor(R.color.white));
                 onewayTextView.setBackgroundResource(R.drawable.unselected_button_background);
                 onewayTextView.setTextColor(getResources().getColor(R.color.black));
                 returnselection.setText("Select a date");
+                aBookingSession.flightType = "Round Trip";
             } else if (v.getId() == R.id.multicityTextView) {
                 Toast.makeText(getActivity(), "Not Applicable", Toast.LENGTH_SHORT).show();
             }

@@ -6,6 +6,7 @@ public class BookingSession {
     private City departCity;
     private City arriveCity;
     private String date;
+    private String returnDate;
     private int classId;
     private String classSelected;
     private int adult;
@@ -18,10 +19,13 @@ public class BookingSession {
     private ArrayList<Meal> meals;
     String nameString = "";
     String seatString = "";
+    public String flightType;
+    public int flightSelectionPosition;
     public BookingSession() {
         departCity = new City("0", "0", "0");
         arriveCity = new City("0", "0", "0");
         date = "";
+        returnDate = "";
         classId = 0;
         classSelected = "";
         adult = 0;
@@ -30,6 +34,8 @@ public class BookingSession {
         flight = new Flight();
         seats = new ArrayList<>();
         totalCost = 0;
+        flightType = "One Way";
+        flightSelectionPosition = 0;
     }
 
     public City getDepartCity() {return departCity;}

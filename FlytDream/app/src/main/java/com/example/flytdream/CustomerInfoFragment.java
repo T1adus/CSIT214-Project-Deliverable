@@ -102,6 +102,7 @@ public class CustomerInfoFragment extends Fragment {
                         activity.currentPassenger += 1;
                         activity.loadFragment(new CustomerInfoFragment());
                     } else if (activity.currentPassenger == aBookingSession.getTotalPassenger() - 1) {
+
                         activity.loadFragment(new SeatSelectionFragment());
                     }
                 }
