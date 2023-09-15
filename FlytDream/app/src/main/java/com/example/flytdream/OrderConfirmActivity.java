@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class OrderConfirmActivity extends AppCompatActivity {
     ImageButton viewTicket;
-    String flightType,flightClass,boardingTime,gate,terminal,departCityAlias,departCityName,departTime,flightTime,arriveCityAlias,arriveCityName,arriveTime,passengers,seats;
+    String flightType,flightClass,boardingTime,price,departCityAlias,departCityName,departTime,flightTime,arriveCityAlias,arriveCityName,arriveTime,passengers,seats;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +27,7 @@ public class OrderConfirmActivity extends AppCompatActivity {
         flightClass = intent.getStringExtra("flight class");
         flightType = intent.getStringExtra("flight type");
         boardingTime = intent.getStringExtra("boarding time");
-        gate = intent.getStringExtra("gate");
-        terminal = intent.getStringExtra("terminal");
+        price = intent.getStringExtra("price");
         seats = intent.getStringExtra("seat number");
         departCityAlias = intent.getStringExtra("depart city alias");
         departCityName = intent.getStringExtra("depart city name");
@@ -47,8 +46,7 @@ public class OrderConfirmActivity extends AppCompatActivity {
             intent.putExtra("flight class",flightClass);
             intent.putExtra("flight type",flightType);
             intent.putExtra("boarding time",boardingTime);
-            intent.putExtra("gate",gate);
-            intent.putExtra("terminal",terminal);
+            intent.putExtra("price",price);
             intent.putExtra("seat number",seats);
             intent.putExtra("depart city alias",departCityAlias);
             intent.putExtra("depart city name",departCityName);

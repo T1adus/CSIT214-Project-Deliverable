@@ -55,6 +55,7 @@ public class BookingSession {
         return meals;
     }
     public String getFlightType(){return flightType;}
+    public int getTotalCost(){return totalCost;}
 
     public void setDepartCity(City newDepartCity) {departCity = newDepartCity;}
     public void setArriveCity(City newArriveCity) {arriveCity = newArriveCity;}

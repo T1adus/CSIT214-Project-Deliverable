@@ -15,8 +15,8 @@ import java.util.Locale;
 
 public class DownloadInvoiceActivity extends AppCompatActivity {
     ImageButton download,back;
-    String flightType,flightClass,boardingTime,gate,terminal,departCityAlias,departCityName,departTime,flightTime,arriveCityAlias,arriveCityName,arriveTime,passengers,seats;
-    TextView flightType1,flightClass1,boardingTime1,gate1,terminal1,departCityAlias1,departCityName1,departTime1,flightTime1,arriveCityAlias1,arriveCityName1,arriveTime1,passengers1,seats1,bookingDate;
+    String flightType,flightClass,boardingTime,departCityAlias,departCityName,departTime,flightTime,arriveCityAlias,arriveCityName,arriveTime,passengers,seats,price;
+    TextView flightType1,flightClass1,boardingTime1,departCityAlias1,departTime1,flightTime1,arriveCityAlias1,arriveTime1,passengers1,seats1,bookingDate,price1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,8 +33,7 @@ public class DownloadInvoiceActivity extends AppCompatActivity {
         flightType = intent.getStringExtra("flight type");
         flightClass = intent.getStringExtra("flight class");
         boardingTime = intent.getStringExtra("boarding time");
-        gate = intent.getStringExtra("gate");
-        terminal = intent.getStringExtra("terminal");
+        price = intent.getStringExtra("price");
         seats = intent.getStringExtra("seat number");
         departCityAlias = intent.getStringExtra("depart city alias");
         departCityName = intent.getStringExtra("depart city name");
@@ -54,6 +53,7 @@ public class DownloadInvoiceActivity extends AppCompatActivity {
         flightType1 = findViewById(R.id.type);
         seats1 = findViewById(R.id.seat);
         boardingTime1 = findViewById(R.id.board_time);
+        price1 = findViewById(R.id.price);
 
         //display booking details on screen load
         departCityAlias1.setText(departCityAlias);
@@ -66,6 +66,7 @@ public class DownloadInvoiceActivity extends AppCompatActivity {
         flightClass1.setText(flightClass);
         seats1.setText(seats);
         boardingTime1.setText(boardingTime);
+        price1.setText(price);
 
         //display current booking date
         bookingDate = findViewById(R.id.booking_date);

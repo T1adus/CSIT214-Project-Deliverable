@@ -24,7 +24,7 @@ import android.widget.Toast;
  */
 public class OrderReviewFragment extends Fragment {
     CoreActivity coreActivity;
-    TextView passengerName,flightType,boardingTime,seatNumber,flightClass;
+    TextView passengerName,flightType,boardingTime,seatNumber,flightClass,price;
     ImageButton confirmButton;
     String names,seat;
     // TODO: Rename parameter arguments, choose names that match
@@ -80,6 +80,7 @@ public class OrderReviewFragment extends Fragment {
         seatNumber = view.findViewById(R.id.seat_number);
         confirmButton = view.findViewById(R.id.confirm_order);
         flightType = view.findViewById(R.id.flight_type);
+        price = view.findViewById(R.id.total_price);
 
         names = coreActivity.getBookingSession().checkOutPassengerName(coreActivity.getBookingSession().getPassengers());
         seat = coreActivity.getBookingSession().checkOutPassengerSeats(coreActivity.getBookingSession().getSeats());
@@ -89,6 +90,7 @@ public class OrderReviewFragment extends Fragment {
         flightClass.setText(coreActivity.getBookingSession().getClassSelected());
         boardingTime.setText(coreActivity.getBookingSession().getFlight().getDepartTime());
         seatNumber.setText(seat);
+        price.setText("$"+coreActivity.getBookingSession().getTotalCost());
         confirmButton.setOnClickListener(clickListener);
 
         return view;
@@ -102,8 +104,7 @@ public class OrderReviewFragment extends Fragment {
             intent.putExtra("flight class",coreActivity.getBookingSession().getClassSelected());
             intent.putExtra("flight type",coreActivity.getBookingSession().getFlightType());
             intent.putExtra("boarding time",coreActivity.getBookingSession().getFlight().getDepartTime());
-            intent.putExtra("gate","A5");
-            intent.putExtra("terminal","T2");
+            intent.putExtra("price","$"+coreActivity.getBookingSession().getTotalCost());
             intent.putExtra("seat number",seat);
             intent.putExtra("depart city alias",coreActivity.getBookingSession().getDepartCity().getCityAlias());
             intent.putExtra("depart city name",coreActivity.getBookingSession().getDepartCity().getCityName());
