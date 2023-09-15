@@ -21,6 +21,7 @@ public class OrderConfirmActivity extends AppCompatActivity {
         viewTicket = findViewById(R.id.view_ticket_button);
         viewTicket.setOnClickListener(clickListener);
 
+        //retrieve and unbox data from OrderReview
         Intent intent = getIntent();
         passengers = intent.getStringExtra("passenger name");
         flightClass = intent.getStringExtra("flight class");
@@ -37,7 +38,7 @@ public class OrderConfirmActivity extends AppCompatActivity {
         arriveCityName = intent.getStringExtra("arrival city name");
         arriveTime = intent.getStringExtra("arrive time");
     }
-
+    //button function to pass the data above for the next activity and start it
     View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {

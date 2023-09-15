@@ -27,6 +27,7 @@ public class DownloadInvoiceActivity extends AppCompatActivity {
         back = findViewById(R.id.back_to_home);
         back.setOnClickListener(clickListener);
 
+        //get booking details from previous screen
         Intent intent = getIntent();
         passengers = intent.getStringExtra("passenger name");
         flightType = intent.getStringExtra("flight type");
@@ -54,6 +55,7 @@ public class DownloadInvoiceActivity extends AppCompatActivity {
         seats1 = findViewById(R.id.seat);
         boardingTime1 = findViewById(R.id.board_time);
 
+        //display booking details on screen load
         departCityAlias1.setText(departCityAlias);
         departTime1.setText(departTime);
         flightTime1.setText(flightTime);
@@ -65,6 +67,7 @@ public class DownloadInvoiceActivity extends AppCompatActivity {
         seats1.setText(seats);
         boardingTime1.setText(boardingTime);
 
+        //display current booking date
         bookingDate = findViewById(R.id.booking_date);
         Calendar calendar = Calendar.getInstance();
         int day = calendar.get(Calendar.DAY_OF_MONTH);
@@ -75,6 +78,7 @@ public class DownloadInvoiceActivity extends AppCompatActivity {
         bookingDate.setText(formatDate);
     }
 
+    //button functions
     View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {

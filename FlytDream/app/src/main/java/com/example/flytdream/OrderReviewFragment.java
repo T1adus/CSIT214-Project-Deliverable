@@ -71,6 +71,7 @@ public class OrderReviewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        //retrieve and get data from this booking session, display it
         View view = inflater.inflate(R.layout.fragment_order_review, container, false);
         coreActivity = (CoreActivity) getActivity();
         passengerName = view.findViewById(R.id.passenger_name);
@@ -92,7 +93,7 @@ public class OrderReviewFragment extends Fragment {
 
         return view;
     }
-
+    // button function to pass the retrieved data for the next activity to use
     View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {

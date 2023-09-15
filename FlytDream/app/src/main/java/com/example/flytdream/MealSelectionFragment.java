@@ -133,7 +133,7 @@ public class MealSelectionFragment extends Fragment {
         setHasOptionsMenu(true);
         return view;
     }
-
+    //set layout changes when meal icons are clicked
     View.OnClickListener clickListener1 = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -245,7 +245,7 @@ public class MealSelectionFragment extends Fragment {
             }
         }
     };
-
+    //meal categories buttons functionalities
     View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -332,7 +332,7 @@ public class MealSelectionFragment extends Fragment {
             }
         }
     };
-
+    //set tool bar
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.top_nav_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
@@ -342,7 +342,7 @@ public class MealSelectionFragment extends Fragment {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
-
+    //set tool bar options
     @Override
     public boolean onOptionsItemSelected (MenuItem item){
         if (item.getItemId() == R.id.action_profile) {
