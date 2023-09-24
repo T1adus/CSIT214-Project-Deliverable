@@ -9,13 +9,15 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class DownloadInvoiceActivity extends AppCompatActivity {
     ImageButton download,back;
-    String flightType,flightClass,boardingTime,departCityAlias,departCityName,departTime,flightTime,arriveCityAlias,arriveCityName,arriveTime,passengers,seats,price;
+    String flightType,flightClass,boardingTime,departCityAlias,departCityName,departTime,flightTime,arriveCityAlias,arriveCityName,arriveTime,passengers,seats,price,departDate;
     TextView flightType1,flightClass1,boardingTime1,departCityAlias1,departTime1,flightTime1,arriveCityAlias1,arriveTime1,passengers1,seats1,bookingDate,price1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class DownloadInvoiceActivity extends AppCompatActivity {
         arriveCityAlias = intent.getStringExtra("arrival city alias");
         arriveCityName = intent.getStringExtra("arrival city name");
         arriveTime = intent.getStringExtra("arrive time");
+        departDate = intent.getStringExtra("departDate");
 
         departCityAlias1 = findViewById(R.id.depart_alias);
         departTime1 = findViewById(R.id.depart_time);
@@ -70,12 +73,23 @@ public class DownloadInvoiceActivity extends AppCompatActivity {
 
         //display current booking date
         bookingDate = findViewById(R.id.booking_date);
-        Calendar calendar = Calendar.getInstance();
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-        int year = calendar.get(Calendar.YEAR);
-        SimpleDateFormat monthFormat = new SimpleDateFormat("MMMM", Locale.getDefault());
-        String monthString = monthFormat.format(calendar.getTime());
-        String formatDate = day + " " + monthString + " " + year;
+
+        // Define the input date format
+        SimpleDateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+
+        // Define the output date format
+        SimpleDateFormat outputFormat = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
+
+        String formatDate = "";
+        try {
+            // Parse the input date string into a Date object
+            Date date = inputFormat.parse(departDate);
+
+            // Format the Date object into the desired output format
+            formatDate = outputFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         bookingDate.setText(formatDate);
     }
 

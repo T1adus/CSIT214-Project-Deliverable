@@ -132,6 +132,7 @@ public class OrderReviewFragment extends Fragment {
             intent.putExtra("arrival city alias",coreActivity.getBookingSession().getArriveCity().getCityAlias());
             intent.putExtra("arrival city name",coreActivity.getBookingSession().getArriveCity().getCityName());
             intent.putExtra("arrive time",coreActivity.getBookingSession().getFlight().get(0).getArriveTime());
+            intent.putExtra("departDate", coreActivity.getBookingSession().getDate());
             startActivity(intent);
         }
     };

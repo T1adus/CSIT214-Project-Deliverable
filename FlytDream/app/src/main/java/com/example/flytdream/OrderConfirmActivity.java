@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class OrderConfirmActivity extends AppCompatActivity {
     ImageButton viewTicket;
-    String flightType,flightClass,boardingTime,price,departCityAlias,departCityName,departTime,flightTime,arriveCityAlias,arriveCityName,arriveTime,passengers,seats;
+    String flightType,flightClass,boardingTime,price,departCityAlias,departCityName,departTime,flightTime,arriveCityAlias,arriveCityName,arriveTime,passengers,seats,departDate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +36,7 @@ public class OrderConfirmActivity extends AppCompatActivity {
         arriveCityAlias = intent.getStringExtra("arrival city alias");
         arriveCityName = intent.getStringExtra("arrival city name");
         arriveTime = intent.getStringExtra("arrive time");
-
+        departDate = intent.getStringExtra("departDate");
     }
     //button function to pass the data above for the next activity and start it
     View.OnClickListener clickListener = new View.OnClickListener() {
@@ -56,6 +56,7 @@ public class OrderConfirmActivity extends AppCompatActivity {
             intent.putExtra("arrival city alias",arriveCityAlias);
             intent.putExtra("arrival city name",arriveCityName);
             intent.putExtra("arrive time",arriveTime);
+            intent.putExtra("departDate", departDate);
             startActivity(intent);
         }
     };
