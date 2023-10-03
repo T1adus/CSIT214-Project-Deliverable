@@ -10,8 +10,8 @@
         android:title="Trips" />
     <item
         android:id="@+id/menu_explore"
-        android:icon="@drawable/explore_icon"
-        android:title="Explore" />
+        android:icon="@drawable/icon_clipboard"
+        android:title="Manage" />
     <item
         android:id="@+id/menu_profile"
         android:icon="@drawable/profile_icon"

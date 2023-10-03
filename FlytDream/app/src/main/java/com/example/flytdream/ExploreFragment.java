@@ -1,5 +1,7 @@
 package com.example.flytdream;
 
+import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +9,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +19,9 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class ExploreFragment extends Fragment {
+
+    private ImageButton nextMangeButton;
+    private EditText referenceEdit;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +67,41 @@ public class ExploreFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_explore, container, false);
+        View view = inflater.inflate(R.layout.fragment_explore, container, false);
+        nextMangeButton = view.findViewById(R.id.nextManageButton);
+        nextMangeButton.setOnClickListener(clickListener);
+        referenceEdit = view.findViewById(R.id.referenceEdit);
+        return view;
     }
+
+    View.OnClickListener clickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (v.getId() == R.id.nextManageButton) {
+                if (referenceEdit.getText().toString().equals("SDVN23")) {
+                    Intent intent = new Intent(getActivity(),DownloadInvoiceActivity.class);
+                    intent.putExtra("passenger name","Demo");
+                    intent.putExtra("flight class","Premium Economy");
+                    intent.putExtra("flight type","One Way");
+                    intent.putExtra("boarding time","15:30");
+                    intent.putExtra("price","$"+"2210");
+                    intent.putExtra("gate","A5");
+                    intent.putExtra("terminal","T2");
+                    intent.putExtra("seat number","2E");
+                    intent.putExtra("depart city alias","SYD");
+                    intent.putExtra("depart city name","Sydney");
+                    intent.putExtra("depart time","15:30");
+                    intent.putExtra("flight time","12h:20m");
+                    intent.putExtra("arrival city alias","HAN");
+                    intent.putExtra("arrival city name","Hanoi");
+                    intent.putExtra("arrive time","03:50");
+                    intent.putExtra("departDate", "04/11/2023");
+                    intent.putExtra("context", "0");
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getActivity(), "Unregistered Reference", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
+    };
 }

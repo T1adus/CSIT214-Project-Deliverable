@@ -56,4 +56,8 @@
     <string name="multiCityString">Multi-City</string>
     <string name="returnString">Return On</string>
     <string name="tba">To Be Implemented</string>
+    <string name="manageBookingText">Manage Booking</string>
+    <string name="bookReference">Booking Reference Code:</string>
+    <string name="bookrefhint">Code</string>
+    <string name="customerName">Customer Name:</string>
 </resources>

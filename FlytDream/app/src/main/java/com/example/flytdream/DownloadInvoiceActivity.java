@@ -3,6 +3,7 @@ package com.example.flytdream;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -17,7 +18,7 @@ import java.util.Locale;
 
 public class DownloadInvoiceActivity extends AppCompatActivity {
     ImageButton download,back;
-    String flightType,flightClass,boardingTime,departCityAlias,departCityName,departTime,flightTime,arriveCityAlias,arriveCityName,arriveTime,passengers,seats,price,departDate;
+    String flightType,flightClass,boardingTime,departCityAlias,departCityName,departTime,flightTime,arriveCityAlias,arriveCityName,arriveTime,passengers,seats,price,departDate, context;
     TextView flightType1,flightClass1,boardingTime1,departCityAlias1,departTime1,flightTime1,arriveCityAlias1,arriveTime1,passengers1,seats1,bookingDate,price1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,10 @@ public class DownloadInvoiceActivity extends AppCompatActivity {
         arriveCityName = intent.getStringExtra("arrival city name");
         arriveTime = intent.getStringExtra("arrive time");
         departDate = intent.getStringExtra("departDate");
+        context = intent.getStringExtra("context");
+        if (context != null) {
+            download.setImageResource(R.drawable.add_service_button);
+        }
 
         departCityAlias1 = findViewById(R.id.depart_alias);
         departTime1 = findViewById(R.id.depart_time);
@@ -98,7 +103,11 @@ public class DownloadInvoiceActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             if(view.getId() == R.id.download_button) {
-                Toast.makeText(DownloadInvoiceActivity.this, "Invoice downloaded", Toast.LENGTH_LONG).show();
+                if (context != null) {
+                    Toast.makeText(DownloadInvoiceActivity.this, "Please Contact (02) 4221 3555 For Additional Service!", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(DownloadInvoiceActivity.this, "Invoice downloaded", Toast.LENGTH_LONG).show();
+                }
             } else if(view.getId() == R.id.back_to_home){
                 Intent intent = new Intent(DownloadInvoiceActivity.this,CoreActivity.class);
                 startActivity(intent);
