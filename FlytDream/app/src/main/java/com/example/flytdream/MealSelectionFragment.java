@@ -30,18 +30,16 @@ import java.util.ArrayList;
 public class MealSelectionFragment extends Fragment {
 
     CoreActivity coreActivity;
-    TextView lunch,breakfast,snack;
+    TextView lunch,breakfast,drinks;
     private int lunchButtonCounter,breakfastButtonCounter,snackButtonCounter;
     ImageButton checkout;
     ViewFlipper viewFlipper;
     LinearLayout eggSalad,grilledSalmon,laksa,friedRice,cereal,sandwich,
                 grilledSalmonLunch,friedRiceLunch,sandwichLunch,
-                laksaBreakfast,sandwichBreakfast,cerealBreakfast,
-                cerealSnack;
+                laksaBreakfast,sandwichBreakfast,cerealBreakfast,pm,oj,coke,fanta;
     private int eggSaladCounter,grilledSalmonCounter,laksaCounter,friedRiceCounter,cerealCounter,sandwichCounter,
             grilledSalmonLunchCounter,friedRiceLunchCounter,sandwichLunchCounter,
-            laksaBreakfastCounter,sandwichBreakfastCounter,cerealBreakfastCounter,
-            cerealSnackCounter;
+            laksaBreakfastCounter,sandwichBreakfastCounter,cerealBreakfastCounter,pmCounter,ojCounter,cokeCounter,fantaCounter;
     private ArrayList<Meal> meals;
     private Meal meal;
     // TODO: Rename parameter arguments, choose names that match
@@ -93,7 +91,7 @@ public class MealSelectionFragment extends Fragment {
         coreActivity = (CoreActivity) getActivity();
         lunch = view.findViewById(R.id.lunch);
         breakfast = view.findViewById(R.id.breakfast);
-        snack = view.findViewById(R.id.snack);
+        drinks = view.findViewById(R.id.drinks);
         viewFlipper = view.findViewById(R.id.viewFlipper);
         checkout = view.findViewById(R.id.checkout_button);
         eggSalad = view.findViewById(R.id.egg_salad);
@@ -108,12 +106,15 @@ public class MealSelectionFragment extends Fragment {
         laksaBreakfast = view.findViewById(R.id.laksa_breakfast);
         sandwichBreakfast = view.findViewById(R.id.sandwich_breakfast);
         cerealBreakfast = view.findViewById(R.id.cereal_breakfast);
-        cerealSnack = view.findViewById(R.id.cereal_snack);
+        pm = view.findViewById(R.id.pink_lemonade);
+        oj = view.findViewById(R.id.orange_juice);
+        coke = view.findViewById(R.id.coke_can);
+        fanta = view.findViewById(R.id.fanta_can);
         meals = new ArrayList<Meal>();
 
         lunch.setOnClickListener(clickListener);
         breakfast.setOnClickListener(clickListener);
-        snack.setOnClickListener(clickListener);
+        drinks.setOnClickListener(clickListener);
         eggSalad.setOnClickListener(clickListener1);
         grilledSalmon.setOnClickListener(clickListener1);
         laksa.setOnClickListener(clickListener1);
@@ -126,7 +127,10 @@ public class MealSelectionFragment extends Fragment {
         laksaBreakfast.setOnClickListener(clickListener1);
         sandwichBreakfast.setOnClickListener(clickListener1);
         cerealBreakfast.setOnClickListener(clickListener1);
-        cerealSnack.setOnClickListener(clickListener1);
+        pm.setOnClickListener(clickListener1);
+        oj.setOnClickListener(clickListener1);
+        coke.setOnClickListener(clickListener1);
+        fanta.setOnClickListener(clickListener1);
 
         checkout.setOnClickListener(clickListener);
 
@@ -222,14 +226,12 @@ public class MealSelectionFragment extends Fragment {
                     sandwichLunch.setBackgroundResource(R.drawable.meal_shape);
                     sandwichBreakfast.setBackgroundResource(R.drawable.meal_shape);
                 }
-            } else if ((view.getId() == R.id.cereal) || (view.getId() == R.id.cereal_breakfast) || (view.getId()==R.id.cereal_snack)) {
+            } else if ((view.getId() == R.id.cereal) || (view.getId() == R.id.cereal_breakfast)) {
                 cerealCounter++;
                 cerealBreakfastCounter++;
-                cerealSnackCounter++;
-                if ((cerealCounter % 2 != 0) || (cerealBreakfastCounter % 2 != 0) || (cerealSnackCounter % 2 != 0)) {
+                if ((cerealCounter % 2 != 0) || (cerealBreakfastCounter % 2 != 0)) {
                     cereal.setBackgroundResource(R.drawable.meal_shape_selected);
                     cerealBreakfast.setBackgroundResource(R.drawable.meal_shape_selected);
-                    cerealSnack.setBackgroundResource(R.drawable.meal_shape_selected);
                     meal = new Meal("Cereal", 10.0, 1);
                     meals.add(meal);
                 } else {
@@ -240,7 +242,62 @@ public class MealSelectionFragment extends Fragment {
                     }
                     cereal.setBackgroundResource(R.drawable.meal_shape);
                     cerealBreakfast.setBackgroundResource(R.drawable.meal_shape);
-                    cerealSnack.setBackgroundResource(R.drawable.meal_shape);
+                }
+            } else if ((view.getId() == R.id.pink_lemonade)) {
+                pmCounter++;
+                if ((pmCounter % 2 != 0)) {
+                    pm.setBackgroundResource(R.drawable.meal_shape_selected);
+                    meal = new Meal("Pink Lemonade", 7.0, 1);
+                    meals.add(meal);
+                } else {
+                    for (Meal meal : meals) {
+                        if (meal.getName() == "Pink Lemonade") {
+                            meals.remove(meal);
+                        }
+                    }
+                    pm.setBackgroundResource(R.drawable.meal_shape);
+                }
+            } else if ((view.getId() == R.id.orange_juice)) {
+                ojCounter++;
+                if ((ojCounter % 2 != 0)) {
+                    oj.setBackgroundResource(R.drawable.meal_shape_selected);
+                    meal = new Meal("Orange Juice", 6.0, 1);
+                    meals.add(meal);
+                } else {
+                    for (Meal meal : meals) {
+                        if (meal.getName() == "Orange Juice") {
+                            meals.remove(meal);
+                        }
+                    }
+                    oj.setBackgroundResource(R.drawable.meal_shape);
+                }
+            } else if ((view.getId() == R.id.coke_can)) {
+                cokeCounter++;
+                if ((cokeCounter % 2 != 0)) {
+                    coke.setBackgroundResource(R.drawable.meal_shape_selected);
+                    meal = new Meal("Coke", 5.0, 1);
+                    meals.add(meal);
+                } else {
+                    for (Meal meal : meals) {
+                        if (meal.getName() == "Coke") {
+                            meals.remove(meal);
+                        }
+                    }
+                    coke.setBackgroundResource(R.drawable.meal_shape);
+                }
+            } else if ((view.getId() == R.id.fanta_can)) {
+                fantaCounter++;
+                if ((fantaCounter % 2 != 0)) {
+                    fanta.setBackgroundResource(R.drawable.meal_shape_selected);
+                    meal = new Meal("Fanta", 5.0, 1);
+                    meals.add(meal);
+                } else {
+                    for (Meal meal : meals) {
+                        if (meal.getName() == "Fanta") {
+                            meals.remove(meal);
+                        }
+                    }
+                    fanta.setBackgroundResource(R.drawable.meal_shape);
                 }
             }
         }
@@ -262,9 +319,9 @@ public class MealSelectionFragment extends Fragment {
                     breakfast.setTypeface(null, Typeface.NORMAL);
                     breakfast.setTextColor(Color.parseColor("#000000"));
 
-                    snack.setBackgroundResource(R.drawable.meal_button_shape);
-                    snack.setTypeface(null, Typeface.NORMAL);
-                    snack.setTextColor(Color.parseColor("#000000"));
+                    drinks.setBackgroundResource(R.drawable.meal_button_shape);
+                    drinks.setTypeface(null, Typeface.NORMAL);
+                    drinks.setTextColor(Color.parseColor("#000000"));
 
                     viewFlipper.setDisplayedChild(1);
                 } else {
@@ -287,9 +344,9 @@ public class MealSelectionFragment extends Fragment {
                     lunch.setTypeface(null, Typeface.NORMAL);
                     lunch.setTextColor(Color.parseColor("#000000"));
 
-                    snack.setBackgroundResource(R.drawable.meal_button_shape);
-                    snack.setTypeface(null, Typeface.NORMAL);
-                    snack.setTextColor(Color.parseColor("#000000"));
+                    drinks.setBackgroundResource(R.drawable.meal_button_shape);
+                    drinks.setTypeface(null, Typeface.NORMAL);
+                    drinks.setTextColor(Color.parseColor("#000000"));
 
                     viewFlipper.setDisplayedChild(2);
                 } else {
@@ -299,14 +356,14 @@ public class MealSelectionFragment extends Fragment {
 
                     viewFlipper.setDisplayedChild(0);
                 }
-            } else if(view.getId() == R.id.snack){
+            } else if(view.getId() == R.id.drinks){
                 snackButtonCounter++;
                 breakfastButtonCounter = 0;
                 lunchButtonCounter = 0;
                 if(snackButtonCounter%2 != 0){
-                    snack.setBackgroundResource(R.drawable.meal_button_shape_selected);
-                    snack.setTypeface(null, Typeface.BOLD);
-                    snack.setTextColor(Color.parseColor("#FFFFFF"));
+                    drinks.setBackgroundResource(R.drawable.meal_button_shape_selected);
+                    drinks.setTypeface(null, Typeface.BOLD);
+                    drinks.setTextColor(Color.parseColor("#FFFFFF"));
 
                     breakfast.setBackgroundResource(R.drawable.meal_button_shape);
                     breakfast.setTypeface(null, Typeface.NORMAL);
@@ -318,9 +375,9 @@ public class MealSelectionFragment extends Fragment {
 
                     viewFlipper.setDisplayedChild(3);
                 } else {
-                    snack.setBackgroundResource(R.drawable.meal_button_shape);
-                    snack.setTypeface(null, Typeface.NORMAL);
-                    snack.setTextColor(Color.parseColor("#000000"));
+                    drinks.setBackgroundResource(R.drawable.meal_button_shape);
+                    drinks.setTypeface(null, Typeface.NORMAL);
+                    drinks.setTextColor(Color.parseColor("#000000"));
 
                     viewFlipper.setDisplayedChild(0);
                 }

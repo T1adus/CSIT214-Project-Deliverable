@@ -122,13 +122,13 @@
                     </Space>
 
                     <TextView
-                        android:id="@+id/snack"
+                        android:id="@+id/drinks"
                         android:layout_width="60dp"
                         android:layout_height="30dp"
                         android:layout_weight="1"
                         android:background="@drawable/meal_button_shape"
                         android:gravity="center"
-                        android:text="Snack"
+                        android:text="Drinks"
                         android:textColor="@color/black"
                         android:textSize="13sp" />
                 </LinearLayout>
@@ -143,6 +143,7 @@
                 android:layout_marginTop="20dp">
 
                 <ScrollView
+                    android:id="@+id/all_food"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -393,6 +394,7 @@
                 </ScrollView>
 
                 <ScrollView
+                    android:id="@+id/lunch_food"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -524,6 +526,7 @@
                 </ScrollView>
 
                 <ScrollView
+                    android:id="@+id/breakfast_food"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -655,6 +658,7 @@
                 </ScrollView>
 
                 <ScrollView
+                    android:id="@+id/drink"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -669,7 +673,7 @@
                             android:orientation="horizontal">
 
                             <LinearLayout
-                                android:id="@+id/cereal_snack"
+                                android:id="@+id/pink_lemonade"
                                 android:layout_width="150dp"
                                 android:layout_height="230dp"
                                 android:layout_marginLeft="15dp"
@@ -681,7 +685,7 @@
                                 <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="150dp"
-                                    android:src="@drawable/cereal" />
+                                    android:src="@drawable/pink_lemonade" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -689,7 +693,7 @@
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="15dp"
                                     android:fontFamily="@font/poppins_light"
-                                    android:text="Cereal"
+                                    android:text="Pink Lemonade"
                                     android:textSize="14sp" />
 
                                 <TextView
@@ -698,9 +702,125 @@
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="10dp"
                                     android:fontFamily="@font/bebas_neue"
-                                    android:text="$ 10.00"
+                                    android:text="$ 7.00"
                                     android:textSize="18sp" />
 
+                            </LinearLayout>
+
+                            <Space
+                                android:layout_width="20dp"
+                                android:layout_height="230dp" />
+
+                            <LinearLayout
+                                android:id="@+id/orange_juice"
+                                android:layout_width="150dp"
+                                android:layout_height="230dp"
+                                android:background="@drawable/meal_shape"
+                                android:orientation="vertical"
+                                android:clickable="true"
+                                android:focusable="true">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="150dp"
+                                    android:src="@drawable/orange_juice" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="15dp"
+                                    android:fontFamily="@font/poppins_light"
+                                    android:text="Orange Juice"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:fontFamily="@font/bebas_neue"
+                                    android:text="$ 6.00"
+                                    android:textSize="18sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="10dp">
+
+                            <LinearLayout
+                                android:id="@+id/coke_can"
+                                android:layout_width="150dp"
+                                android:layout_height="230dp"
+                                android:layout_marginLeft="15dp"
+                                android:background="@drawable/meal_shape"
+                                android:orientation="vertical"
+                                android:clickable="true"
+                                android:focusable="true">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="150dp"
+                                    android:src="@drawable/coke_can" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="15dp"
+                                    android:fontFamily="@font/poppins_light"
+                                    android:text="Coke"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:fontFamily="@font/bebas_neue"
+                                    android:text="$ 5.00"
+                                    android:textSize="18sp" />
+
+                            </LinearLayout>
+
+                            <Space
+                                android:layout_width="20dp"
+                                android:layout_height="230dp" />
+
+                            <LinearLayout
+                                android:id="@+id/fanta_can"
+                                android:layout_width="150dp"
+                                android:layout_height="230dp"
+                                android:background="@drawable/meal_shape"
+                                android:orientation="vertical"
+                                android:clickable="true"
+                                android:focusable="true">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="150dp"
+                                    android:src="@drawable/fanta_can" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="15dp"
+                                    android:fontFamily="@font/poppins_light"
+                                    android:text="Fanta"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:fontFamily="@font/bebas_neue"
+                                    android:text="$ 5.00"
+                                    android:textSize="18sp" />
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
