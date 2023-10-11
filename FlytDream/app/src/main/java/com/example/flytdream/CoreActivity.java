@@ -12,6 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class CoreActivity extends AppCompatActivity {
@@ -50,6 +51,32 @@ public class CoreActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, new HomeFragment())
                 .commit();
+    }
+
+    public String getFlightCode() {
+        Calendar calendar = Calendar.getInstance();
+
+        // Extract year, month, day, hour, minute, and second
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH) + 1; // Note: Month is zero-based, so we add 1 to get the correct month
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+        int second = calendar.get(Calendar.SECOND);
+
+        // Create strings for each time component
+        String yearString = String.format("%04d", year); // Year with 4 digits
+        String monthString = String.format("%02d", month); // Month with 2 digits
+        String dayString = String.format("%02d", day); // Day with 2 digits
+        String hourString = String.format("%02d", hour); // Hour with 2 digits
+        String minuteString = String.format("%02d", minute); // Minute with 2 digits
+        String secondString = String.format("%02d", second); // Second with 2 digits
+
+        String departAlias = bookingSession.getDepartCity().getCityAlias();
+        String arriveAlias = bookingSession.getArriveCity().getCityAlias();
+
+        String flightCode = departAlias + arriveAlias + yearString + monthString + dayString + hourString + minuteString + secondString;
+        return flightCode;
     }
 
     //Create a list of passenger based on the number of passenger

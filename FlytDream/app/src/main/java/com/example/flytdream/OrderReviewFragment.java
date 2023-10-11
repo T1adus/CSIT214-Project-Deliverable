@@ -115,7 +115,23 @@ public class OrderReviewFragment extends Fragment {
     View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            String flightCode = coreActivity.getFlightCode();
+            String departCityAlias = coreActivity.getBookingSession().getDepartCity().getCityAlias();
+            String departTime = coreActivity.getBookingSession().getFlight().get(0).getDepartTime();
+            String flightTime = coreActivity.getBookingSession().getFlight().get(0).getFlightTime();
+            String arriveCityAlias = coreActivity.getBookingSession().getArriveCity().getCityAlias();
+            String arriveTime = coreActivity.getBookingSession().getFlight().get(0).getArriveTime();
+            String passenger = names;
+            String flightType = coreActivity.getBookingSession().getFlightType();
+            String flightClass = coreActivity.getBookingSession().getClassSelected();
+            String flightSeat = seat;
+            String board = coreActivity.getBookingSession().getFlight().get(0).getDepartTime();
+            String price = "$"+coreActivity.getBookingSession().getTotalCost();
+            String departDate = coreActivity.getBookingSession().getDate();
+            coreActivity.myDB.insertFlight(flightCode, departCityAlias, departTime, flightTime, arriveCityAlias, arriveTime, passenger, flightType, flightClass, flightSeat, board, price, departDate);
+
             Intent intent = new Intent(getActivity(),OrderConfirmActivity.class);
+            intent.putExtra("flightCode", flightCode);
             intent.putExtra("passenger name",names);
             intent.putExtra("flight class",coreActivity.getBookingSession().getClassSelected());
             intent.putExtra("flight type",coreActivity.getBookingSession().getFlightType());
@@ -132,8 +148,9 @@ public class OrderReviewFragment extends Fragment {
             intent.putExtra("arrival city alias",coreActivity.getBookingSession().getArriveCity().getCityAlias());
             intent.putExtra("arrival city name",coreActivity.getBookingSession().getArriveCity().getCityName());
             intent.putExtra("arrive time",coreActivity.getBookingSession().getFlight().get(0).getArriveTime());
-            intent.putExtra("departDate", coreActivity.getBookingSession().getDate());
+            intent.putExtra("departDate", departDate);
             startActivity(intent);
+
         }
     };
 

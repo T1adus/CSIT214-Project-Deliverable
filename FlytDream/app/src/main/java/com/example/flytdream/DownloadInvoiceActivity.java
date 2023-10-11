@@ -18,8 +18,8 @@ import java.util.Locale;
 
 public class DownloadInvoiceActivity extends AppCompatActivity {
     ImageButton download,back;
-    String flightType,flightClass,boardingTime,departCityAlias,departCityName,departTime,flightTime,arriveCityAlias,arriveCityName,arriveTime,passengers,seats,price,departDate, context;
-    TextView flightType1,flightClass1,boardingTime1,departCityAlias1,departTime1,flightTime1,arriveCityAlias1,arriveTime1,passengers1,seats1,bookingDate,price1;
+    String flightCode, flightType,flightClass,boardingTime,departCityAlias,departCityName,departTime,flightTime,arriveCityAlias,arriveCityName,arriveTime,passengers,seats,price,departDate, context;
+    TextView flightType1,flightClass1,boardingTime1,departCityAlias1,departTime1,flightTime1,arriveCityAlias1,arriveTime1,passengers1,seats1,bookingDate,price1, referenceCode;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +32,7 @@ public class DownloadInvoiceActivity extends AppCompatActivity {
 
         //get booking details from previous screen
         Intent intent = getIntent();
+        flightCode = intent.getStringExtra("flightCode");
         passengers = intent.getStringExtra("passenger name");
         flightType = intent.getStringExtra("flight type");
         flightClass = intent.getStringExtra("flight class");
@@ -51,6 +52,7 @@ public class DownloadInvoiceActivity extends AppCompatActivity {
             download.setImageResource(R.drawable.add_service_button);
         }
 
+        referenceCode = findViewById(R.id.referenceCode);
         departCityAlias1 = findViewById(R.id.depart_alias);
         departTime1 = findViewById(R.id.depart_time);
         flightTime1 = findViewById(R.id.flight_time);
@@ -64,6 +66,7 @@ public class DownloadInvoiceActivity extends AppCompatActivity {
         price1 = findViewById(R.id.price);
 
         //display booking details on screen load
+        referenceCode.setText("Flight Reference: " + flightCode);
         departCityAlias1.setText(departCityAlias);
         departTime1.setText(departTime);
         flightTime1.setText(flightTime);
